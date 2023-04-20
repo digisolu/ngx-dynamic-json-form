@@ -1,0 +1,16 @@
+[ndf-mat-form-field] {
+  .ndf-hide-border {
+    .mdc-text-field--outlined {
+      padding: 0 6px;
+      margin: 0 -6px;
+
+      .mdc-notched-outline {
+        &__leading,
+        &__notch,
+        &__trailing {
+          border-width: 0;
+        }
+      }
+    }
+  }
+}

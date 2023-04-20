@@ -1,0 +1,50 @@
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+  <mat-tab label="EXAMPLE">
+    <div class="description">A Container can be used to bundle, wrap or style elements.</div>
+
+    <div
+      code
+      *ngFor="let field of fields; let i = index"
+      [codes]="codes[i]"
+      [files]="files"
+      [headline]="['Container Example'][i]"
+    >
+      <!-- prettier-ignore -->
+      <!-- CONTENT-START -->
+      <ngx-dynamic-json-form
+        [fields]="fields[i]"
+        (getForm)="setForm($event, i)"
+        [initial]="{}"
+      ></ngx-dynamic-json-form>
+      <!-- CONTENT-END -->
+
+      <div #debug>
+        <h4>Values:</h4>
+        <pre><code [highlight]="form[i].getRawValue() || {} | json" [languages]="['json']"></code></pre>
+      </div>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="JSON - PROPERTIES">
+    <div minimal [data]="'{\n  fields: [],\n  type: \'container\'\n}'"></div>
+
+    <div
+      props
+      headline="Properties for Container"
+      [data]="[
+        {
+          name: 'fields: FormField[]',
+          description: 'The FormField rendered inside of the container',
+          default: []
+        },
+        {
+          name: 'rowWrapperClassName?: string',
+          description: 'A class for the container row',
+          default: ''
+        }
+      ]"
+    ></div>
+
+    <div base-fields></div>
+  </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,53 @@
+<div
+  ndf-mat-form-field
+  [formGroup]="form"
+  [form]="form"
+  [field]="field"
+  [replaceInput]="false"
+  [class.compact]="!!field?.hideBorder && !!field?.hideLabel"
+>
+  <mat-selection-list
+    [formControlName]="field?.key || ''"
+    [required]="field?.required || false"
+    [class]="getDefaultValue('className')"
+  >
+    <div
+      role="option"
+      [class.mat-mdc-list-item]="true"
+      [class.mat-mdc-list-option]="true"
+      [class.mdc-list-item]="true"
+      [class.mat-list-option]="true"
+      [class.mat-mdc-list-item-interactive]="true"
+      [class.mdc-list-item--with-trailing-checkbox]="true"
+      [class.mat-mdc-list-item-single-line]="true"
+      [class.mdc-list-item--with-one-line]="true"
+      *ngIf="getDefaultValue('showSelectAll')"
+      [tabIndex]="-1"
+    >
+      <mat-checkbox
+        class="mat-list-option ndf-select-all"
+        [color]="getDefaultValue('color')"
+        [labelPosition]="getDefaultValue('togglePosition') === 'before' ? 'after' : 'before'"
+        [indeterminate]="isIndeterminate()"
+        [checked]="isChecked()"
+        (click)="$event.stopPropagation()"
+        (change)="toggleSelection($event)"
+        [tabIndex]="-1"
+        [disabled]="getFormControl()?.disabled"
+      >
+        {{ getDefaultValue("showSelectAllText") }}
+      </mat-checkbox>
+    </div>
+
+    <mat-list-option
+      *ngFor="let option of field?.options"
+      [disabled]="option?.disabled || false"
+      [color]="getDefaultValue('color')"
+      [value]="option.value"
+      [checkboxPosition]="getDefaultValue('togglePosition')"
+      [tabIndex]="field?.tabIndex || 0"
+    >
+      {{ option.label }}
+    </mat-list-option>
+  </mat-selection-list>
+</div>

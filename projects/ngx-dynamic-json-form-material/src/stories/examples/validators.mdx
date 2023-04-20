@@ -1,0 +1,43 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Examples and Guides/Validators" />
+
+# Validators (JSON + TS)
+
+Adding `Validators` and `AsyncValidators` are pretty simple.
+
+Just add the `validators` property and that's it.
+
+If you need custom error messages, pass them in the `messages` property or set them global.
+
+```typescript
+{
+  type: "input",
+  key: "anyKey",
+  validators: [
+    Validators.minLength(10),
+    Validators.maxLength(50)
+  ],
+  messages: {
+    minlength: "Add at least 10 characters.",
+    maxlength: "Only 50 characters are allowed.",
+  },
+};
+```
+
+You can also pass a pattern:
+
+```typescript
+{
+  type: "input",
+  key: "anyKey",
+  validators: [
+    Validators.pattern('[0-9]')
+  ],
+  messages: {
+    pattern: "Numbers only",
+  },
+};
+```
+
+For further information, visit the Angular documentation.

@@ -1,0 +1,46 @@
+<div ndf-mat-form-field [formGroup]="form" [form]="form" [field]="fieldExtended">
+  <!-- the input field with a variable type -->
+  <div
+    class="mat-mdc-form-field-flex"
+    [class.ndf-repair-position]="true"
+    [class.ndf-is-outline]="getDefaultValue('appearance') === 'outline'"
+  >
+    <div class="mat-mdc-form-field-infix">
+      <mat-date-range-input
+        [rangePicker]="picker"
+        (blur)="onBlur($event)"
+        (change)="onChange($event)"
+        (focus)="onFocus($event, picker)"
+        (click)="onClick($event, picker)"
+        [class]="getDefaultValue('className')"
+        [class.mat-mdc-form-field-input-control]="true"
+        [class.mdc-text-field__input]="true"
+        [required]="field?.required || false"
+        [tabIndex]="field?.tabIndex || 0"
+      >
+        <input
+          matStartDate
+          [formControlName]="(field?.key || '') + dynamicFormService.rangeEndings[0]"
+          [tabIndex]="field?.tabIndex || 0"
+          [readonly]="field?.readonly || false"
+          [errorStateMatcher]="errorStateMatcher"
+          [placeholder]="field?.placeholderStart || ''"
+        />
+        <input
+          matEndDate
+          [formControlName]="(field?.key || '') + dynamicFormService.rangeEndings[1]"
+          [tabIndex]="field?.tabIndex || 0"
+          [readonly]="field?.readonly || false"
+          [errorStateMatcher]="errorStateMatcher"
+          [placeholder]="field?.placeholderEnd || ''"
+        />
+      </mat-date-range-input>
+    </div>
+
+    <div [class.mat-mdc-form-field-icon-suffix]="true">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    </div>
+  </div>
+
+  <mat-date-range-picker #picker></mat-date-range-picker>
+</div>

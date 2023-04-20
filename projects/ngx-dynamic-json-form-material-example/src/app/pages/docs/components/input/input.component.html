@@ -1,0 +1,64 @@
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+  <mat-tab label="EXAMPLE">
+    <div
+      code
+      *ngFor="let field of fields; let i = index"
+      [codes]="codes[i]"
+      [files]="files"
+      [headline]="['Default Inputs', 'Pre-/Suffix-Text Example', 'Pre-/Suffix-Image Example'][i]"
+    >
+      <!-- prettier-ignore -->
+      <!-- CONTENT-START -->
+      <ngx-dynamic-json-form
+        [fields]="fields[i]"
+        (getForm)="setForm($event, i)"
+        [initial]="{}"
+      ></ngx-dynamic-json-form>
+      <!-- CONTENT-END -->
+
+      <div #debug>
+        <h4>Values:</h4>
+        <pre><code [highlight]="form[i].getRawValue() || {} | json" [languages]="['json']"></code></pre>
+      </div>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="JSON - PROPERTIES">
+    <div minimal [data]="'{\n  key: \'myKey\',\n  type: \'input\'\n}'"></div>
+
+    <div
+      props
+      headline="Properties for Input"
+      [data]="[
+        {
+          name: 'inputType?: \'color\' | \'date\' | \'datetime-local\' | \'email\' | \'month\' | \'number\' | \'password\' | \'search\' | \'tel\' | \'text\' | \'time\' | \'url\' | \'week\'',
+          description: 'The input type used for this field.',
+          default: 'text'
+        },
+        {
+          name: 'maxLength?: number',
+          description: 'The max length of characters for this field.',
+          default: null
+        },
+        {
+          name: 'readonly?: boolean',
+          description: 'Is the element read only?',
+          default: false
+        },
+        {
+          name: 'placeholder?: string',
+          description: 'The placeholder text shown up in the field.',
+          default: ''
+        }
+      ]"
+    ></div>
+
+    <div mat-form-field></div>
+
+    <div form-field-basics></div>
+
+    <div basic-callbacks></div>
+
+    <div base-fields></div>
+  </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,15 @@
+<label *ngIf="form" [formGroup]="form">
+  My Custom Form Field:
+  <input
+    [className]="field?.className || ''"
+    [type]="field?.inputType || 'text'"
+    [readonly]="field?.readonly || false"
+    [required]="field?.required || false"
+    [formControlName]="field?.key || ''"
+    [tabIndex]="field?.tabIndex || 0"
+    [placeholder]="field?.placeholder || ''"
+    (blur)="onBlur($event)"
+    (focus)="onFocus($event)"
+    (change)="onChange($event)"
+  />
+</label>

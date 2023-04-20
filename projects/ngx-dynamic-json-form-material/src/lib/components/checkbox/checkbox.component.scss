@@ -1,0 +1,24 @@
+ndf-mat-checkbox {
+  .vertical {
+    &.mat-mdc-checkbox {
+      display: block;
+    }
+  }
+
+  .compact {
+    .mat-mdc-text-field-wrapper {
+      &.mdc-text-field--outlined {
+        .mat-mdc-form-field-infix {
+          padding-top: 0;
+          padding-bottom: 0;
+          min-height: 0;
+        }
+      }
+    }
+
+    .mdc-text-field--outlined {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}

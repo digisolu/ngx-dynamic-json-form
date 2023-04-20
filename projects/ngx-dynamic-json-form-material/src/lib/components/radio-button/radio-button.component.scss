@@ -1,0 +1,37 @@
+ndf-mat-radio-button {
+  .mat-mdc-radio-button {
+    ~ .mat-mdc-radio-button:not(.vertical) {
+      margin-left: 16px;
+    }
+  }
+
+  .vertical {
+    &.mat-mdc-radio-button {
+      display: block;
+    }
+  }
+
+  .compact {
+    .mat-mdc-text-field-wrapper {
+      &.mdc-text-field--outlined {
+        .mat-mdc-form-field-infix {
+          padding-top: 0;
+          padding-bottom: 0;
+          min-height: 0;
+        }
+      }
+    }
+
+    .mdc-text-field--outlined {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .compact-with-label {
+    .mdc-text-field--outlined {
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+  }
+}

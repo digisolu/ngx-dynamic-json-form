@@ -1,0 +1,54 @@
+::ng-deep ngx-dynamic-json-form {
+  .ndf {
+    &-full-width {
+      width: 100%;
+    }
+
+    &-fx {
+      &-row {
+        display: flex;
+        flex-flow: row;
+
+        &-wrap {
+          display: flex;
+          flex-flow: wrap;
+        }
+      }
+
+      &-baseline {
+        place-items: baseline;
+      }
+
+      &-center {
+        place-items: center;
+      }
+
+      &-column {
+        display: flex;
+        flex-flow: column;
+      }
+
+      &-space {
+        justify-content: space-between;
+      }
+
+      @each $s in (4, 8, 12, 16, 24, 32, 48) {
+        &-gap-#{$s} {
+          gap: #{$s}px;
+        }
+      }
+    }
+
+    &-hide {
+      visibility: hidden;
+    }
+
+    &-error {
+      color: var(--mdc-theme-error, #f44336);
+    }
+
+    &-fit-content {
+      width: fit-content;
+    }
+  }
+}

@@ -1,0 +1,77 @@
+import { Canvas, Meta } from "@storybook/blocks";
+import * as Stories from "./callback.stories";
+
+<Meta title="Examples and Guides/Reload Data" />
+
+# Callback: onChange-Example: Reload Data
+
+The library allows you to use several callback functions to handle most of your needs. A list of all callbacks of a component can be found in the docs of every component.
+
+The change callback can be used for example to reload data from the server.
+
+```typescript
+@Component({
+  selector: "app-my-component",
+  templateUrl: "./my-component.component.html",
+  styleUrls: ["./my-component.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class MyComponent implements OnInit {
+  public form: FormGroup = new FormGroup({});
+
+  public fields: FormField[] = [
+    {
+      type: "select",
+      key: "type",
+      label: "Type",
+      showEmptyOption: true,
+      showEmptyOptionText: "Please choose",
+      options: [
+        { label: "Language", value: "1" },
+        { label: "Food", value: "2" },
+        { label: "Fruit", value: "3" },
+      ],
+      showSearch: false,
+      onChange() {
+        this.form?.get("anyKey")?.disable();
+
+        this.loadData(this.form?.get("type")?.value).subscribe((options, label) => {
+          this.setNewData(options, label);
+          this.form?.get("anyKey")?.enable();
+        });
+      },
+    },
+    {
+      type: "select",
+      key: "anyKey",
+      label: "Choose type first",
+      options: [],
+      disabled: true,
+    },
+  ];
+
+  public setNewData(options: BasicOption[], label: string): void {
+    const field: FormField = this.fields.find((field: FormField) => field.key === "type");
+
+    field = {
+      ...field,
+      label,
+      options,
+    };
+  }
+
+  public loadData(type: string): Observable<{ options: BasicOption[]; label: string }> {
+    // your load action
+  }
+
+  public setForm(form: FormGroup): void {
+    this.form = form;
+  }
+}
+```
+
+With `setForm()` we get the instance of the `FormGroup`. In the `onChange`-Callback, we enable / disable the other select.
+
+## Example
+
+<Canvas of={Stories.LoadData} />

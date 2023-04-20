@@ -1,0 +1,98 @@
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+  <mat-tab label="EXAMPLE">
+    <div
+      code
+      *ngFor="let field of fields; let i = index"
+      [codes]="codes[i]"
+      [files]="files"
+      [headline]="
+        [
+          'Checkboxes with default form field',
+          'Checkboxes with outlined form field',
+          'Checkboxes with plain form field'
+        ][i]
+      "
+    >
+      <!-- prettier-ignore -->
+      <!-- CONTENT-START -->
+      <ngx-dynamic-json-form
+        [fields]="fields[i]"
+        (getForm)="setForm($event, i)"
+        [initial]="{}"
+      ></ngx-dynamic-json-form>
+      <!-- CONTENT-END -->
+
+      <div #debug>
+        <h4>Values:</h4>
+        <pre><code [highlight]="form[i].getRawValue() || {} | json" [languages]="['json']"></code></pre>
+      </div>
+    </div>
+  </mat-tab>
+
+  <!-- <mat-tab label="JSON - PROPERTIES">
+    <div
+      minimal
+      [data]="
+        '{\n  buttonText: \'click me\',\n  variant: \'mat-raised-button\',\n  type: \'button\'\n}'
+      "
+    ></div>
+
+    <div
+      minimal
+      [data]="
+        '{\n  buttonText: \'favorite\',\n  variant: \'mat-icon-button\',\n  type: \'button\'\n}'
+      "
+    ></div>
+
+    <div
+      props
+      headline="Properties for Button"
+      [data]="[
+        {
+          name: 'variant: ButtonVariant',
+          description:
+            'Material Button Type: \'mat-button\' | \'mat-raised-button\' | \'mat-flat-button\' | \'mat-stroked-button\' | \'mat-icon-button\' | \'mat-fab\' | \'mat-fab-extended\' | \'mat-mini-fab\'',
+          default: undefined
+        },
+        {
+          name: 'buttonColor?: ThemePalette',
+          description:
+            'Material Theme Palette: \'primary\' | \'accent\' | \'warn\' | undefined',
+          default: undefined
+        },
+        {
+          name: 'buttonIcon?: string',
+          description: 'The Material Design icon name.',
+          default: false
+        },
+        {
+          name: 'buttonTooltip?: string',
+          description: 'The text shown up as a tooltip.',
+          default: ''
+        },
+        {
+          name: 'buttonType?: \'submit\' | \'menu\' | \'button\' | \'reset\'',
+          description: 'The type used for this button.',
+          default: 'button'
+        },
+        {
+          name: 'disabled?: boolean',
+          description: 'Is the button clickable / active.',
+          default: 0
+        },
+        {
+          name: 'tabIndex?: number',
+          description: 'The tabIndex for this button.',
+          default: 0
+        },
+        {
+          name: 'onClick?($event: PointerEvent | MouseEvent): void',
+          description: 'A onClick callback method for this button.',
+          default: undefined
+        }
+      ]"
+    ></div>
+
+    <div base-fields></div>
+  </mat-tab> -->
+</mat-tab-group>

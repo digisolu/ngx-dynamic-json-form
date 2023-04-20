@@ -1,0 +1,37 @@
+<div class="code-tab">
+  <div class="code-header">
+    <span class="text">{{ headline }}</span>
+    <button
+      [style.visibility]="files.length > 0 || codes.length > 0 ? 'visible' : 'hidden'"
+      mat-icon-button
+      (click)="showCode = !showCode"
+      matTooltip="Toggle code view"
+    >
+      <mat-icon>code</mat-icon>
+    </button>
+  </div>
+
+  <span *ngIf="description" class="description" [innerHTML]="description"></span>
+
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" *ngIf="showCode">
+    <mat-tab
+      *ngFor="let fragment of fragments"
+      [label]="(fragment?.path ? getLabel(fragment) : fragment?.name) || ''"
+    >
+      <pre><code [highlight]="getContent(fragment.content || '')" [languages]="['typescript', 'scss', 'css', 'html']"></code></pre>
+      <button
+        class="code-copy"
+        mat-icon-button
+        [cdkCopyToClipboard]="getContent(fragment.content || '')"
+        (cdkCopyToClipboardCopied)="onCopied($event)"
+        matTooltip="Copy code fragment"
+      >
+        <mat-icon>content_copy</mat-icon>
+      </button>
+    </mat-tab>
+  </mat-tab-group>
+
+  <ng-content></ng-content>
+
+  <ng-content select="debug"></ng-content>
+</div>

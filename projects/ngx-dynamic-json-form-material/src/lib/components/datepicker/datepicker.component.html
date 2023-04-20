@@ -1,0 +1,38 @@
+<div ndf-mat-form-field [formGroup]="form" [form]="form" [field]="fieldExtended">
+  <!-- mat-mdc-form-field-has-icon-suffix => form-field-->
+  <!-- the input field with a variable type -->
+  <div
+    class="mat-mdc-form-field-flex"
+    [class.ndf-repair-position]="true"
+    [class.ndf-is-outline]="getDefaultValue('appearance') === 'outline'"
+  >
+    <div class="mat-mdc-form-field-infix">
+      <input
+        (blur)="onBlur($event)"
+        (change)="onChange($event)"
+        (focus)="onFocus($event, picker)"
+        (click)="onClick($event, picker)"
+        [class]="getDefaultValue('className')"
+        [class.mat-mdc-form-field-input-control]="true"
+        [class.mdc-text-field__input]="true"
+        [errorStateMatcher]="errorStateMatcher"
+        [matDatepicker]="picker"
+        [formControlName]="field?.key || ''"
+        [placeholder]="field?.placeholder || ''"
+        [readonly]="field?.readonly || false"
+        [required]="field?.required || false"
+        [tabIndex]="field?.tabIndex || 0"
+        matInput
+      />
+      <mat-datepicker #picker [disabled]="!!field?.readonly || !!field?.disabled"> </mat-datepicker>
+    </div>
+    <!--
+    (dateInput)="addEvent('input', $event)"
+    (dateChange)="addEvent('change', $event)"
+  -->
+    <div [class.mat-mdc-form-field-icon-suffix]="true">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    </div>
+  </div>
+  <mat-datepicker #picker> </mat-datepicker>
+</div>

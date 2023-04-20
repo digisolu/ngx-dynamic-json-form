@@ -1,0 +1,111 @@
+<div ndf-mat-form-field [formGroup]="form" [form]="form" [field]="field">
+  <div
+    matAutocompleteOrigin
+    #origin="matAutocompleteOrigin"
+    [class.ndf-repair-position]="true"
+    [class.ndf-is-outline]="getDefaultValue('appearance') === 'outline'"
+    [class.ndf-has-visible-clear-button]="
+      getDefaultValue('clearButton') &&
+      getFormControl()!.value?.length &&
+      !field?.readonly &&
+      !field?.disabled
+    "
+  >
+    <!-- Chips -->
+    <mat-chip-grid
+      #chipGrid
+      [formControlName]="field?.key || ''"
+      [tabIndex]="
+        !field?.readonly && !field?.disabled && getDefaultValue('removable') === true
+          ? field?.tabIndex || 0
+          : -1
+      "
+    >
+      <mat-chip-row
+        *ngFor="let value of getFormControl()?.value"
+        [removable]="!field?.readonly && !field?.disabled && getDefaultValue('removable') === true"
+        (removed)="remove(value)"
+        [value]="value"
+      >
+        {{ getLabel(value) }}
+        <mat-icon
+          matChipRemove
+          *ngIf="!field?.readonly && !field?.disabled && getDefaultValue('removable') === true"
+          >cancel</mat-icon
+        >
+      </mat-chip-row>
+    </mat-chip-grid>
+
+    <!-- Search Field -->
+    <input
+      (blur)="onBlur($event)"
+      (change)="onChange($event)"
+      (focus)="onFocus($event)"
+      [class.mat-mdc-form-field-input-control]="true"
+      [class.mdc-text-field__input]="true"
+      [class]="getDefaultValue('className')"
+      [errorStateMatcher]="errorStateMatcher"
+      [formControl]="searchControl"
+      [matAutocomplete]="autocomplete"
+      [matAutocompleteConnectedTo]="origin"
+      [matChipInputFor]="chipGrid"
+      [matChipInputSeparatorKeyCodes]="separatorKeys"
+      [placeholder]="field?.placeholder || ''"
+      [readonly]="field?.readonly || false"
+      [required]="field?.required || false"
+      [tabIndex]="field?.tabIndex || 0"
+      #autocompleteTrigger="matAutocompleteTrigger"
+      #input
+      matInput
+    />
+
+    <!-- Autocompleter -->
+    <mat-autocomplete
+      #autocomplete="matAutocomplete"
+      (optionSelected)="selected($event.option.value)"
+      [displayWith]="getLabel"
+    >
+      <ng-container *ngFor="let option of visibleOptions$ | async">
+        <!-- Possibility 1: Render as option group -->
+        <mat-optgroup *ngIf="!!option?.group" [label]="option?.label || ''">
+          <mat-option
+            *ngFor="let item of option.group"
+            [disabled]="item?.disabled || false"
+            [value]="item?.value"
+            [class.ndf-multi-option]="true"
+          >
+            <mat-checkbox
+              [color]="getDefaultValue('color')"
+              [checked]="isChecked(item.value)"
+              tabindex="-1"
+              (change)="selected(item.value)"
+              (click)="$event.stopPropagation()"
+              [disabled]="item?.disabled || false"
+              [class.ndf-multi-option-checkbox]="true"
+              >{{ item?.label || item.value || null }}</mat-checkbox
+            >
+          </mat-option>
+        </mat-optgroup>
+
+        <!-- Possibility 2: Render as option -->
+        <mat-option
+          *ngIf="!option?.group"
+          [value]="option?.value"
+          [disabled]="option?.disabled || false"
+          [class.ndf-multi-option]="true"
+        >
+          <mat-checkbox
+            [color]="getDefaultValue('color')"
+            [checked]="isChecked(option.value)"
+            tabindex="-1"
+            (change)="selected(option.value)"
+            (click)="$event.stopPropagation()"
+            [disabled]="option?.disabled || false"
+            [class.ndf-multi-option-checkbox]="true"
+            >{{ option?.label || option.value || null }}</mat-checkbox
+          >
+        </mat-option>
+      </ng-container>
+    </mat-autocomplete>
+  </div>
+</div>

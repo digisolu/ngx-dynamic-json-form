@@ -1,0 +1,146 @@
+<!-- We need to wrap ng-content to use it more than once -->
+<ng-template #content>
+  <ng-content></ng-content>
+</ng-template>
+
+<mat-form-field
+  *ngIf="form"
+  [formGroup]="form"
+  [appearance]="getDefaultValue('appearance')"
+  [floatLabel]="getDefaultValue('floatLabel')"
+  [subscriptSizing]="getDefaultValue('subscriptSizing')"
+  [hideRequiredMarker]="getDefaultValue('hideRequiredMarker')"
+  [class]="getDefaultValue('matFormFieldClassName')"
+  [class.ndf-hide-border]="getDefaultValue('hideBorder')"
+  [hintLabel]="field?.hintLabel || ''"
+>
+  <!-- label, if exists -->
+  <mat-label *ngIf="!!field?.label && !field?.hideLabel">{{ field?.label }}</mat-label>
+
+  <!-- Content projection: Form field -->
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+
+  <!--
+    -- HACK 1 start:
+    -- This is a hacky way to use a mat-form-field without a matInput.
+    -- @see: https://github.com/angular/components/issues/9411
+    -- @see: https://github.com/angular/angular/issues/37319
+    --
+    -- HACK 2:
+    -- 'required'         : is needed otherwise mat-error won't work correctly (for the non matInputs)
+    -- 'errorStateMatcher': is needed otherwise mat-error won't work correctly (for the non matInputs)
+    -- 'formControlName'  : is needed otherwise mat-error won't work correctly (for the non matInputs)
+    -->
+
+  <input
+    matInput
+    *ngIf="!isRange && (isBeforeViewInit$ | async)"
+    [tabIndex]="-1"
+    style="display: none"
+    [required]="!replaceInput ? field?.required || false : false"
+    [errorStateMatcher]="errorStateMatcher"
+    [formControlName]="field?.key || ''"
+  />
+  <input
+    *ngIf="isRange && (isBeforeViewInit$ | async)"
+    style="display: none"
+    matInput
+    [tabIndex]="-1"
+    [required]="!replaceInput ? field?.required || false : false"
+    [errorStateMatcher]="errorStateMatcher"
+    [formControlName]="(field?.key || '') + dynamicFormService.rangeEndings[0]"
+  />
+  <input
+    *ngIf="isRange && (isBeforeViewInit$ | async)"
+    style="display: none"
+    matInput
+    [tabIndex]="-1"
+    [required]="!replaceInput ? field?.required || false : false"
+    [errorStateMatcher]="errorStateMatcher"
+    [formControlName]="(field?.key || '') + dynamicFormService.rangeEndings[1]"
+  />
+  <!--
+    -- HACK 1 and HACK 2 end:
+    -->
+
+  <!-- Error Messages -->
+  <mat-error
+    [errorKey]="errorKey"
+    [field]="field"
+    *ngFor="let errorKey of getErrors(field?.key)"
+    ndfCustomError
+  ></mat-error>
+
+  <!-- Prefix: Mat Icon -->
+  <mat-icon
+    *ngIf="field?.prefixIcon"
+    matPrefix
+    [class.ndf-input-prefix]="true"
+    [class]="field?.prefixClassName || ''"
+    (click)="onPrefixClick($event)"
+  >
+    {{ field?.prefixIcon }}
+  </mat-icon>
+
+  <!-- Suffix: Mat Icon -->
+  <mat-icon
+    *ngIf="field?.suffixIcon"
+    matSuffix
+    [class.ndf-input-suffix]="true"
+    [class]="field?.suffixClassName || ''"
+    (click)="onSuffixClick($event)"
+  >
+    {{ field?.suffixIcon }}
+  </mat-icon>
+
+  <!-- Prefix: Text -->
+  <span
+    *ngIf="field?.prefixText"
+    matTextPrefix
+    [class.ndf-input-prefix]="true"
+    [class]="field?.prefixClassName || ''"
+    (click)="onPrefixClick($event)"
+  >
+    {{ field?.prefixText }}
+  </span>
+
+  <!-- Suffix: Text -->
+  <span
+    *ngIf="field?.suffixText"
+    matTextSuffix
+    [class.ndf-input-suffix]="true"
+    [class]="field?.suffixClassName || ''"
+    (click)="onSuffixClick($event)"
+  >
+    {{ field?.suffixText }}
+  </span>
+
+  <!-- Suffix: Clear Button -->
+
+  <button
+    *ngIf="
+      getDefaultValue('clearButton') &&
+      getFormControl()?.value?.length &&
+      !field?.readonly &&
+      !field?.disabled
+    "
+    matSuffix
+    mat-icon-button
+    (click)="clearInput()"
+    [class.ndf-input-suffix]="true"
+    [class]="field?.suffixClassName || ''"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <!-- Hint -->
+  <mat-hint *ngIf="field?.hintText" [align]="field?.hintAlign || 'start'">
+    {{ field?.hintText }}
+  </mat-hint>
+
+  <!-- Special Hint: Count -->
+  <mat-hint [align]="field?.hintCountAlign || 'end'" *ngIf="field?.hintCount">
+    <ng-content select="span[ndfCount]"></ng-content>
+    <span>{{ field?.maxLength ? " / " + field?.maxLength : null }}</span>
+  </mat-hint>
+</mat-form-field>

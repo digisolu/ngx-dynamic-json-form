@@ -1,0 +1,60 @@
+<div ndf-mat-form-field [formGroup]="form" [form]="form" [field]="field">
+  <mat-select
+    (blur)="onBlur($event)"
+    (focus)="onFocus($event)"
+    [class]="getDefaultValue('className')"
+    [errorStateMatcher]="errorStateMatcher"
+    [formControlName]="field?.key || ''"
+    [placeholder]="field?.placeholder || ''"
+    [required]="field?.required || false"
+    [tabIndex]="field?.tabIndex || 0"
+    [multiple]="field?.multiple"
+    (selectionChange)="onChange($event)"
+    [class.ndf-repair-position]="true"
+    [class.ndf-is-outline]="getDefaultValue('appearance') === 'outline'"
+    [disableOptionCentering]="getDefaultValue('disableOptionCentering')"
+    [panelClass]="getPanelClass()"
+    [typeaheadDebounceInterval]="getDefaultValue('typeaheadDebounceInterval')"
+    [compareWith]="compareWith"
+  >
+    <mat-option *ngIf="getDefaultValue('showSearch')">
+      <ngx-mat-select-search
+        [formControl]="searchFilter"
+        [showToggleAllCheckbox]="getDefaultValue('showSelectAll')"
+        [toggleAllCheckboxTooltipMessage]="getDefaultValue('showSelectAllText')"
+        [toggleAllCheckboxIndeterminate]="isIndeterminate()"
+        [toggleAllCheckboxChecked]="isChecked()"
+        (toggleAll)="toggleSelection($event)"
+        [noEntriesFoundLabel]="getDefaultValue('showSearchNoEntriesText')"
+        [placeholderLabel]="getDefaultValue('showSearchText')"
+      ></ngx-mat-select-search>
+    </mat-option>
+
+    <!-- Render empty option, if set and if multiple is false -->
+    <mat-option *ngIf="getDefaultValue('showEmptyOption') && !field?.multiple" [value]="null">{{
+      getDefaultValue("showEmptyOptionText")
+    }}</mat-option>
+
+    <ng-container *ngFor="let option of visibleOptions$ | async">
+      <!-- Possibility 1: Render as option group -->
+      <mat-optgroup *ngIf="!!option?.group" [label]="option?.label || ''">
+        <mat-option
+          *ngFor="let item of option.group"
+          [disabled]="item?.disabled || false"
+          [value]="item?.value"
+        >
+          {{ item?.label || item.value || null }}
+        </mat-option>
+      </mat-optgroup>
+
+      <!-- Possibility 2: Render as option -->
+      <mat-option
+        *ngIf="!option?.group"
+        [value]="option?.value"
+        [disabled]="option?.disabled || false"
+      >
+        {{ option?.label || option.value || null }}
+      </mat-option>
+    </ng-container>
+  </mat-select>
+</div>

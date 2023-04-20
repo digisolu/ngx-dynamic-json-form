@@ -1,0 +1,67 @@
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+  <mat-tab label="EXAMPLE">
+    <div class="description">
+      A Component to wrap multiple checkboxes and render them as a list.
+    </div>
+
+    <div
+      code
+      *ngFor="let field of fields; let i = index"
+      [codes]="codes[i]"
+      [files]="files"
+      [headline]="
+        [
+          'Multi Checkboxes with default form field',
+          'Multi Checkboxes with outlined form field',
+          'Multi Checkboxes with plain form field'
+        ][i]
+      "
+    >
+      <!-- prettier-ignore -->
+      <!-- CONTENT-START -->
+      <ngx-dynamic-json-form
+        [fields]="fields[i]"
+        (getForm)="setForm($event, i)"
+        [initial]="{}"
+      ></ngx-dynamic-json-form>
+      <!-- CONTENT-END -->
+
+      <div #debug>
+        <h4>Values:</h4>
+        <pre><code [highlight]="form[i].getRawValue() || {} | json" [languages]="['json']"></code></pre>
+      </div>
+    </div>
+  </mat-tab>
+
+  <!-- showSelectAll?: boolean;
+  showSelectAllText?: string;
+  color?: ThemePalette;
+  togglePosition?: 'before' | 'after';
+
+  options: BasicOption[];
+
+  <mat-tab label="JSON - PROPERTIES">
+    <div minimal [data]="'{\n  fields: [],\n  type: \'container\'\n}'"></div>
+
+    <div
+      props
+      headline="Properties for Container"
+      [data]="[
+        {
+          name: 'fields: FormField[]',
+          description: 'The FormField rendered inside of the container',
+          default: []
+        },
+        {
+          name: 'rowWrapperClassName?: string',
+          description: 'A class for the container row',
+          default: ''
+        }
+      ]"
+    ></div>
+
+    <div mat-form-field></div>
+
+    <div base-fields></div>
+  </mat-tab> -->
+</mat-tab-group>

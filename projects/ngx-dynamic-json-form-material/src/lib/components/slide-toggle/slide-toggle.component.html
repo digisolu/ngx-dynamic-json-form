@@ -1,0 +1,12 @@
+<div ndf-mat-form-field [formGroup]="form" [form]="form" [field]="field" [replaceInput]="false">
+  <mat-slide-toggle
+    (change)="onChange($event)"
+    [class]="getDefaultValue('className')"
+    [color]="getDefaultValue('color')"
+    [formControlName]="field?.key || ''"
+    [required]="field?.required || false"
+    [tabIndex]="field?.tabIndex || 0"
+  >
+    {{ field?.label }}{{ field?.required ? "*" : "" }}
+  </mat-slide-toggle>
+</div>

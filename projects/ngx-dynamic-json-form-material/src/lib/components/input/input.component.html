@@ -1,0 +1,24 @@
+<div ndf-mat-form-field [formGroup]="form" [form]="form" [field]="field">
+  <!-- the input field with a variable type -->
+  <input
+    (blur)="onBlur($event)"
+    (change)="onChange($event)"
+    (focus)="onFocus($event)"
+    [class.mat-mdc-form-field-input-control]="true"
+    [class.mdc-text-field__input]="true"
+    [class]="getDefaultValue('className')"
+    [errorStateMatcher]="errorStateMatcher"
+    [formControlName]="field?.key || ''"
+    [maxlength]="field?.maxLength || null"
+    [placeholder]="field?.placeholder || ''"
+    [readonly]="field?.readonly || false"
+    [required]="field?.required || false"
+    [tabIndex]="field?.tabIndex || 0"
+    [type]="field?.inputType || 'text'"
+    #input
+    matInput
+  />
+
+  <!-- Special Hint: Count -->
+  <span ndfCount *ngIf="field?.hintCount">{{ input.value.length }}</span>
+</div>

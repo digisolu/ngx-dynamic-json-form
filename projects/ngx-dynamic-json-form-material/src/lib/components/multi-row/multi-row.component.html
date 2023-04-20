@@ -1,0 +1,82 @@
+<ng-container [formGroup]="getFormGroup()">
+  <ng-container [formArrayName]="getFieldKey()">
+    <ng-container *ngIf="getFormArrayControls()?.length; else addButton">
+      <div
+        [class.ndf-multi-form-row]="true"
+        [class]="getDefaultValue('rowWrapperClassName')"
+        [formGroup]="dynamicForm"
+        *ngFor="let dynamicForm of getFormArrayControls(); index as i"
+      >
+        <ng-container *ngFor="let innerField of field?.fields">
+          <div
+            [class.ndf-form-field]="true"
+            [class]="innerField?.containerClassName"
+            [field]="innerField"
+            [form]="dynamicForm"
+            *ngIf="isFormField(innerField?.type); else error"
+            ndf-form-field
+          ></div>
+
+          <ng-template #error>
+            <mat-error
+              [errorKey]="'unsupportedKey'"
+              [replace]="{ KEY_OR_TYPE: innerField?.key || innerField.type }"
+              ndfCustomError
+            ></mat-error>
+          </ng-template>
+        </ng-container>
+
+        <!-- Row Buttons -->
+        <div
+          *ngIf="
+            getDefaultValue('addButtonRow') ||
+            getDefaultValue('addButtonOnlyLast') ||
+            getDefaultValue('deleteButtonRow')
+          "
+          [class.ndf-multi-form-row-button-container]="true"
+          [class]="getDefaultValue('rowButtonContainerClassName')"
+        >
+          <!-- Add Button: addButtonRow = true or addButtonRow = false and addButtonOnlyLast = true -->
+          <ng-container
+            *ngIf="getDefaultValue('addButtonRow') || getDefaultValue('addButtonOnlyLast')"
+          >
+            <div
+              (click)="addRow(i + 1)"
+              [class]="'ndf-form-field ' + getDefaultValue('addButtonContainerClassName')"
+              [class.ndf-hide]="
+                !getDefaultValue('addButtonRow') &&
+                getDefaultValue('addButtonOnlyLast') &&
+                i !== getFormArray().length - 1
+              "
+              [field]="getButtonField(field, 'add')"
+              [form]="dynamicForm"
+              ndf-form-field
+            ></div>
+          </ng-container>
+
+          <!-- Delete Button: deleteButtonRow = true -->
+          <ng-container *ngIf="getDefaultValue('deleteButtonRow')">
+            <div
+              (click)="removeRow(i)"
+              [class]="'ndf-form-field ' + getDefaultValue('deleteButtonContainerClassName')"
+              [field]="getButtonField(field, 'delete')"
+              [form]="dynamicForm"
+              ndf-form-field
+            ></div>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- Add Button: Visible if there are no rows -->
+    <ng-template #addButton>
+      <div
+        (click)="addRow(1)"
+        [class]="'ndf-form-field ' + getDefaultValue('addButtonContainerClassName')"
+        [field]="getButtonField(field, 'add')"
+        [form]="getFormGroup()"
+        ndf-form-field
+      ></div>
+    </ng-template>
+  </ng-container>
+</ng-container>

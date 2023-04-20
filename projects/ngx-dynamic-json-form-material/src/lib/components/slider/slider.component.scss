@@ -1,0 +1,18 @@
+ndf-slider {
+  &,
+  &-range {
+    .mat-mdc-slider {
+      &.ndf-full-width {
+        width: 100%;
+      }
+
+      .mat-mdc-slider-visual-thumb {
+        z-index: 5;
+      }
+    }
+
+    .mat-mdc-text-field-wrapper {
+      overflow: visible;
+    }
+  }
+}

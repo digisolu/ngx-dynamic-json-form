@@ -1,0 +1,24 @@
+<div
+  [class.ndf-container-row]="true"
+  [class]="getDefaultValue('rowWrapperClassName')"
+>
+  <ng-container *ngFor="let innerField of field?.fields">
+    <div
+      [class.ndf-form-field]="true"
+      [class]="innerField?.containerClassName"
+      [field]="innerField"
+      [form]="form"
+      *ngIf="isFormField(innerField?.type); else error"
+      ndf-form-field
+    ></div>
+
+    <ng-template #error>
+      <p
+        [class.ndf-error]="true"
+        [errorKey]="'unsupportedKey'"
+        [replace]="{ KEY_OR_TYPE: innerField?.key || innerField.type }"
+        ndfCustomError
+      ></p>
+    </ng-template>
+  </ng-container>
+</div>

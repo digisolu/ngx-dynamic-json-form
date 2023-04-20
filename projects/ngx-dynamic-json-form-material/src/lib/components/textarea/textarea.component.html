@@ -1,0 +1,31 @@
+<div ndf-mat-form-field [formGroup]="form" [form]="form" [field]="field">
+  <!-- the textarea field -->
+  <textarea
+    (blur)="onBlur($event)"
+    (change)="onChange($event)"
+    (focus)="onFocus($event)"
+    [cdkAutosizeMaxRows]="getDefaultValue('autosizeMaxRows')"
+    [cdkAutosizeMinRows]="getDefaultValue('autosizeMinRows')"
+    [cdkTextareaAutosize]="autosize$ | async"
+    [class.cdk-textarea-autosize]="field?.autosize || false"
+    [class.mat-mdc-form-field-input-control]="true"
+    [class.mdc-text-field__input]="true"
+    [class]="getDefaultValue('className')"
+    [cols]="getDefaultValue('cols')"
+    [errorStateMatcher]="errorStateMatcher"
+    [formControlName]="field?.key || ''"
+    [maxlength]="field?.maxLength || null"
+    [placeholder]="field?.placeholder || ''"
+    [readonly]="field?.readonly || false"
+    [required]="field?.required || false"
+    [rows]="getDefaultValue('rows')"
+    [tabIndex]="field?.tabIndex || 0"
+    #textArea
+    matInput
+  ></textarea>
+
+  <!-- Special Hint: Count -->
+  <span ndfCount *ngIf="getDefaultValue('hintCount')">{{
+    textArea.value.length
+  }}</span>
+</div>

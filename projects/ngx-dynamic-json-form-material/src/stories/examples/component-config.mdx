@@ -1,0 +1,52 @@
+import { Meta, Source } from "@storybook/blocks";
+import { Utils } from "../helpers/utils";
+
+<Meta title="Examples and Guides/Component Configurations" />
+
+# Component Configurations
+
+Sometimes you need to override some layout options for one specific component.
+
+You need to add the `NgxDynamicJsonFormService` as a provider in your component. Then you can override the needed options with `overrideLayoutOptions()`.
+
+## Example
+
+```typescript
+@Component({
+  selector: "app-my-custom-component",
+  templateUrl: "./my-custom-component.component.html",
+  styleUrls: ["./my-custom-component.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  providers: [NgxDynamicJsonFormService], // <-- Add the NgxDynamicJsonFormService here
+})
+export class myCustomComponent implements OnInit {
+  public constructor(private _ngxDynamicFormService: NgxDynamicJsonFormService) {}
+
+  public ngOnInit(): void {
+    // override the layout options for this component only
+    this._ngxDynamicFormService.overrideLayoutOptions({
+      default: {
+        appearance: "outline",
+        floatLabel: "always",
+      },
+      select: {
+        showSearch: false,
+      },
+    });
+  }
+}
+```
+
+## Default Values
+
+### layoutOptions
+
+These are the default values for all Material Design Components.
+
+<Source
+  code={Utils.getClassProperty("ConfigDefaults", "MATERIAL_OPTIONS").defaultValue}
+  dark="true"
+  language="typescript"
+  type="code"
+/>

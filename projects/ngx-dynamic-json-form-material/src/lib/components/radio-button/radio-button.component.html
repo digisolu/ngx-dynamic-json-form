@@ -1,0 +1,31 @@
+<div
+  ndf-mat-form-field
+  [formGroup]="form"
+  [form]="form"
+  [field]="field"
+  [replaceInput]="false"
+  [class.compact]="!!field?.hideBorder && !!field?.hideLabel"
+  [class.compact-with-label]="
+    !!field?.hideBorder && field?.appearance === 'outline' && !field?.hideLabel
+  "
+>
+  <mat-radio-group
+    (change)="onChange($event)"
+    [formControlName]="field?.key || ''"
+    [required]="field?.required || false"
+    [name]="field?.name || ''"
+    [class]="getDefaultValue('className')"
+  >
+    <mat-radio-button
+      *ngFor="let option of field?.options"
+      [disabled]="option?.disabled || false"
+      [color]="getDefaultValue('color')"
+      [value]="option.value"
+      [labelPosition]="getDefaultValue('labelPosition')"
+      [class.vertical]="getDefaultValue('vertical')"
+      [tabIndex]="field?.tabIndex || 0"
+    >
+      {{ option.label }}
+    </mat-radio-button>
+  </mat-radio-group>
+</div>

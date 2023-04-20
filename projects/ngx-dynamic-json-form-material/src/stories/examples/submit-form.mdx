@@ -1,0 +1,55 @@
+import { Canvas, Meta } from "@storybook/blocks";
+import * as Stories from "./callback.stories";
+
+<Meta title="Examples and Guides/Submit the form" />
+
+# Callback: onClick-Example: Submit a form
+
+The library allows you to use several callback functions to handle most of your needs. A list of all callbacks of a component can be found in the docs of every component.
+
+The click callback can be used for example to submit the form.
+
+```typescript
+@Component({
+  selector: "app-my-component",
+  templateUrl: "./my-component.component.html",
+  styleUrls: ["./my-component.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class MyComponent implements OnInit {
+  public form: FormGroup = new FormGroup({});
+
+  public fields: FormField[] = [
+    {
+      type: "select",
+      key: "language",
+      label: "Languages",
+      options: [
+        { label: "Language 1", value: "1" },
+        // ...
+      ],
+    },
+    {
+      type: "button",
+      variant: "mat-raised-button",
+      buttonText: "Submit",
+      buttonColor: "primary",
+      onClick() {
+        // your submit logic
+      },
+    },
+  ];
+
+  public setForm(form: FormGroup): void {
+    this.form = form;
+  }
+}
+```
+
+With `setForm()` we get the instance of the `FormGroup`. In the `onClick`-Callback, we submit the form.
+
+The data of the form is default Angular (Reactive Forms). You can get the values e.g. with `this.form.getRawValue()`.
+
+### Example
+
+<Canvas of={Stories.Click} />

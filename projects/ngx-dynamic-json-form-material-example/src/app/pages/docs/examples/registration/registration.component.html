@@ -1,0 +1,34 @@
+<div code [files]="files" headline="Example: Registration Form">
+  <!-- prettier-ignore -->
+  <!-- CONTENT-START -->
+  <div class="ndf-container push-top-xl form-container">
+    <div class="ndf-container-row">
+      <div class="ndf-form-field col-10">
+        <h1>Account Settings</h1>
+        <p><small>Some very nice placeholder</small></p>
+      </div>
+
+      <div class="ndf-form-field col-2 align-right">
+        <button (click)="submit()" color="primary" mat-raised-button>Save</button>
+      </div>
+    </div>
+
+    <div class="push-top-xl">
+      <ngx-dynamic-json-form
+        [fields]="fields"
+        (getForm)="setForm($event)"
+        [initial]="initialValues"
+      ></ngx-dynamic-json-form>
+    </div>
+  </div>
+  <!-- CONTENT-END -->
+
+  <div #debug class="ndf-container">
+    <div class="ndf-container-row push-top-xl">
+      <div class="ndf-form-field col-12">
+        <h5>Values:</h5>
+        <pre><code [highlight]="form.getRawValue() || {} | json" [languages]="['json']"></code></pre>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+.mat-drawer-container {
+  width: 100vw;
+  height: calc(100vh - 64px);
+}
+
+.mat-drawer-content {
+  max-height: calc(100vh - 64px - 48px);
+}
+
+.sidenav-container {
+  width: 300px;
+  padding: 24px 0;
+}
+
+.content-container {
+  padding: 24px;
+  background-color: #eee;
+}
+
+.description {
+  margin: 24px 0;
+}

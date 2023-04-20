@@ -1,0 +1,21 @@
+<div
+  ndf-mat-form-field
+  [formGroup]="form"
+  [form]="form"
+  [field]="field"
+  [replaceInput]="false"
+  [class.compact]="!!field?.hideBorder && !!field?.hideLabel"
+>
+  <mat-checkbox
+    [class]="getDefaultValue('className')"
+    [class.vertical]="getDefaultValue('vertical')"
+    [color]="getDefaultValue('color')"
+    [formControlName]="field?.key || ''"
+    [labelPosition]="getDefaultValue('labelPosition')"
+    [required]="field?.required || false"
+    [tabIndex]="field?.tabIndex || 0"
+    (change)="onChange($event)"
+  >
+    {{ field?.label }}{{ field?.required ? "*" : "" }}
+  </mat-checkbox>
+</div>

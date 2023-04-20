@@ -1,0 +1,9 @@
+.ndf-repair-position {
+  margin: -24px 0;
+  position: absolute;
+  top: auto;
+
+  &.ndf-is-outline {
+    margin: -16px 0;
+  }
+}

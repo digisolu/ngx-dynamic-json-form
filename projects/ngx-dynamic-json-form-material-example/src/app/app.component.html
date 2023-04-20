@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span class="header-icon" routerLink="/">NGX Dynamic JSON Form</span>
+
+    <a
+      *ngFor="let link of links"
+      mat-button
+      class="link"
+      [routerLink]="link.url"
+      [routerLinkActive]="'ndf-link-active'"
+    >
+      {{ link.name }}
+    </a>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="ndf-docs">
+  <router-outlet></router-outlet>
+</div>

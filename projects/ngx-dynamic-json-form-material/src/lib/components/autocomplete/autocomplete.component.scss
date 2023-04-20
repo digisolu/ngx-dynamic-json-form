@@ -1,0 +1,19 @@
+.ndf-repair-position {
+  margin: -8px -16px;
+  padding: 8px 16px;
+
+  &.ndf-has-visible-clear-button {
+    margin: -8px -52px -8px -16px;
+    padding: 8px 52px 8px 16px;
+  }
+
+  &.ndf-is-outline {
+    margin: -16px;
+    padding: 16px;
+
+    &.ndf-has-visible-clear-button {
+      margin: -16px -52px -16px -16px;
+      padding: 16px 52px 16px 16px;
+    }
+  }
+}

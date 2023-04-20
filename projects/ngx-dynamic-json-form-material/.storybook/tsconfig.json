@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.lib.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true
+  },
+  "exclude": ["../src/test.ts", "../src/**/*.spec.ts"],
+  "include": ["../src/**/*", "./preview.jsx", "./manager.js", "./ngx-dynamic-json-form.js"],
+  "files": ["./typings.d.ts"]
+}

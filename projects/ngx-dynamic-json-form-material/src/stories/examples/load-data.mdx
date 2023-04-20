@@ -1,0 +1,54 @@
+import { Canvas, Meta } from "@storybook/blocks";
+import * as Stories from "./callback.stories";
+
+<Meta title="Examples and Guides/Load Data from Server" />
+
+# Callback: onChange-Example: Reload Data
+
+The library allows you to use several callback functions to handle most of your needs. A list of all callbacks of a component can be found in the docs of every component.
+
+The change callback can be used for example to reload data from the server.
+
+`my.component.ts`:
+
+```typescript
+@Component({
+  selector: "app-my-component",
+  templateUrl: "./my-component.component.html",
+  styleUrls: ["./my-component.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class MyComponent implements OnInit {
+  public form: FormGroup = new FormGroup({});
+
+  public fields: Observable<FormField[]>;
+
+  public ngOnInit(options: BasicOption[], label: string): void {
+    this.fields = this.loadData();
+  }
+
+  public loadData(): Observable<FormField[]> {
+    // your load action
+  }
+}
+```
+
+`my.component.html`:
+
+```html
+<ng-container *ngIf="fields | async as data; else loading">
+  <ngx-dynamic-json-form
+    [fields]="data"
+    [formClassName]="formClassName"
+    (getForm)="setForm($event)"
+  ></ngx-dynamic-json-form>
+</ng-container>
+
+<ng-template #loading>
+  <!-- your loading spinner -->
+</ng-template>
+```
+
+## Example
+
+<Canvas of={Stories.LoadDataBefore} />

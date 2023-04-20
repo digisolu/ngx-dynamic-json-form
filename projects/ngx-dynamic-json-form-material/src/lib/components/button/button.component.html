@@ -1,0 +1,128 @@
+<ng-container [ngSwitch]="field?.variant">
+  <button
+    [type]="field?.buttonType || 'button'"
+    [disabled]="field?.disabled || false"
+    [tabIndex]="field?.tabIndex || 0"
+    (click)="onClick($event)"
+    [class]="getDefaultValue('className')"
+    [color]="field?.buttonColor || undefined"
+    [matTooltip]="field?.buttonTooltip || ''"
+    *ngSwitchCase="'mat-button'"
+    mat-button
+  >
+    <mat-icon *ngIf="field?.buttonIcon">{{ field?.buttonIcon }}</mat-icon>
+    {{ field?.buttonText }}
+  </button>
+
+  <button
+    [type]="field?.buttonType || 'button'"
+    [disabled]="field?.disabled || false"
+    [tabIndex]="field?.tabIndex || 0"
+    (click)="onClick($event)"
+    [class]="getDefaultValue('className')"
+    [color]="field?.buttonColor || undefined"
+    [matTooltip]="field?.buttonTooltip || ''"
+    *ngSwitchCase="'mat-raised-button'"
+    mat-raised-button
+  >
+    <mat-icon *ngIf="field?.buttonIcon">{{ field?.buttonIcon }}</mat-icon>
+    {{ field?.buttonText }}
+  </button>
+
+  <button
+    [type]="field?.buttonType || 'button'"
+    [disabled]="field?.disabled || false"
+    [tabIndex]="field?.tabIndex || 0"
+    (click)="onClick($event)"
+    [class]="getDefaultValue('className')"
+    [color]="field?.buttonColor || undefined"
+    [matTooltip]="field?.buttonTooltip || ''"
+    *ngSwitchCase="'mat-stroked-button'"
+    mat-stroked-button
+  >
+    <mat-icon *ngIf="field?.buttonIcon">{{ field?.buttonIcon }}</mat-icon>
+    {{ field?.buttonText }}
+  </button>
+
+  <button
+    [type]="field?.buttonType || 'button'"
+    [disabled]="field?.disabled || false"
+    [tabIndex]="field?.tabIndex || 0"
+    (click)="onClick($event)"
+    [class]="getDefaultValue('className')"
+    [color]="field?.buttonColor || undefined"
+    [matTooltip]="field?.buttonTooltip || ''"
+    *ngSwitchCase="'mat-flat-button'"
+    mat-flat-button
+  >
+    <mat-icon *ngIf="field?.buttonIcon">{{ field?.buttonIcon }}</mat-icon>
+    {{ field?.buttonText }}
+  </button>
+
+  <button
+    [type]="field?.buttonType || 'button'"
+    [disabled]="field?.disabled || false"
+    [tabIndex]="field?.tabIndex || 0"
+    (click)="onClick($event)"
+    [class]="getDefaultValue('className')"
+    [color]="field?.buttonColor || undefined"
+    [matTooltip]="field?.buttonTooltip || ''"
+    *ngSwitchCase="'mat-icon-button'"
+    mat-icon-button
+  >
+    <mat-icon>{{ field?.buttonIcon }}</mat-icon>
+  </button>
+
+  <button
+    [type]="field?.buttonType || 'button'"
+    [disabled]="field?.disabled || false"
+    [tabIndex]="field?.tabIndex || 0"
+    (click)="onClick($event)"
+    [class]="getDefaultValue('className')"
+    [color]="field?.buttonColor || undefined"
+    [matTooltip]="field?.buttonTooltip || ''"
+    *ngSwitchCase="'mat-fab'"
+    mat-fab
+  >
+    <mat-icon>{{ field?.buttonIcon }}</mat-icon>
+  </button>
+
+  <button
+    [type]="field?.buttonType || 'button'"
+    [disabled]="field?.disabled || false"
+    [tabIndex]="field?.tabIndex || 0"
+    (click)="onClick($event)"
+    [class]="getDefaultValue('className')"
+    [color]="field?.buttonColor || undefined"
+    [matTooltip]="field?.buttonTooltip || ''"
+    *ngSwitchCase="'mat-mini-fab'"
+    mat-mini-fab
+  >
+    <mat-icon>{{ field?.buttonIcon }}</mat-icon>
+  </button>
+
+  <button
+    [type]="field?.buttonType || 'button'"
+    [disabled]="field?.disabled || false"
+    [tabIndex]="field?.tabIndex || 0"
+    (click)="onClick($event)"
+    [class]="getDefaultValue('className')"
+    [color]="field?.buttonColor || undefined"
+    [matTooltip]="field?.buttonTooltip || ''"
+    *ngSwitchCase="'mat-fab-extended'"
+    extended
+    mat-fab
+  >
+    <mat-icon>{{ field?.buttonIcon }}</mat-icon>
+    {{ field?.buttonText }}
+  </button>
+
+  <button
+    [type]="field?.buttonType || 'button'"
+    [disabled]="field?.disabled || false"
+    [tabIndex]="field?.tabIndex || 0"
+    *ngSwitchDefault
+  >
+    {{ field?.buttonText }}
+  </button>
+</ng-container>

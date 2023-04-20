@@ -1,0 +1,55 @@
+<div ndf-mat-form-field [formGroup]="form" [form]="form" [field]="field">
+  <div
+    matAutocompleteOrigin
+    #origin="matAutocompleteOrigin"
+    [class.ndf-repair-position]="true"
+    [class.ndf-is-outline]="getDefaultValue('appearance') === 'outline'"
+  >
+    <input
+      (blur)="onBlur($event)"
+      (focus)="onFocus($event)"
+      [class.mat-mdc-form-field-input-control]="true"
+      [class.mdc-text-field__input]="true"
+      [class]="getDefaultValue('className')"
+      [errorStateMatcher]="errorStateMatcher"
+      [formControlName]="field?.key || ''"
+      [matAutocomplete]="autocomplete"
+      [matAutocompleteConnectedTo]="origin"
+      [placeholder]="field?.placeholder || ''"
+      [readonly]="field?.readonly || false"
+      [required]="field?.required || false"
+      [tabIndex]="field?.tabIndex || 0"
+      #input
+      matInput
+    />
+
+    <mat-autocomplete #autocomplete [displayWith]="getLabel" (optionSelected)="onChange($event)">
+      <!-- Render empty option, if set -->
+      <mat-option *ngIf="getDefaultValue('showEmptyOption')" [value]="null">{{
+        getDefaultValue("showEmptyOptionText")
+      }}</mat-option>
+
+      <ng-container *ngFor="let option of visibleOptions$ | async">
+        <!-- Possibility 1: Render as option group -->
+        <mat-optgroup *ngIf="!!option?.group" [label]="option?.label || ''">
+          <mat-option
+            *ngFor="let item of option.group"
+            [disabled]="item?.disabled || false"
+            [value]="item?.value"
+          >
+            {{ item?.label || item.value || null }}
+          </mat-option>
+        </mat-optgroup>
+
+        <!-- Possibility 2: Render as option -->
+        <mat-option
+          *ngIf="!option?.group"
+          [value]="option?.value"
+          [disabled]="option?.disabled || false"
+        >
+          {{ option?.label || option.value || null }}
+        </mat-option>
+      </ng-container>
+    </mat-autocomplete>
+  </div>
+</div>

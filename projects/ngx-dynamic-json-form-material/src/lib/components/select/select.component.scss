@@ -1,0 +1,32 @@
+::ng-deep ndf-mat-select {
+  .ndf-repair-position {
+    margin: 0 -16px;
+    padding: 0 16px;
+
+    .mat-mdc-select-trigger {
+      margin: 0 0 -8px -16px;
+      padding: 0 0 8px 16px;
+      width: calc(100% + 16px);
+    }
+
+    &.ndf-is-outline {
+      margin: 0 -16px;
+      padding: 0 16px;
+      width: 100%;
+
+      .mat-mdc-select-trigger {
+        margin: -16px;
+        padding: 16px;
+        width: calc(100% + 32px);
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .ndf-panel-single {
+    .mat-pseudo-checkbox {
+      display: none;
+    }
+  }
+}

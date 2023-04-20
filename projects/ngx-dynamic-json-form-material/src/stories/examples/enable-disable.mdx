@@ -1,0 +1,62 @@
+import { Canvas, Meta } from "@storybook/blocks";
+import * as Stories from "./callback.stories";
+
+<Meta title="Examples and Guides/Enable and disable fields" />
+
+# Callback: onChange-Example: Enable / disable fields
+
+The library allows you to use several callback functions to handle most of your needs. A list of all callbacks of a component can be found in the docs of each component.
+
+The change callback can be used for example to enable / disable fields.
+
+```typescript
+@Component({
+  selector: "app-my-component",
+  templateUrl: "./my-component.component.html",
+  styleUrls: ["./my-component.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class MyComponent implements OnInit {
+  public form: FormGroup = new FormGroup({});
+
+  public fields: FormField[] = [
+    {
+      type: "select",
+      key: "type",
+      label: "Type",
+      options: [
+        { label: "Language", value: "1" },
+        { label: "Food", value: "2" },
+        // ...
+      ],
+      onChange() {
+        if (this.form?.get("type")?.value === "1") {
+          this.form?.get("language")?.enable();
+        } else {
+          this.form?.get("language")?.disable();
+        }
+      },
+    },
+    {
+      type: "select",
+      key: "language",
+      label: "Languages",
+      options: [
+        { label: "Language 1", value: "1" },
+        // ...
+      ],
+      disabled: true,
+    },
+  ];
+
+  public setForm(form: FormGroup): void {
+    this.form = form;
+  }
+}
+```
+
+With `setForm()` we get the instance of the `FormGroup`. In the `onChange`-Callback, we enable / disable the other select.
+
+## Example
+
+<Canvas of={Stories.Change} />

@@ -1,0 +1,17 @@
+<div ndf-mat-form-field [formGroup]="form" [form]="form" [field]="field" [replaceInput]="false">
+  <mat-slider
+    [class]="getDefaultValue('className')"
+    (change)="onChange($event)"
+    [class.ndf-full-width]="true"
+    [color]="getDefaultValue('color')"
+    [disabled]="field?.disabled || false"
+    [discrete]="getDefaultValue('discrete')"
+    [max]="field?.max"
+    [min]="field?.min"
+    [showTickMarks]="getDefaultValue('showTickMarks')"
+    [step]="field?.step"
+    [displayWith]="getLabel"
+  >
+    <input matSliderThumb [formControlName]="field?.key || ''" [tabIndex]="field?.tabIndex || 0" />
+  </mat-slider>
+</div>
