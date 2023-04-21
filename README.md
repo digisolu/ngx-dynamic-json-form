@@ -1,8 +1,37 @@
 # Quick Start
 
+## Versions
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th align="left">Angular</th>
+      <th align="left">Angular Material</th>
+      <th align="left">ngx-dynamic-json-form/core</th>
+      <th align="left">ngx-dynamic-json-form/material</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>15.x.x</td>
+      <td>15.x.x</td>
+      <td>1.x.x</td>
+      <td>1.x.x</td>
+    </tr>
+    <tr>
+      <td>16.x.x</td>
+      <td>16.x.x</td>
+      <td>not tested yet</td>
+      <td>not tested yet</td>
+    </tr>
+  </tbody>
+</table>
+
+## Install and Usage
+
 This is a step by step instruction to install and use `ngx-dynamic-json-form`.
 
-## 1. Install all packages:
+### 1. Install all packages:
 
 ```sh
 npm i @ngx-dynamic-json-form/core @ngx-dynamic-json-form/material @ngx-mat-select-search --save
@@ -10,7 +39,7 @@ npm i @ngx-dynamic-json-form/core @ngx-dynamic-json-form/material @ngx-mat-selec
 
 Please make sure, that `@angular/forms` and `"@angular/material` are installed too.
 
-## 2. Add `ngx-dynamic-json-form` to your `AppModule`
+### 2. Add `ngx-dynamic-json-form` to your `AppModule`
 
 ```typescript
 
@@ -33,7 +62,7 @@ This method is used to override default configurations and is needed to register
 
 More information can be found in the [global configuration section](?path=/docs/guides-global-configurations--documentation).
 
-## 3. Configure the form in the component TS
+### 3. Configure the form in the component TS
 
 ```typescript
 @Component({
@@ -63,7 +92,7 @@ export class MyComponent implements OnInit {
 }
 ```
 
-## 4. Use `ngx-dynamic-json-form` in the component HTML
+### 4. Use `ngx-dynamic-json-form` in the component HTML
 
 ```html
 <ngx-dynamic-json-form

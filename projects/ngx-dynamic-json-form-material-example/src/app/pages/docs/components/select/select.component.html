@@ -1,7 +1,0 @@
-<ngx-dynamic-json-form
-  [fields]="fields"
-  (getForm)="setForm($event)"
-  [initial]="{ someKey2: ['2', '3', '4'] }"
-></ngx-dynamic-json-form>
-
-<pre><code [highlight]="form.getRawValue() || {} | json" [languages]="['json']"></code></pre>

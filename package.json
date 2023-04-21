@@ -1,6 +1,34 @@
 {
-  "name": "digisol-lib-ngx-dynamic-json-form",
+  "name": "@ngx-dynamic-json-form/common",
   "version": "0.9.2",
+  "author": "Michael Hanft <21217443+digisolu@users.noreply.github.com>",
+  "contributors": [
+    "Michael Hanft <21217443+digisolu@users.noreply.github.com>"
+  ],
+  "keywords": [
+    "angular",
+    "angular material forms",
+    "forms",
+    "dynamic forms",
+    "ngx-dynamic-form",
+    "ngx-dynamic-json-form",
+    "angular forms",
+    "json forms",
+    "dynamic forms",
+    "backend driven forms",
+    "backend forms",
+    "form library"
+  ],
+  "license": "MIT",
+  "description": "NGX Dynamic JSON forms is a library to generate forms for Angular based on JSON.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digisolu/ngx-dynamic-json-form.git"
+  },
+  "bugs": {
+    "url": "https://github.com/digisolu/ngx-dynamic-json-form/issues"
+  },
+  "homepage": "https://github.com/digisolu/ngx-dynamic-json-form",
   "scripts": {
     "app:material:build": "ng build ngx-dynamic-json-form-material-example",
     "app:material:dev": "ng serve ngx-dynamic-json-form-material-example -o",
@@ -31,8 +59,8 @@
     "@angular/platform-browser": "^15.0.0",
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
-    "@ngx-dynamic-json-form/core": "file:./dist/ngx-dynamic-json-form",
-    "@ngx-dynamic-json-form/material": "file:./dist/ngx-dynamic-json-form-material",
+    "@ngx-dynamic-json-form/core": "file:../dist/ngx-dynamic-json-form",
+    "@ngx-dynamic-json-form/material": "file:../dist/ngx-dynamic-json-form-material",
     "install": "^0.13.0",
     "material-design-icons": "^3.0.1",
     "ngx-mat-select-search": "^7.0.1",

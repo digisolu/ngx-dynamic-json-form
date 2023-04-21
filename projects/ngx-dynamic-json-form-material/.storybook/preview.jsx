@@ -26,8 +26,10 @@ const preview = {
       expanded: true,
     },
     options: {
-      storySort: (a, b) =>
-        a.title === b.title ? 0 : a.id.localeCompare(b.id, undefined, { numeric: true }),
+      storySort: (storyA, StoryB) =>
+        storyA.title === StoryB.title
+          ? 0
+          : storyA.id.localeCompare(StoryB.id, undefined, { numeric: true }),
     },
     docs: {
       page: AutoDocsTemplate,

@@ -1,18 +1,26 @@
-# TODOs
+# Roadmap
+
+Here you can find the next plans for the library.
 
 <table width="100%">
   <thead>
     <tr>
-      <th align="left">What</th>
+      <th align="left">Feature</th>
       <th align="left">Description</th>
       <th align="left">Decided</th>
-      <th align="left">When</th>
+      <th align="left">Version</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td className="bold">Aria Labels</td>
       <td>Add Aria Labels to all components.</td>
+      <td>Yes</td>
+      <td>1.1.0 or 2.0.0</td>
+    </tr>
+    <tr>
+      <td className="bold">IDs for components</td>
+      <td>Add IDs / data-ids for all components to make it easier to test them with e2e.</td>
       <td>Yes</td>
       <td>1.1.0 or 2.0.0</td>
     </tr>

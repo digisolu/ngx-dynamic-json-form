@@ -44,6 +44,7 @@
     padding: 10px 20px;
     border-radius: 0;
     color: #3f51b5;
+    letter-spacing: 0.125rem;
   }
   .sidebar-subheading button:not(.sidebar-subheading-action) span {
     margin-right: 15px;
@@ -106,10 +107,26 @@
   .sidebar-container .sidebar-header div a {
     display: block;
     margin: 0;
-    padding: 16px 20px;
+    padding: 16px 10px 16px 20px;
     color: #fff;
-    font-size: 24px;
+    font-size: 20px;
     border: 0;
+    max-height: 56px;
+    overflow: hidden;
+  }
+
+  @media only screen and (max-width: 440px) {
+    .sidebar-container .sidebar-header div a {
+      font-size: 14px;
+    }
+  }
+
+  @media only screen and (min-width: 720px) {
+    .sidebar-container .sidebar-header div a {
+      visibility: hidden;
+      height: 56px;
+      max-height: 56px;
+    }
   }
 
   .sidebar-container .sidebar-header {
@@ -147,6 +164,12 @@
     padding: 0 !important;
   }
 
+  .sidebar-container #storybook-explorer-menu {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: calc(100vh - 120px);
+  }
+
   .sidebar-container #storybook-explorer-menu ol {
     margin: 0;
   }
@@ -158,16 +181,75 @@
   .pseudo-header {
     background: #3f51b5;
     color: #fff;
-    height: 61px;
+    line-height: 56px;
     position: absolute;
-    width: calc(100% - 350px);
+    width: 100%;
     z-index: 1;
-    left: 350px;
+    left: 0;
+    top: 0;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+    place-content: space-between;
   }
 
-  div[role="main"] {
-    margin-top: 30px;
+  .pseudo-header .headline {
+    display: block;
+    margin: 0;
+    padding: 0 10px 0 0;
+    color: #fff;
+    font-size: 20px;
+    border: 0;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .pseudo-header a.header-link {
+    text-decoration: none;
+    color: #fff;
+    line-height: 56px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .pseudo-header a.header-link img {
+    text-decoration: none;
+    color: #fff;
+    line-height: 56px;
+    width: auto;
+    height: 28px;
+    margin-left: 12px;
+    margin-top: -3px;
+  }
+
+  #storybook-preview-wrapper {
+    padding-top: 56px;
+    height: calc(100% - 56px);
+  }
+
+  @media only screen and (max-width: 720px) {
+    .pseudo-header {
+      display: none;
+    }
+
+    #storybook-preview-wrapper {
+      padding-top: 0;
+    }
+  }
+
+  .css-lnkd2p {
+    padding-bottom: 0 !important;
   }
 </style>
 
-<div class="pseudo-header">Test?</div>
+<div class="pseudo-header">
+  <a href="./" target="_self" class="headline">NGX Dynamic JSON Form</a>
+  <a class="header-link" href="https://github.com/digisolu/ngx-dynamic-json-form" target="_blank">
+    <span>You like this library? Then please give it a star on GitHub</span>&nbsp;<img
+      src="github-mark-white.svg"
+      alt="View on GitHub"
+    />
+  </a>
+</div>
