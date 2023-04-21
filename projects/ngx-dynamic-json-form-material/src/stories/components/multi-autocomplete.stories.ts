@@ -115,7 +115,9 @@ const meta: Meta<NgxDynamicJsonFormMaterialComponent> = {
   title,
   component: NgxDynamicJsonFormMaterialComponent,
   decorators: [
-    applicationConfig({ providers: [importProvidersFrom(NgxDynamicJsonFormMaterialModule.forRoot())] }),
+    applicationConfig({
+      providers: [importProvidersFrom(NgxDynamicJsonFormMaterialModule.forRoot())],
+    }),
     moduleMetadata({ imports: [NgxDynamicJsonFormModule, MatNativeDateModule] }),
   ],
   tags: ['autodocs'],

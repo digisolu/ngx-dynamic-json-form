@@ -32,7 +32,8 @@
   "scripts": {
     "app:material:build": "ng build ngx-dynamic-json-form-material-example",
     "app:material:dev": "ng serve ngx-dynamic-json-form-material-example -o",
-    "format": "prettier --write projects",
+    "format": "prettier --list-different projects --cache",
+    "format:fix": "prettier --write projects --cache",
     "hook:assets": "node projects/ngx-dynamic-json-form-material-example/src/hooks/copy-assets",
     "lib:core:build": "ng build ngx-dynamic-json-form",
     "lib:core:dev": "ng build ngx-dynamic-json-form --watch --configuration development",

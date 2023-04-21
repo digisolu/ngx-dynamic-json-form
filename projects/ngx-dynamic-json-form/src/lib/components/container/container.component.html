@@ -1,7 +1,4 @@
-<div
-  [class.ndf-container-row]="true"
-  [class]="getDefaultValue('rowWrapperClassName')"
->
+<div [class.ndf-container-row]="true" [class]="getDefaultValue('rowWrapperClassName')">
   <ng-container *ngFor="let innerField of field?.fields">
     <div
       [class.ndf-form-field]="true"

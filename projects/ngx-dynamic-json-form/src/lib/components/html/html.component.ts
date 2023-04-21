@@ -14,10 +14,7 @@ import { AbstractFormFieldComponent } from '../base/base.abstract';
  */
 @Component({
   selector: 'ndf-html',
-  template: `<div
-    [class]="getDefaultValue('className')"
-    [outerHTML]="field?.content"
-  ></div>`,
+  template: `<div [class]="getDefaultValue('className')" [outerHTML]="field?.content"></div>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HtmlComponent extends AbstractFormFieldComponent<DynamicFormFieldHTML> {
