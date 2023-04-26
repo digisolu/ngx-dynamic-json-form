@@ -48,7 +48,7 @@
     [tabIndex]="-1"
     [required]="!replaceInput ? field?.required || false : false"
     [errorStateMatcher]="errorStateMatcher"
-    [formControlName]="(field?.key || '') + dynamicFormService.rangeEndings[0]"
+    [formControlName]="(field?.key || '') + dynamicJsonFormService.rangeEndings[0]"
   />
   <input
     *ngIf="isRange && (isBeforeViewInit$ | async)"
@@ -57,7 +57,7 @@
     [tabIndex]="-1"
     [required]="!replaceInput ? field?.required || false : false"
     [errorStateMatcher]="errorStateMatcher"
-    [formControlName]="(field?.key || '') + dynamicFormService.rangeEndings[1]"
+    [formControlName]="(field?.key || '') + dynamicJsonFormService.rangeEndings[1]"
   />
   <!--
     -- HACK 1 and HACK 2 end:
@@ -128,6 +128,7 @@
     mat-icon-button
     (click)="clearInput()"
     [class.ndf-input-suffix]="true"
+    [class.ndf-clear-button-fix]="field?.type === 'textarea'"
     [class]="field?.suffixClassName || ''"
   >
     <mat-icon>close</mat-icon>

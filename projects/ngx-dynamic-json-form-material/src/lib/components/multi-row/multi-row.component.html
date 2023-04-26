@@ -48,7 +48,7 @@
                 getDefaultValue('addButtonOnlyLast') &&
                 i !== getFormArray().length - 1
               "
-              [field]="getButtonField(field, 'add')"
+              [field]="getButtonField('add')"
               [form]="dynamicForm"
               ndf-form-field
             ></div>
@@ -59,7 +59,7 @@
             <div
               (click)="removeRow(i)"
               [class]="'ndf-form-field ' + getDefaultValue('deleteButtonContainerClassName')"
-              [field]="getButtonField(field, 'delete')"
+              [field]="getButtonField('delete')"
               [form]="dynamicForm"
               ndf-form-field
             ></div>
@@ -73,7 +73,7 @@
       <div
         (click)="addRow(1)"
         [class]="'ndf-form-field ' + getDefaultValue('addButtonContainerClassName')"
-        [field]="getButtonField(field, 'add')"
+        [field]="getButtonField('add')"
         [form]="getFormGroup()"
         ndf-form-field
       ></div>

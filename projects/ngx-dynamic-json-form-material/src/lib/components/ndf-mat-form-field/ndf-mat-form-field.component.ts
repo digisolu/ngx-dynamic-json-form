@@ -23,7 +23,6 @@ import {
   takeUntil,
   tap,
 } from 'rxjs';
-import { MaterialOptions } from '../../interfaces';
 
 /**
  * The Material Design Mat Form Field Wrapper Component.
@@ -126,12 +125,12 @@ export class NdfMatFormFieldComponent implements OnDestroy, AfterViewInit {
   /**
    * Creates an instance of NdfMatFormFieldComponent.
    *
-   * @param {NgxDynamicJsonFormService} dynamicFormService
+   * @param {NgxDynamicJsonFormService} dynamicJsonFormService
    * @param {ChangeDetectorRef} _cd
    * @memberof NdfMatFormFieldComponent
    */
   public constructor(
-    public dynamicFormService: NgxDynamicJsonFormService,
+    public dynamicJsonFormService: NgxDynamicJsonFormService,
     private _cd: ChangeDetectorRef
   ) {}
 
@@ -152,10 +151,9 @@ export class NdfMatFormFieldComponent implements OnDestroy, AfterViewInit {
    * @memberof NdfMatFormFieldComponent
    */
   public getDefaultValue(key: string): any {
-    // prettier-ignore
     const options = {
-      ...this.dynamicFormService.getLayoutOption('default'),
-      ...this.dynamicFormService.getLayoutOption(Utils.camelCase(String(this.field?.type))),
+      ...this.dynamicJsonFormService.getLayoutOption('default'),
+      ...this.dynamicJsonFormService.getLayoutOption(Utils.camelCase(String(this.field?.type))),
     };
 
     return !!this.field && key in this.field ? (this.field as any)[key] : options[key] || null;
@@ -273,7 +271,7 @@ export class NdfMatFormFieldComponent implements OnDestroy, AfterViewInit {
    */
   private _enableRangeChangeDetection(): void {
     combineLatest(
-      this.dynamicFormService.rangeEndings.map((ending: string): Observable<any> => {
+      this.dynamicJsonFormService.rangeEndings.map((ending: string): Observable<any> => {
         const control: AbstractControl | null = this.form.get(
           Utils.addEnding(this.field.key, ending)
         );
@@ -303,7 +301,7 @@ export class NdfMatFormFieldComponent implements OnDestroy, AfterViewInit {
 
     let errors: string[] = [];
 
-    this.dynamicFormService.rangeEndings.forEach((ending: string) => {
+    this.dynamicJsonFormService.rangeEndings.forEach((ending: string) => {
       const control: AbstractControl<any> | null = this.form.get(Utils.addEnding(key, ending));
 
       isDirtyOrTouched =

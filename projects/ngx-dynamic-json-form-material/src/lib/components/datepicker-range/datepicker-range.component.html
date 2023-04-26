@@ -20,7 +20,7 @@
       >
         <input
           matStartDate
-          [formControlName]="(field?.key || '') + dynamicFormService.rangeEndings[0]"
+          [formControlName]="(field?.key || '') + dynamicJsonFormService.rangeEndings[0]"
           [tabIndex]="field?.tabIndex || 0"
           [readonly]="field?.readonly || false"
           [errorStateMatcher]="errorStateMatcher"
@@ -28,7 +28,7 @@
         />
         <input
           matEndDate
-          [formControlName]="(field?.key || '') + dynamicFormService.rangeEndings[1]"
+          [formControlName]="(field?.key || '') + dynamicJsonFormService.rangeEndings[1]"
           [tabIndex]="field?.tabIndex || 0"
           [readonly]="field?.readonly || false"
           [errorStateMatcher]="errorStateMatcher"

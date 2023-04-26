@@ -46,7 +46,7 @@ export class TextareaComponent
   public ngAfterViewInit(): void {
     // if the autosize$ property is true, we need to set this after the view was initialized,
     // otherwise the component is not in the DOM.
-    if (this.field?.autosize === true || this.getDefaultValue('autosize') === true) {
+    if (this.getDefaultValue('autosize') === true) {
       this.autosize$.next(true);
     }
   }

@@ -84,9 +84,9 @@ export class FormFieldComponent
     const viewContainerRef: ViewContainerRef = this._customComponent.viewContainerRef;
     viewContainerRef.clear();
 
-    if (!!this.field?.type && !!this.dynamicFormService.components?.[this.field?.type]) {
+    if (!!this.field?.type && !!this.dynamicJsonFormService.components?.[this.field?.type]) {
       this._componentRef = viewContainerRef.createComponent<AbstractFormFieldComponent<FormField>>(
-        this.dynamicFormService.components?.[this.field?.type] as any
+        this.dynamicJsonFormService.components?.[this.field?.type] as any
       );
 
       this._componentRef.instance.form = this.form;

@@ -43,11 +43,12 @@ export class Utils {
     const formGroups: FormGroup[] = [];
 
     if (!!initial && Array.isArray(initial)) {
-      (initial || []).forEach(() => {
+      initial.forEach(() => {
         const formGroup: FormGroup = new FormGroup({});
 
         'fields' in field &&
-          (field.fields || [])
+          Array.isArray(field.fields) &&
+          field.fields
             ?.filter(
               (innerField: FormField) =>
                 //TODO: ? Move to config and service ?
@@ -85,7 +86,7 @@ export class Utils {
    * @memberof Utils
    */
   public static getFormControl(field: FormFieldBasics): FormControl {
-    const a: FormControl = new FormControl(
+    const formControl: FormControl = new FormControl(
       {
         value: Utils.isMultiSelection(field) ? [] : null,
         disabled: 'disabled' in field ? !!field.disabled : false,
@@ -98,7 +99,7 @@ export class Utils {
       }
     );
 
-    return a;
+    return formControl;
   }
 
   /**
@@ -185,7 +186,7 @@ export class Utils {
    * @memberof Utils
    */
   public static addEnding(key: string | undefined, ending: string): string {
-    return `${key || ''}${ending}`;
+    return `${key || ''}${ending || ''}`;
   }
 
   /**
@@ -234,7 +235,7 @@ export class Utils {
    * @memberof Utils
    */
   public static isObject(item: any): boolean {
-    return item && typeof item === 'object' && !Array.isArray(item);
+    return !!(item && typeof item === 'object' && !Array.isArray(item));
   }
 
   /**

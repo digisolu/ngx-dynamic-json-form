@@ -35,8 +35,8 @@ let code: any = `{
 }`;
 
 class Model implements MatMultiCheckbox {
-  showEmptyOption?: boolean = true;
-  showEmptyOptionText?: string = '';
+  showSelectAll?: boolean = true;
+  showSelectAllText?: string = '';
   color?: ThemePalette = 'primary';
   togglePosition?: 'after' | 'before' | undefined = 'before';
   type: 'multi-checkbox' = 'multi-checkbox';

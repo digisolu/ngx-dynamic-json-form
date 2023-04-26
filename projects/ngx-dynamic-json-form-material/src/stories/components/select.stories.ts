@@ -218,14 +218,16 @@ code = [
   {
     ...(base.args?.fields?.[0] || {}),
     showSearch: true,
-    multiple: false,
+    showSelectAll: false,
+    multiple: true,
   },
   {
     ...(base.args?.fields?.[0] || {}),
     key: `${defaultKey}Outline`,
     appearance: 'outline',
     showSearch: true,
-    multiple: false,
+    showSelectAll: false,
+    multiple: true,
   },
 ];
 export const four: Story = {

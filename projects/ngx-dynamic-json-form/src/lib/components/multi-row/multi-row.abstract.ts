@@ -59,7 +59,7 @@ export abstract class AbstractMultiRowComponent<
    * @memberof AbstractMultiRowComponent
    */
   public isFormField(type: string | undefined) {
-    return !!type && !!this.dynamicFormService.components?.[type];
+    return !!type && !!this.dynamicJsonFormService.components?.[type];
   }
 
   /**

@@ -17,9 +17,40 @@ export const NDF_CONFIG: InjectionToken<DynamicFormConfig> = new InjectionToken<
  */
 @Injectable({ providedIn: 'root' })
 export class NgxDynamicJsonFormService {
+  /**
+   * All allowed / registered components.
+   *
+   * @private
+   * @type {Components<FormField>}
+   * @memberof NgxDynamicJsonFormService
+   */
   private _components: Components<FormField> = {};
+
+  /**
+   * The default layout options.
+   *
+   * @private
+   * @type {({ [key: string]: string | object })}
+   * @memberof NgxDynamicJsonFormService
+   */
   private _layoutOptions: { [key: string]: string | object } = {};
+
+  /**
+   * The default messages used for translations and errors.
+   *
+   * @private
+   * @type {{ [key: string]: string }}
+   * @memberof NgxDynamicJsonFormService
+   */
   private _messages: { [key: string]: string } = {};
+
+  /**
+   * The range endings used for range components.
+   *
+   * @private
+   * @type {{ start: string; end: string }}
+   * @memberof NgxDynamicJsonFormService
+   */
   private _rangeEndings: { start: string; end: string } = {
     start: '',
     end: '',

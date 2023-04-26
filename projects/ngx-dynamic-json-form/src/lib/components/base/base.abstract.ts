@@ -53,7 +53,7 @@ export abstract class AbstractFormFieldComponent<T extends BaseField> implements
    * @type {string}
    * @memberof AbstractFormFieldComponent
    */
-  @HostBinding('class') className: string = '';
+  @HostBinding('class') public className: string = '';
 
   /**
    * A custom error state matcher used in all form fields.
@@ -94,10 +94,10 @@ export abstract class AbstractFormFieldComponent<T extends BaseField> implements
   /**
    * Creates an instance of AbstractFormFieldComponent.
    *
-   * @param {NgxDynamicJsonFormService} dynamicFormService
+   * @param {NgxDynamicJsonFormService} dynamicJsonFormService
    * @memberof AbstractFormFieldComponent
    */
-  public constructor(public dynamicFormService: NgxDynamicJsonFormService) {}
+  public constructor(public dynamicJsonFormService: NgxDynamicJsonFormService) {}
 
   /**
    * This method is used to unsubscribe from all subscriptions.
@@ -139,15 +139,15 @@ export abstract class AbstractFormFieldComponent<T extends BaseField> implements
 
     if (
       !this.form.get(this.getFieldKey()) &&
-      !this.dynamicFormService.ignoreFormControlCheck.includes(this.field.type)
+      !this.dynamicJsonFormService.ignoreFormControlCheck.includes(this.field.type)
     ) {
       throw new Error(`[ngx-dynamic-json-form] Missing form control: "${this.field.type}"`);
     }
 
-    this.dynamicFormService.rangeEndings.forEach((ending: string) => {
+    this.dynamicJsonFormService.rangeEndings.forEach((ending: string) => {
       if (
         !this.form.get(Utils.addEnding(this.getFieldKey(), ending)) &&
-        this.dynamicFormService.rangeFormControls.includes(this.field?.type as FormFieldType)
+        this.dynamicJsonFormService.rangeFormControls.includes(this.field?.type as FormFieldType)
       ) {
         throw new Error(
           `[ngx-dynamic-json-form] Missing range form control: "${Utils.addEnding(
@@ -181,11 +181,11 @@ export abstract class AbstractFormFieldComponent<T extends BaseField> implements
   /**
    * Returns an array of all errors of an AbstractControl to a given key.
    *
-   * @param {(string | undefined)} key
+   * @param {(string | undefined)} [key]
    * @return {string[]}
    * @memberof AbstractFormFieldComponent
    */
-  public getErrors(key: string | undefined): string[] {
+  public getErrors(key?: string | undefined): string[] {
     return Utils.getErrors(this.getFieldKey(key), this.form);
   }
 
@@ -232,17 +232,16 @@ export abstract class AbstractFormFieldComponent<T extends BaseField> implements
   }
 
   /**
-   * Returns a merged object of all global properties to a given key.
+   * Returns the result of a merged object of all global properties to a given key.
    *
    * @param {string} key
    * @return {*}
    * @memberof AbstractFormFieldComponent
    */
   public getDefaultValue(key: string): any {
-    // prettier-ignore
     const options = {
-      ...this.dynamicFormService.getLayoutOption('default'),
-      ...this.dynamicFormService.getLayoutOption(Utils.camelCase(String(this.field?.type))),
+      ...this.dynamicJsonFormService.getLayoutOption('default'),
+      ...this.dynamicJsonFormService.getLayoutOption(Utils.camelCase(String(this.field?.type))),
     };
 
     return !!this.field && key in this.field ? (this.field as any)[key] : options[key] || null;

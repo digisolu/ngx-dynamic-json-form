@@ -14,12 +14,12 @@
   >
     <input
       matSliderStartThumb
-      [formControlName]="(field?.key || '') + dynamicFormService.rangeEndings[0]"
+      [formControlName]="(field?.key || '') + dynamicJsonFormService.rangeEndings[0]"
       [tabIndex]="field?.tabIndex || 0"
     />
     <input
       matSliderEndThumb
-      [formControlName]="(field?.key || '') + dynamicFormService.rangeEndings[1]"
+      [formControlName]="(field?.key || '') + dynamicJsonFormService.rangeEndings[1]"
       [tabIndex]="field?.tabIndex || 0"
     />
   </mat-slider>

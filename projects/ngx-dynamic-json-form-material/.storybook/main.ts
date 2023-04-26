@@ -1,4 +1,8 @@
 import type { StorybookConfig } from '@storybook/angular';
+
+// Set NODE_ENV to production to load angular in production mode
+process.env.NODE_ENV = 'production';
+
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],

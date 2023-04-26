@@ -1,4 +1,4 @@
-import { GroupOption } from '@ngx-dynamic-json-form/core';
+import { BasicOption, GroupOption } from '@ngx-dynamic-json-form/core';
 import { Observable, of } from 'rxjs';
 
 /**
@@ -12,29 +12,28 @@ export class MatUtils {
    * This method is used to filter GroupOption / BaseOptions - Array by a given value.
    *
    * @static
-   * @param {string} value
+   * @param {string} search
    * @param {GroupOption[]} options
    * @return {Observable<GroupOption[]>}
    * @memberof MatUtils
    */
-  public static filterEntries$(value: string, options: GroupOption[]): Observable<GroupOption[]> {
+  public static filterEntries$(search: string, options: GroupOption[]): Observable<GroupOption[]> {
     return of(
-      !!value
+      !!search
         ? options
-            .map(
-              (option: GroupOption): GroupOption => ({
-                value: option.value,
-                label: option?.label,
-                disabled: option?.disabled || false,
-                group:
-                  'group' in option && option?.group
-                    ? MatUtils.filterGroup(option.group, value)
-                    : undefined,
-              })
-            )
+            .map((option: GroupOption): GroupOption => {
+              const filtered: GroupOption = MatUtils.toNormalizedEntry(option);
+
+              if ('group' in option && option?.group) {
+                filtered.group = option.group.map((option) => MatUtils.toNormalizedEntry(option));
+                filtered.group = MatUtils.filterGroup(filtered.group, search);
+              }
+
+              return filtered;
+            })
             .filter((option: GroupOption): boolean => {
               if (!option?.group) {
-                return MatUtils.filterEntry(option, value);
+                return MatUtils.filterEntry(option, search);
               }
 
               return option.group.length > 0;
@@ -44,28 +43,44 @@ export class MatUtils {
   }
 
   /**
-   * This method is used to filter GroupOption / BaseOptions - Array by a given value.
+   * Returns a normalized GroupOption | BasicOption.
    *
    * @static
-   * @param {GroupOption[]} options
-   * @param {string} value
-   * @return {GroupOption[]}
+   * @param {(GroupOption | BasicOption)} option
+   * @return {(GroupOption | BasicOption)}
    * @memberof MatUtils
    */
-  public static filterGroup(options: GroupOption[], value: string): GroupOption[] {
-    return options.filter((option: GroupOption) => MatUtils.filterEntry(option, value));
+  public static toNormalizedEntry(option: GroupOption | BasicOption): GroupOption | BasicOption {
+    return {
+      value: option.value,
+      label: option?.label,
+      disabled: option?.disabled || false,
+    };
   }
 
   /**
-   * This method is used to filter GroupOption / BaseOptions by a given value.
+   * This method is used to filter GroupOption / BaseOptions - Array by a given search string.
+   *
+   * @static
+   * @param {GroupOption[]} options
+   * @param {string} search
+   * @return {GroupOption[]}
+   * @memberof MatUtils
+   */
+  public static filterGroup(options: GroupOption[], search: string): GroupOption[] {
+    return options.filter((option: GroupOption) => MatUtils.filterEntry(option, search));
+  }
+
+  /**
+   * This method is used to filter GroupOption / BaseOptions by a given search.
    *
    * @static
    * @param {GroupOption} option
-   * @param {string} value
+   * @param {string} search
    * @return {boolean}
    * @memberof MatUtils
    */
-  public static filterEntry(option: GroupOption, value: string): boolean {
-    return (option.label || '').toLowerCase().includes(value.toLowerCase());
+  public static filterEntry(option: GroupOption, search: string): boolean {
+    return (option.label || '').toLowerCase().includes(search.toLowerCase());
   }
 }

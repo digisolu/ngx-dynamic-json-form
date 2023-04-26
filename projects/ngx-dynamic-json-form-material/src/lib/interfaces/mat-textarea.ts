@@ -17,7 +17,7 @@ export interface MatTextarea extends DynamicFormFieldTextarea, MatFormField {
    * @type {number}
    * @memberof MatTextarea
    */
-  autosizeMaxRows: number;
+  autosizeMaxRows?: number;
 
   /**
    * Minimum amount of rows in the textarea used in the material CDK.
@@ -25,7 +25,7 @@ export interface MatTextarea extends DynamicFormFieldTextarea, MatFormField {
    * @type {number}
    * @memberof MatTextarea
    */
-  autosizeMinRows: number;
+  autosizeMinRows?: number;
 
   /**
    * Shall the textarea using auto sizing?
@@ -33,5 +33,5 @@ export interface MatTextarea extends DynamicFormFieldTextarea, MatFormField {
    * @type {boolean}
    * @memberof MatTextarea
    */
-  autosize: boolean;
+  autosize?: boolean;
 }

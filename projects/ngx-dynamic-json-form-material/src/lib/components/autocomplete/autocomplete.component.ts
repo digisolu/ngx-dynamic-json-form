@@ -64,7 +64,7 @@ export class AutocompleteComponent<
       (option) => option.value === value
     );
 
-    return (foundOption[0] ?? { label: value }).label || value;
+    return (foundOption[0] ?? { label: value }).label;
   };
 
   /**

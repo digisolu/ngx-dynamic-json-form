@@ -14,6 +14,7 @@ import {
 import { MatSelect } from '../../interfaces';
 import { FormFieldType } from '../../types';
 import { MatUtils } from '../../utils';
+import { MatOption } from '@angular/material/core';
 
 /**
  * The Material Design Specific Select Component.
@@ -69,11 +70,9 @@ export class SelectComponent extends AbstractFormFieldComponent<MatSelect> {
    * @memberof SelectComponent
    */
   private get _options(): any[] {
-    return (
-      Utils.toFlatArray(this.field?.options)
-        ?.filter((item: GroupOption) => !item.disabled)
-        .map((item: GroupOption) => item.value) || []
-    );
+    return Utils.toFlatArray(this.field?.options)
+      ?.filter((item: GroupOption) => !item.disabled)
+      .map((item: GroupOption) => item.value);
   }
 
   /**
@@ -81,10 +80,10 @@ export class SelectComponent extends AbstractFormFieldComponent<MatSelect> {
    *
    * @readonly
    * @private
-   * @type {any[]}
+   * @type {(any[] | undefined)}
    * @memberof SelectComponent
    */
-  private get _values(): any[] {
+  private get _values(): any[] | undefined {
     const values: any[] = this.getFormControl()?.value || [];
 
     return values[0] === undefined ? values.shift() : values;
@@ -97,6 +96,8 @@ export class SelectComponent extends AbstractFormFieldComponent<MatSelect> {
    * @inheritdoc
    */
   public override ngOnInit(): void {
+    super.ngOnInit();
+
     this.visibleOptions$ = this.searchFilter.valueChanges.pipe(
       startWith(''),
       debounceTime(250),
@@ -169,8 +170,11 @@ export class SelectComponent extends AbstractFormFieldComponent<MatSelect> {
       'compareWith' in this.field &&
       typeof this.field.compareWith === 'function'
       ? this.field.compareWith(object1, object2)
-      : Utils.isObject(object1) && Utils.isObject(object2)
-      ? JSON.stringify(Utils.sortObject(object1)) === JSON.stringify(Utils.sortObject(object2))
+      : Utils.isObject(object1) &&
+        Utils.isObject(object2) &&
+        !(object1 instanceof MatOption || object2 instanceof MatOption)
+      ? JSON.stringify({ ...Utils.sortObject(object1) }) ===
+        JSON.stringify({ ...Utils.sortObject(object2) })
       : object1 === object2;
   }
 

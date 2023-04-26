@@ -86,11 +86,11 @@ export abstract class NgxDynamicJsonFormComponent implements OnInit, OnDestroy, 
   /**
    * Creates an instance of NgxDynamicJsonFormComponent.
    *
-   * @param {NgxDynamicJsonFormService} dynamicFormService
+   * @param {NgxDynamicJsonFormService} dynamicJsonFormService
    * @memberof NgxDynamicJsonFormComponent
    */
   public constructor(
-    protected dynamicFormService: NgxDynamicJsonFormService,
+    protected dynamicJsonFormService: NgxDynamicJsonFormService,
     protected changeDetectorRef: ChangeDetectorRef
   ) {}
 
@@ -141,18 +141,18 @@ export abstract class NgxDynamicJsonFormComponent implements OnInit, OnDestroy, 
    * @memberof NgxDynamicJsonFormComponent
    */
   public isFormField(type: string | undefined) {
-    return !!type && !!this.dynamicFormService.components?.[type];
+    return !!type && !!this.dynamicJsonFormService.components?.[type];
   }
 
   /**
-   * Returns a merged object of all global properties to a given key.
+   * Returns the result of a merged object of all global properties to a given key.
    *
    * @param {string} key
    * @return {*}
    * @memberof NgxDynamicJsonFormComponent
    */
   public getDefaultValue(key: string): any {
-    return this.dynamicFormService.getLayoutOption('default')[key] || null;
+    return this.dynamicJsonFormService.getLayoutOption('default')[key] || null;
   }
 
   /**
@@ -197,7 +197,7 @@ export abstract class NgxDynamicJsonFormComponent implements OnInit, OnDestroy, 
    * @memberof NgxDynamicJsonFormComponent
    */
   private _addRangeControls(field: FormField): void {
-    this.dynamicFormService.rangeEndings.forEach((ending: string) => {
+    this.dynamicJsonFormService.rangeEndings.forEach((ending: string) => {
       Utils.addControl(
         {
           ...field,
@@ -220,7 +220,7 @@ export abstract class NgxDynamicJsonFormComponent implements OnInit, OnDestroy, 
   private _addMultiRow(field: FormField): void {
     const formGroups: FormGroup[] = Utils.getMultiRow(
       field,
-      !!field.key ? this.initial[field.key] : []
+      !!field.key && !!this.initial[field.key] ? this.initial[field.key] : []
     );
 
     if (!!field.key) {

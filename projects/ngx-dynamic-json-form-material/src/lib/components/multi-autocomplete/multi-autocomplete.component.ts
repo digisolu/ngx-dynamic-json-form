@@ -87,7 +87,7 @@ export class MultiAutocompleteComponent extends AutocompleteComponent<MatMultiAu
    * @memberof MultiAutocompleteComponent
    */
   private get _values(): any[] {
-    return this.getFormControl()!.value || [];
+    return this.getFormControl()?.value || [];
   }
 
   /**

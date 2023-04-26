@@ -40,12 +40,12 @@ export class CustomErrorDirective implements OnInit {
    * Creates an instance of CustomErrorDirective.
    *
    * @param {ElementRef} _elementRef
-   * @param {NgxDynamicJsonFormService} _dynamicFormService
+   * @param {NgxDynamicJsonFormService} _dynamicJsonFormService
    * @memberof CustomErrorDirective
    */
   public constructor(
     private _elementRef: ElementRef,
-    private _dynamicFormService: NgxDynamicJsonFormService
+    private _dynamicJsonFormService: NgxDynamicJsonFormService
   ) {}
 
   /**
@@ -67,8 +67,8 @@ export class CustomErrorDirective implements OnInit {
 
     // 2. Check, if there are global messages
     !errorMessage &&
-      !!this._dynamicFormService.messages[this.errorKey] &&
-      (errorMessage = this._dynamicFormService.messages[this.errorKey]);
+      !!this._dynamicJsonFormService.messages[this.errorKey] &&
+      (errorMessage = this._dynamicJsonFormService.messages[this.errorKey]);
 
     // 3. if there is something to replace, do it
     if (!!this.replace && !!errorMessage) {

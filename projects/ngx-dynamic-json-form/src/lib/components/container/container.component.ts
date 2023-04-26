@@ -36,11 +36,11 @@ export class ContainerComponent extends AbstractFormFieldComponent<DynamicFormFi
   /**
    * Is the given FormFieldType an allowed/existing form field?
    *
-   * @param {(string | undefined)} type
+   * @param {(string | undefined)} [type]
    * @return {boolean}
    * @memberof ContainerComponent
    */
-  public isFormField(type: string | undefined): boolean {
-    return !!type && !!this.dynamicFormService.components?.[type];
+  public isFormField(type?: string | undefined): boolean {
+    return !!type && !!this.dynamicJsonFormService.components?.[type];
   }
 }

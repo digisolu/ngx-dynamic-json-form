@@ -77,7 +77,7 @@
             <mat-checkbox
               [color]="getDefaultValue('color')"
               [checked]="isChecked(item.value)"
-              tabindex="-1"
+              tabIndex="-1"
               (change)="selected(item.value)"
               (click)="$event.stopPropagation()"
               [disabled]="item?.disabled || false"
@@ -97,7 +97,7 @@
           <mat-checkbox
             [color]="getDefaultValue('color')"
             [checked]="isChecked(option.value)"
-            tabindex="-1"
+            tabIndex="-1"
             (change)="selected(option.value)"
             (click)="$event.stopPropagation()"
             [disabled]="option?.disabled || false"

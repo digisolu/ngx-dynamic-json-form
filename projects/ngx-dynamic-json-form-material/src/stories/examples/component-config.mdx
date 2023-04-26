@@ -21,11 +21,11 @@ You need to add the `NgxDynamicJsonFormService` as a provider in your component.
   providers: [NgxDynamicJsonFormService], // <-- Add the NgxDynamicJsonFormService here
 })
 export class myCustomComponent implements OnInit {
-  public constructor(private _ngxDynamicFormService: NgxDynamicJsonFormService) {}
+  public constructor(private _ngxdynamicJsonFormService: NgxDynamicJsonFormService) {}
 
   public ngOnInit(): void {
     // override the layout options for this component only
-    this._ngxDynamicFormService.overrideLayoutOptions({
+    this._ngxdynamicJsonFormService.overrideLayoutOptions({
       default: {
         appearance: "outline",
         floatLabel: "always",

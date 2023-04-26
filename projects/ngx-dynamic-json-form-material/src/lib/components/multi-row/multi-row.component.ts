@@ -30,14 +30,14 @@ export class MultiRowComponent extends AbstractMultiRowComponent<MatMultiRow> {
   /**
    * This method returns the button config for the add / remove row buttons, based on the form field config.
    *
-   * @param {(MatMultiRow | undefined)} field
    * @param {('add' | 'delete')} type
    * @return {MatButton}
    * @memberof MultiRowComponent
    */
-  public getButtonField(field: MatMultiRow | undefined, type: 'add' | 'delete'): MatButton {
+  public getButtonField(type: 'add' | 'delete'): MatButton {
     const classes: string[] = ['ndf-multi-row-button', `ndf-${type}-button`];
-    !!field?.[`${type}ButtonClassName`] && classes.push(String(field[`${type}ButtonClassName`]));
+    !!this.getDefaultValue(`${type}ButtonClassName`) &&
+      classes.push(String(this.getDefaultValue(`${type}ButtonClassName`)));
 
     return {
       buttonColor: this.getDefaultValue(`${type}ButtonColor`),

@@ -34,7 +34,7 @@ export class SliderRangeComponent extends SliderComponent implements OnInit {
    */
   public override onChange(_: any): void {
     const value: any = {};
-    this.dynamicFormService.rangeEndings.forEach((ending: string) => {
+    this.dynamicJsonFormService.rangeEndings.forEach((ending: string) => {
       const key: string = Utils.addEnding(this.field?.key, ending);
       value[key] = this.getFormControl(key)?.value;
     });
