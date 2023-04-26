@@ -22,6 +22,7 @@ import { AbstractFormFieldComponent } from '../base/base.abstract';
  * @implements {OnDestroy}
  */
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[ndf-form-field]',
   template: `<ng-template ndfLoadCustomComponent></ng-template>`,
   changeDetection: ChangeDetectionStrategy.OnPush,

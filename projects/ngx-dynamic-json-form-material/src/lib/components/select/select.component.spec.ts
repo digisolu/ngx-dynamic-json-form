@@ -149,7 +149,7 @@ describe('SelectComponent', () => {
         ],
       };
 
-      component['onFilter$']('5').subscribe((values) => {
+      component['onFilter$']('5').subscribe(() => {
         expect(spy1).toHaveBeenCalledWith('5', [
           {
             label: 'anyLabel4',
@@ -178,7 +178,7 @@ describe('SelectComponent', () => {
             value: '5',
           },
         ],
-        onFilter$(value: string) {
+        onFilter$() {
           return of([
             {
               label: 'anyLabel4',
@@ -307,7 +307,7 @@ describe('SelectComponent', () => {
   describe('compareWith', () => {
     it(`makes expected calls with a given callback`, () => {
       // preparation
-      component.field = { key: 'anyKey', type: 'select', compareWith: () => {} } as any;
+      component.field = { key: 'anyKey', type: 'select', compareWith: () => ({}) } as any;
       spyOn(component.field as any, 'compareWith');
 
       // call

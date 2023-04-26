@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
-import { DynamicFormConfig } from '../interfaces';
-import { NgxDynamicJsonFormService } from './ngx-dynamic-json-form.service';
+
 import { Stub } from '../utils';
+import { NgxDynamicJsonFormService } from './ngx-dynamic-json-form.service';
 
 describe('NgxDynamicJsonFormService', () => {
   let service: NgxDynamicJsonFormService;

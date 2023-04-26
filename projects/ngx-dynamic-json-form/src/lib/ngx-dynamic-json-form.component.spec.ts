@@ -240,12 +240,6 @@ describe('NgxDynamicJsonFormComponent', () => {
         const formGroups: FormGroup[] = [new FormGroup({})];
         const spy1 = spyOn(Utils, 'getMultiRow').and.returnValue(formGroups);
         const spy2 = spyOn(component.form, 'addControl');
-        const spy3 = spyOn(component.form, 'get').and.callFake(
-          () =>
-            ({
-              disable: () => {},
-            } as any)
-        );
 
         // call
         component['_addMultiRow'](test.field as any);

@@ -34,6 +34,7 @@ import {
  * @implements {AfterViewInit}
  */
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[ndf-mat-form-field]',
   templateUrl: './ndf-mat-form-field.component.html',
   styleUrls: ['./ndf-mat-form-field.component.scss'],

@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatOption } from '@angular/material/core';
 import { AbstractFormFieldComponent, GroupOption, Utils } from '@ngx-dynamic-json-form/core';
 import {
   debounceTime,
@@ -14,7 +15,6 @@ import {
 import { MatSelect } from '../../interfaces';
 import { FormFieldType } from '../../types';
 import { MatUtils } from '../../utils';
-import { MatOption } from '@angular/material/core';
 
 /**
  * The Material Design Specific Select Component.
@@ -29,7 +29,7 @@ import { MatOption } from '@angular/material/core';
   templateUrl: './select.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectComponent extends AbstractFormFieldComponent<MatSelect> {
+export class SelectComponent extends AbstractFormFieldComponent<MatSelect> implements OnInit {
   /**
    * The form field type to identify the element.
    *

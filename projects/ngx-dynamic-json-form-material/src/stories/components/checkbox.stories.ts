@@ -1,24 +1,24 @@
 import { importProvidersFrom } from '@angular/core';
-import { AsyncValidatorFn, ValidatorFn } from '@angular/forms';
-import { MatNativeDateModule, ThemePalette } from '@angular/material/core';
-import {
-  FloatLabelType,
-  MatFormFieldAppearance,
-  SubscriptSizing,
-} from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
 import { NgxDynamicJsonFormModule } from '@ngx-dynamic-json-form/core';
 import {
-  MatCheckbox,
   NgxDynamicJsonFormMaterialComponent,
   NgxDynamicJsonFormMaterialModule,
 } from '@ngx-dynamic-json-form/material';
-import { action } from '@storybook/addon-actions';
 import { applicationConfig, moduleMetadata } from '@storybook/angular';
 
 import { Utils } from '../helpers/utils';
 
-// also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
+import type { AsyncValidatorFn, ValidatorFn } from '@angular/forms';
+import type {
+  FloatLabelType,
+  MatFormFieldAppearance,
+  SubscriptSizing,
+} from '@angular/material/form-field';
+import type { MatCheckbox } from '@ngx-dynamic-json-form/material';
 import type { Meta, StoryObj } from '@storybook/angular';
+import type { ThemePalette } from '@angular/material/core';
+
 type Story = StoryObj<NgxDynamicJsonFormMaterialComponent>;
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -39,7 +39,7 @@ class Model implements MatCheckbox {
   vertical?: boolean | undefined = true;
   color?: ThemePalette = 'primary';
   labelPosition?: 'before' | 'after' | undefined = 'after';
-  type: 'checkbox' = 'checkbox';
+  type = 'checkbox' as const;
   required?: boolean | undefined = false;
   validators?: ValidatorFn[] | undefined = [];
   nonNullable?: boolean = false;
@@ -53,13 +53,13 @@ class Model implements MatCheckbox {
   containerClassName?: string | undefined = '';
   formFieldClassName?: string | undefined = '';
   messages?: { [key: string]: string } | undefined = {};
-  onBlur?(value: any): void {
+  onBlur?(): void {
     throw new Error('Method not implemented.');
   }
-  onFocus?(value: any): void {
+  onFocus?(): void {
     throw new Error('Method not implemented.');
   }
-  onChange?(value: any): void {
+  onChange?(): void {
     throw new Error('Method not implemented.');
   }
   appearance?: MatFormFieldAppearance | undefined = 'fill';
@@ -81,10 +81,10 @@ class Model implements MatCheckbox {
   suffixClassName?: string | undefined = '';
   suffixIcon?: string | undefined = '';
   suffixText?: string | undefined = '';
-  onPrefixClick?($event: PointerEvent | MouseEvent): void {
+  onPrefixClick?(): void {
     throw new Error('Method not implemented.');
   }
-  onSuffixClick?($event: PointerEvent | MouseEvent): void {
+  onSuffixClick?(): void {
     throw new Error('Method not implemented.');
   }
 }

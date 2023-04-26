@@ -12,7 +12,7 @@ import { DatepickerComponent } from '../datepicker/datepicker.component';
  * @extends {DatepickerComponent}
  */
 @Component({
-  selector: 'ndf-datepicker-range',
+  selector: 'ndf-mat-datepicker-range',
   templateUrl: './datepicker-range.component.html',
   styleUrls: ['./../datepicker/datepicker.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,7 +28,7 @@ export class DatepickerRangeComponent extends DatepickerComponent {
    * @override
    * @inheritdoc
    */
-  public override onChange(_: any): void {
+  public override onChange(): void {
     const value: any = {};
     this.dynamicJsonFormService.rangeEndings.forEach((ending: string) => {
       const key: string = Utils.addEnding(this.field?.key, ending);

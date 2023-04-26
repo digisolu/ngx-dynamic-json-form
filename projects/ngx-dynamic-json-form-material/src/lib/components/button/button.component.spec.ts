@@ -28,7 +28,8 @@ describe('ButtonComponent', () => {
       component.field = {
         type: 'button',
         variant: 'mat-button',
-        onClick(event: any) {},
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        onClick() {},
       };
 
       spyOn(component.field as any, 'onClick');

@@ -1,18 +1,17 @@
-import { action } from '@storybook/addon-actions';
-// also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
 import { importProvidersFrom } from '@angular/core';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxDynamicJsonFormModule } from '@ngx-dynamic-json-form/core';
 import {
-  FormField,
-  MatContainer,
   NgxDynamicJsonFormMaterialComponent,
   NgxDynamicJsonFormMaterialModule,
 } from '@ngx-dynamic-json-form/material';
+import { action } from '@storybook/addon-actions';
 import { applicationConfig, moduleMetadata } from '@storybook/angular';
 
-import type { Meta, StoryObj } from '@storybook/angular';
 import { Utils } from '../helpers/utils';
+
+import type { FormField, MatContainer } from '@ngx-dynamic-json-form/material';
+import type { Meta, StoryObj } from '@storybook/angular';
 
 type Story = StoryObj<NgxDynamicJsonFormMaterialComponent>;
 
@@ -29,7 +28,7 @@ let code: any = `{
 }`;
 
 class Model implements MatContainer {
-  type: 'container' = 'container';
+  type = 'container' as const;
   fields: FormField[] = [];
   rowWrapperClassName?: string | undefined = '';
 

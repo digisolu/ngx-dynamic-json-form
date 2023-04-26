@@ -1,14 +1,7 @@
 import { importProvidersFrom } from '@angular/core';
-import { AsyncValidatorFn, ValidatorFn } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
-import {
-  FloatLabelType,
-  MatFormFieldAppearance,
-  SubscriptSizing,
-} from '@angular/material/form-field';
 import { NgxDynamicJsonFormModule } from '@ngx-dynamic-json-form/core';
 import {
-  MatTextarea,
   NgxDynamicJsonFormMaterialComponent,
   NgxDynamicJsonFormMaterialModule,
 } from '@ngx-dynamic-json-form/material';
@@ -16,8 +9,15 @@ import { applicationConfig, moduleMetadata } from '@storybook/angular';
 
 import { Utils } from '../helpers/utils';
 
-// also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
+import type { AsyncValidatorFn, ValidatorFn } from '@angular/forms';
+import type {
+  FloatLabelType,
+  MatFormFieldAppearance,
+  SubscriptSizing,
+} from '@angular/material/form-field';
+import type { MatTextarea } from '@ngx-dynamic-json-form/material';
 import type { Meta, StoryObj } from '@storybook/angular';
+
 type Story = StoryObj<NgxDynamicJsonFormMaterialComponent>;
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +37,7 @@ class Model implements MatTextarea {
   autosizeMaxRows: number = 0;
   autosizeMinRows: number = 0;
   autosize: boolean = true;
-  type: 'textarea' = 'textarea';
+  type = 'textarea' as const;
   cols?: number | undefined = 0;
   rows?: number | undefined = 0;
   maxLength?: number | undefined = 0;
@@ -58,13 +58,13 @@ class Model implements MatTextarea {
   formFieldClassName?: string | undefined = '';
   messages?: { [key: string]: string } | undefined = {};
 
-  onBlur?(value: any): void {
+  onBlur?(): void {
     throw new Error('Method not implemented.');
   }
-  onFocus?(value: any): void {
+  onFocus?(): void {
     throw new Error('Method not implemented.');
   }
-  onChange?(value: any): void {
+  onChange?(): void {
     throw new Error('Method not implemented.');
   }
 
@@ -87,10 +87,10 @@ class Model implements MatTextarea {
   suffixClassName?: string | undefined = '';
   suffixIcon?: string | undefined = '';
   suffixText?: string | undefined = '';
-  onPrefixClick?($event: PointerEvent | MouseEvent): void {
+  onPrefixClick?(): void {
     throw new Error('Method not implemented.');
   }
-  onSuffixClick?($event: PointerEvent | MouseEvent): void {
+  onSuffixClick?(): void {
     throw new Error('Method not implemented.');
   }
 }

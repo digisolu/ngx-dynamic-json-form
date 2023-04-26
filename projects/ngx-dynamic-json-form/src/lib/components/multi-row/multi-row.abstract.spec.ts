@@ -1,4 +1,4 @@
-import { FormGroup, FormArray } from '@angular/forms';
+import { FormArray, FormGroup } from '@angular/forms';
 
 import { DynamicFormFieldMultiRow } from '../../interfaces/form-fields';
 import { Stub, Utils } from '../../utils';
@@ -71,7 +71,7 @@ describe('AbstractMultiRowComponent', () => {
     });
 
     it(`insert a new row, if everything is correct`, () => {
-      const value: any = { insert: () => {} };
+      const value: any = { insert: () => ({}) };
       spyOn(value, 'insert');
       spyOn(component as any, 'getFormArray').and.returnValue(value);
       spyOn(Utils, 'getMultiRow').and.returnValue([{} as any]);
@@ -93,7 +93,7 @@ describe('AbstractMultiRowComponent', () => {
     });
 
     it(`removes a new row, if everything is correct`, () => {
-      const value: any = { removeAt: () => {} };
+      const value: any = { removeAt: () => ({}) };
       spyOn(value, 'removeAt');
       spyOn(component as any, 'getFormArray').and.returnValue(value);
 

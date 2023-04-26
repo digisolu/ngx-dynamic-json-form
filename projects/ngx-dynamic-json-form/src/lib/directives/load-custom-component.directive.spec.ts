@@ -14,6 +14,7 @@ class TestComponent {}
 
 describe('LoadCustomComponentDirective', () => {
   let fixture: ComponentFixture<TestComponent>;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   let elementsWithDirective: Array<DebugElement>;
   let bareElement: DebugElement;
 

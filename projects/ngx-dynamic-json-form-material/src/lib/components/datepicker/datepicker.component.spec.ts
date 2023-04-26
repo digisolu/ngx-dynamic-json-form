@@ -76,7 +76,8 @@ describe('DatepickerComponent', () => {
       component.field = {
         type: 'datepicker',
         key: 'anyKey',
-        onClick(event: any) {},
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        onClick() {},
       };
 
       spyOn(component.field as any, 'onClick');
@@ -116,6 +117,7 @@ describe('DatepickerComponent', () => {
         disabled: false,
       };
 
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       const datepickerInstance = { open() {} };
       spyOn(datepickerInstance, 'open');
 
@@ -133,6 +135,7 @@ describe('DatepickerComponent', () => {
         disabled: false,
       };
 
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       const datepickerInstance = { open() {} };
       spyOn(datepickerInstance, 'open');
 
@@ -150,6 +153,7 @@ describe('DatepickerComponent', () => {
         disabled: true,
       };
 
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       const datepickerInstance = { open() {} };
       spyOn(datepickerInstance, 'open');
 
@@ -167,6 +171,7 @@ describe('DatepickerComponent', () => {
         disabled: true,
       };
 
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       const datepickerInstance = { open() {} };
       spyOn(datepickerInstance, 'open');
 
@@ -187,6 +192,7 @@ describe('DatepickerComponent', () => {
         layoutOptions: { datepicker: { openWhenActive: true } },
       });
 
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       const datepickerInstance = { open() {} };
       spyOn(datepickerInstance, 'open');
 
@@ -207,6 +213,7 @@ describe('DatepickerComponent', () => {
         layoutOptions: { datepicker: { openWhenActive: true } },
       });
 
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       const datepickerInstance = { open() {} };
       spyOn(datepickerInstance, 'open');
 
@@ -227,6 +234,7 @@ describe('DatepickerComponent', () => {
         layoutOptions: { datepicker: { openWhenActive: true } },
       });
 
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       const datepickerInstance = { open() {} };
       spyOn(datepickerInstance, 'open');
 
@@ -247,6 +255,7 @@ describe('DatepickerComponent', () => {
         layoutOptions: { datepicker: { openWhenActive: false } },
       });
 
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       const datepickerInstance = { open() {} };
       spyOn(datepickerInstance, 'open');
 

@@ -13,7 +13,7 @@ import { MatSlider } from './../../interfaces';
  * @implements {OnInit}
  */
 @Component({
-  selector: 'ndf-slider',
+  selector: 'ndf-mat-slider',
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,25 +1,27 @@
 import { importProvidersFrom } from '@angular/core';
-import { AsyncValidatorFn, ValidatorFn } from '@angular/forms';
-import { MatNativeDateModule, ThemePalette } from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
+import { NgxDynamicJsonFormModule } from '@ngx-dynamic-json-form/core';
 import {
-  FloatLabelType,
-  MatFormFieldAppearance,
-  SubscriptSizing,
-} from '@angular/material/form-field';
-import { GroupOption, NgxDynamicJsonFormModule } from '@ngx-dynamic-json-form/core';
-import {
-  BasicOption,
-  MatRadioButton,
   NgxDynamicJsonFormMaterialComponent,
   NgxDynamicJsonFormMaterialModule,
 } from '@ngx-dynamic-json-form/material';
 import { applicationConfig, moduleMetadata } from '@storybook/angular';
-import { Observable } from 'rxjs';
 
 import { Utils } from '../helpers/utils';
 
-// also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
+import type { AsyncValidatorFn, ValidatorFn } from '@angular/forms';
+import type {
+  FloatLabelType,
+  MatFormFieldAppearance,
+  SubscriptSizing,
+} from '@angular/material/form-field';
+import type { GroupOption } from '@ngx-dynamic-json-form/core';
+import type { BasicOption, MatRadioButton } from '@ngx-dynamic-json-form/material';
+import type { Observable } from 'rxjs';
+
 import type { Meta, StoryObj } from '@storybook/angular';
+import type { ThemePalette } from '@angular/material/core';
+
 type Story = StoryObj<NgxDynamicJsonFormMaterialComponent>;
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +39,7 @@ let code: any = `{
 }`;
 
 class Model implements MatRadioButton {
-  type: 'radio-button' = 'radio-button';
+  type = 'radio-button' as const;
   options: Array<
     BasicOption & {
       color?: ThemePalette;
@@ -60,13 +62,13 @@ class Model implements MatRadioButton {
   formFieldClassName?: string | undefined = '';
   messages?: { [key: string]: string } | undefined = {};
 
-  onBlur?(value: any): void {
+  onBlur?(): void {
     throw new Error('Method not implemented.');
   }
-  onFocus?(value: any): void {
+  onFocus?(): void {
     throw new Error('Method not implemented.');
   }
-  onChange?(value: any): void {
+  onChange?(): void {
     throw new Error('Method not implemented.');
   }
   onFilter$?(searchTerm: string): Observable<GroupOption[]>;
@@ -90,10 +92,10 @@ class Model implements MatRadioButton {
   suffixClassName?: string | undefined = '';
   suffixIcon?: string | undefined = '';
   suffixText?: string | undefined = '';
-  onPrefixClick?($event: PointerEvent | MouseEvent): void {
+  onPrefixClick?(): void {
     throw new Error('Method not implemented.');
   }
-  onSuffixClick?($event: PointerEvent | MouseEvent): void {
+  onSuffixClick?(): void {
     throw new Error('Method not implemented.');
   }
 }

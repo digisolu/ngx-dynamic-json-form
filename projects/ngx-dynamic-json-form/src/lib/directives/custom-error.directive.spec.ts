@@ -1,9 +1,9 @@
-import { Component, DebugElement, Directive } from '@angular/core';
+import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { CustomErrorDirective } from './custom-error.directive';
 import { Stub } from '../utils';
+import { CustomErrorDirective } from './custom-error.directive';
 
 @Component({
   template: `

@@ -1,7 +1,8 @@
-import { ThemePalette } from '@angular/material/core';
 import { DynamicFormFieldMultiCheckbox } from '@ngx-dynamic-json-form/core';
 
 import { MatFormField } from './mat-form-field';
+
+import type { ThemePalette } from '@angular/material/core';
 
 /**
  * The MatMultiCheckbox Interface to extend the Default Interface with Material Design specific properties.

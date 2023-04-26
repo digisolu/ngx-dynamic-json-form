@@ -3,7 +3,6 @@ import { AbstractMultiRowComponent } from '@ngx-dynamic-json-form/core';
 
 import { MatButton, MatMultiRow } from '../../interfaces';
 import { ButtonType, ButtonVariant, FormFieldType } from '../../types';
-import { ThemePalette } from '@angular/material/core';
 
 /**
  * The Material Design Specific MultiRow Component.
@@ -13,7 +12,7 @@ import { ThemePalette } from '@angular/material/core';
  * @extends {AbstractMultiRowComponent<MatMultiRow>}
  */
 @Component({
-  selector: 'ndf-multi-row',
+  selector: 'ndf-mat-multi-row',
   templateUrl: './multi-row.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -35,7 +34,7 @@ export class MultiRowComponent extends AbstractMultiRowComponent<MatMultiRow> {
    * @memberof MultiRowComponent
    */
   public getButtonField(type: 'add' | 'delete'): MatButton {
-    const classes: string[] = ['ndf-multi-row-button', `ndf-${type}-button`];
+    const classes: string[] = ['ndf-mat-multi-row-button', `ndf-${type}-button`];
     !!this.getDefaultValue(`${type}ButtonClassName`) &&
       classes.push(String(this.getDefaultValue(`${type}ButtonClassName`)));
 

@@ -75,7 +75,7 @@
   <mat-icon
     *ngIf="field?.prefixIcon"
     matPrefix
-    [class.ndf-input-prefix]="true"
+    [class.ndf-mat-input-prefix]="true"
     [class]="field?.prefixClassName || ''"
     (click)="onPrefixClick($event)"
   >
@@ -86,7 +86,7 @@
   <mat-icon
     *ngIf="field?.suffixIcon"
     matSuffix
-    [class.ndf-input-suffix]="true"
+    [class.ndf-mat-input-suffix]="true"
     [class]="field?.suffixClassName || ''"
     (click)="onSuffixClick($event)"
   >
@@ -97,7 +97,7 @@
   <span
     *ngIf="field?.prefixText"
     matTextPrefix
-    [class.ndf-input-prefix]="true"
+    [class.ndf-mat-input-prefix]="true"
     [class]="field?.prefixClassName || ''"
     (click)="onPrefixClick($event)"
   >
@@ -108,7 +108,7 @@
   <span
     *ngIf="field?.suffixText"
     matTextSuffix
-    [class.ndf-input-suffix]="true"
+    [class.ndf-mat-input-suffix]="true"
     [class]="field?.suffixClassName || ''"
     (click)="onSuffixClick($event)"
   >
@@ -127,7 +127,7 @@
     matSuffix
     mat-icon-button
     (click)="clearInput()"
-    [class.ndf-input-suffix]="true"
+    [class.ndf-mat-input-suffix]="true"
     [class.ndf-clear-button-fix]="field?.type === 'textarea'"
     [class]="field?.suffixClassName || ''"
   >

@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/digisolu/ngx-dynamic-json-form",
   "scripts": {
-    "build": "npm run format && npm run test:build && npm run lib:core:build && npm run lib:material:build && npm run lib:material:docs:build",
+    "build": "npm run format && npm run lint && npm run test:build && npm run lib:core:build && npm run lib:material:build && npm run lib:material:docs:build",
     "format": "prettier --write projects --cache",
     "lib:core:build": "ng build ngx-dynamic-json-form",
     "lib:core:dev": "ng build ngx-dynamic-json-form --watch --configuration development",
@@ -50,7 +50,8 @@
     "ng": "ng",
     "start": "ng serve",
     "test:build": "concurrently \"npm:lib:core:test:build\" \"npm:lib:material:test:build\"",
-    "test": "concurrently \"npm:lib:core:test:dev\" \"npm:lib:material:test:dev\""
+    "test": "concurrently \"npm:lib:core:test:dev\" \"npm:lib:material:test:dev\"",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -76,6 +77,11 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.2.0",
+    "@angular-eslint/builder": "15.2.1",
+    "@angular-eslint/eslint-plugin": "15.2.1",
+    "@angular-eslint/eslint-plugin-template": "15.2.1",
+    "@angular-eslint/schematics": "15.2.1",
+    "@angular-eslint/template-parser": "15.2.1",
     "@angular/cli": "^15.2.6",
     "@angular/compiler-cli": "^15.2.0",
     "@compodoc/compodoc": "^1.1.19",
@@ -89,7 +95,10 @@
     "@storybook/theming": "^7.0.7",
     "@types/jasmine": "~4.3.1",
     "@types/prettier": "^2.7.2",
+    "@typescript-eslint/eslint-plugin": "5.48.2",
+    "@typescript-eslint/parser": "5.48.2",
     "concurrently": "^8.0.1",
+    "eslint": "^8.33.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.1",
     "karma-chrome-launcher": "~3.1.1",
@@ -102,6 +111,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "storybook": "^7.0.3",
+    "stylelint": "^15.6.0",
+    "stylelint-config-standard-scss": "^9.0.0",
     "typescript": "~4.8.2"
   }
 }

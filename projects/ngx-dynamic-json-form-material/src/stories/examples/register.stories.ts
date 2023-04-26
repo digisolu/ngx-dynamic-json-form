@@ -1,8 +1,7 @@
 import { importProvidersFrom } from '@angular/core';
 import { MatNativeDateModule } from '@angular/material/core';
-import { DynamicFormFieldHTML, NgxDynamicJsonFormModule } from '@ngx-dynamic-json-form/core';
+import { NgxDynamicJsonFormModule } from '@ngx-dynamic-json-form/core';
 import {
-  MatInput,
   NgxDynamicJsonFormMaterialComponent,
   NgxDynamicJsonFormMaterialModule,
 } from '@ngx-dynamic-json-form/material';
@@ -10,9 +9,9 @@ import { applicationConfig, moduleMetadata } from '@storybook/angular';
 
 import { Utils } from '../helpers/utils';
 
-// also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
+import type { DynamicFormFieldHTML } from '@ngx-dynamic-json-form/core';
 import type { Meta, StoryObj } from '@storybook/angular';
-import { Validators } from '@angular/forms';
+
 type Story = StoryObj<NgxDynamicJsonFormMaterialComponent>;
 
 /////////////////////////////////////////////////////////////////////////////////////////

@@ -1,7 +1,8 @@
-import { ThemePalette } from '@angular/material/core';
 import { DynamicFormFieldMultiRow } from '@ngx-dynamic-json-form/core';
 
 import { ButtonType, ButtonVariant, FormField } from '../types';
+
+import type { ThemePalette } from '@angular/material/core';
 
 /**
  * The MatMultiRow Interface to extend the Default Interface with Material Design specific properties.

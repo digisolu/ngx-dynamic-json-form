@@ -1,20 +1,22 @@
-import { action } from '@storybook/addon-actions';
-// also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
 import { importProvidersFrom } from '@angular/core';
-import { MatNativeDateModule, ThemePalette } from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
 import { NgxDynamicJsonFormModule } from '@ngx-dynamic-json-form/core';
 import {
-  ButtonType,
-  ButtonVariant,
-  FormField,
-  MatMultiRow,
   NgxDynamicJsonFormMaterialComponent,
   NgxDynamicJsonFormMaterialModule,
 } from '@ngx-dynamic-json-form/material';
 import { applicationConfig, moduleMetadata } from '@storybook/angular';
 
-import type { Meta, StoryObj } from '@storybook/angular';
 import { Utils } from '../helpers/utils';
+
+import type {
+  ButtonType,
+  ButtonVariant,
+  FormField,
+  MatMultiRow,
+} from '@ngx-dynamic-json-form/material';
+import type { Meta, StoryObj } from '@storybook/angular';
+import type { ThemePalette } from '@angular/material/core';
 
 type Story = StoryObj<NgxDynamicJsonFormMaterialComponent>;
 
@@ -54,7 +56,7 @@ class Model implements MatMultiRow {
   deleteButtonText?: string = '';
   deleteButtonTooltip?: string = '';
 
-  type: 'multi-row' = 'multi-row';
+  type = 'multi-row' as const;
   key: string = '';
   rowWrapperClassName?: string = '';
   className?: string = '';
@@ -135,7 +137,7 @@ code = [
     key: `${defaultKey}Outline`,
     appearance: 'outline',
     fields: [
-      ...[...(base.args?.fields?.[0] as any)?.fields].map((field: any) => {
+      ...[...((base.args?.fields?.[0] as any)?.fields || [])].map((field: any) => {
         field = { ...field };
         field.key = `${field.key}Outline`;
         field.appearance = 'outline';
@@ -172,7 +174,7 @@ code = [
     addButtonOnlyLast: true,
     addButtonRow: false,
     fields: [
-      ...[...(base.args?.fields?.[0] as any)?.fields].map((field: any) => {
+      ...[...((base.args?.fields?.[0] as any)?.fields || [])].map((field: any) => {
         field = { ...field };
         field.key = `${field.key}Outline`;
         field.appearance = 'outline';
@@ -207,7 +209,7 @@ code = [
     appearance: 'outline',
     disabled: true,
     fields: [
-      ...[...(base.args?.fields?.[0] as any)?.fields].map((field: any) => {
+      ...[...((base.args?.fields?.[0] as any)?.fields || [])].map((field: any) => {
         field = { ...field };
         field.key = `${field.key}Outline`;
         field.appearance = 'outline';

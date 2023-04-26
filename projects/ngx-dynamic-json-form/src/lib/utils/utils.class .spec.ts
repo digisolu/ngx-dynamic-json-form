@@ -110,7 +110,7 @@ describe('Utils', () => {
         disabled: true,
       } as any;
 
-      let formControl = Utils.getFormControl(field);
+      const formControl = Utils.getFormControl(field);
 
       expect(formControl.disabled).toBeTrue();
       expect(formControl.value).toEqual(null);
@@ -125,7 +125,7 @@ describe('Utils', () => {
       updateOn: 'blur',
     } as any;
 
-    let formControl = Utils.getFormControl(field);
+    const formControl = Utils.getFormControl(field);
 
     expect(formControl.disabled).toBeFalse();
     expect(formControl.value).toEqual([]);

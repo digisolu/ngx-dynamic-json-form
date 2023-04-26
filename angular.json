@@ -28,11 +28,25 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "projects/ngx-dynamic-json-form/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"],
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "codeCoverage": true,
             "karmaConfig": "projects/ngx-dynamic-json-form/karma.conf.js",
-            "codeCoverageExclude": ["**/stub.class.ts"],
+            "codeCoverageExclude": [
+              "**/stub.class.ts"
+            ],
             "progress": true
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-dynamic-json-form/**/*.ts",
+              "projects/ngx-dynamic-json-form/**/*.html"
+            ]
           }
         }
       }
@@ -67,10 +81,15 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "projects/ngx-dynamic-json-form-material/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"],
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "codeCoverage": true,
             "karmaConfig": "projects/ngx-dynamic-json-form-material/karma.conf.js",
-            "codeCoverageExclude": ["**/stub.class.ts"],
+            "codeCoverageExclude": [
+              "**/stub.class.ts"
+            ],
             "progress": true
           }
         },
@@ -82,9 +101,15 @@
             "compodoc": false,
             "port": 6006,
             "styles": [
-              { "input": "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css" },
-              { "input": "./node_modules/material-design-icons/iconfont/material-icons.css" },
-              { "input": "./projects/ngx-dynamic-json-form-material/.storybook/examples.css" }
+              {
+                "input": "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+              },
+              {
+                "input": "./node_modules/material-design-icons/iconfont/material-icons.css"
+              },
+              {
+                "input": "./projects/ngx-dynamic-json-form-material/.storybook/examples.css"
+              }
             ]
           }
         },
@@ -96,9 +121,24 @@
             "compodoc": false,
             "outputDir": "dist/storybook/ngx-dynamic-json-form-material",
             "styles": [
-              { "input": "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css" },
-              { "input": "./node_modules/material-design-icons/iconfont/material-icons.css" },
-              { "input": "./projects/ngx-dynamic-json-form-material/.storybook/examples.css" }
+              {
+                "input": "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+              },
+              {
+                "input": "./node_modules/material-design-icons/iconfont/material-icons.css"
+              },
+              {
+                "input": "./projects/ngx-dynamic-json-form-material/.storybook/examples.css"
+              }
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-dynamic-json-form-material/**/*.ts",
+              "projects/ngx-dynamic-json-form-material/**/*.html"
             ]
           }
         }

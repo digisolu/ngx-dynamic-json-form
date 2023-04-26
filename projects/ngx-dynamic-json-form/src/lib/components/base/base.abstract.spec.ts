@@ -149,7 +149,7 @@ describe('AbstractFormFieldComponent', () => {
   describe('onBlur', () => {
     it(`makes expected calls`, () => {
       // preparation
-      component.field = { key: 'anyKey', type: 'input', onBlur: () => {} } as any;
+      component.field = { key: 'anyKey', type: 'input', onBlur: () => ({}) } as any;
       spyOn(component.field as any, 'onBlur');
 
       // call
@@ -163,7 +163,7 @@ describe('AbstractFormFieldComponent', () => {
   describe('onFocus', () => {
     it(`makes expected calls`, () => {
       // preparation
-      component.field = { key: 'anyKey', type: 'input', onFocus: () => {} } as any;
+      component.field = { key: 'anyKey', type: 'input', onFocus: () => ({}) } as any;
       spyOn(component.field as any, 'onFocus');
 
       // call
@@ -177,7 +177,7 @@ describe('AbstractFormFieldComponent', () => {
   describe('onChange', () => {
     it(`makes expected calls`, () => {
       // preparation
-      component.field = { key: 'anyKey', type: 'input', onChange: () => {} } as any;
+      component.field = { key: 'anyKey', type: 'input', onChange: () => ({}) } as any;
       spyOn(component.field as any, 'onChange');
 
       // call

@@ -13,7 +13,7 @@ import { MatButton } from './../../interfaces';
  * @implements {OnInit}
  */
 @Component({
-  selector: 'ndf-button',
+  selector: 'ndf-mat-button',
   templateUrl: './button.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

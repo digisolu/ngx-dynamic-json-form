@@ -26,6 +26,7 @@ import { Utils } from './utils';
  * @implements {AfterViewInit}
  */
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'ngx-dynamic-json-form-core',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,

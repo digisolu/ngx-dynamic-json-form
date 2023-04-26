@@ -1,6 +1,6 @@
 import { importProvidersFrom } from '@angular/core';
 import { MatNativeDateModule } from '@angular/material/core';
-import { DynamicFormFieldHTML, NgxDynamicJsonFormModule } from '@ngx-dynamic-json-form/core';
+import { NgxDynamicJsonFormModule } from '@ngx-dynamic-json-form/core';
 import {
   NgxDynamicJsonFormMaterialComponent,
   NgxDynamicJsonFormMaterialModule,
@@ -9,8 +9,9 @@ import { applicationConfig, moduleMetadata } from '@storybook/angular';
 
 import { Utils } from '../helpers/utils';
 
-// also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
+import type { DynamicFormFieldHTML } from '@ngx-dynamic-json-form/core';
 import type { Meta, StoryObj } from '@storybook/angular';
+
 type Story = StoryObj<NgxDynamicJsonFormMaterialComponent>;
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -26,7 +27,7 @@ let code: any = `{
 }`;
 
 class Model implements DynamicFormFieldHTML {
-  type: 'html' = 'html';
+  type = 'html' as const;
   content: string = '';
   key?: string | undefined = '';
   className?: string | undefined = '';

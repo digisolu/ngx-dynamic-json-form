@@ -45,7 +45,7 @@ describe('SliderRangeComponent', () => {
       const spy1 = spyOn(component, 'getFormControl').and.callThrough();
       const spy2 = spyOn(Utils, 'addEnding').and.callThrough();
 
-      component.onChange(null);
+      component.onChange();
 
       expect(spy1).toHaveBeenCalledWith('anyKeyStart');
       expect(spy1).toHaveBeenCalledWith('anyKeyEnd');

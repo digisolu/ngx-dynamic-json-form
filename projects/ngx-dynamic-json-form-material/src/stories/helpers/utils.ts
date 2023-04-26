@@ -1,23 +1,23 @@
-import { ThemePalette } from '@angular/material/core';
-import {
-  BasicCallbacks,
-  ButtonVariant,
-  ConfigDefaults,
-  FormFieldBasics,
-  GroupOption,
-  MatButton,
-  MatFormField,
-} from '@ngx-dynamic-json-form/material';
+import { ConfigDefaults } from '@ngx-dynamic-json-form/material';
 import { action } from '@storybook/addon-actions';
 
 import {
-  interfaces as InterfacesMaterial,
   classes as ClassesMaterial,
+  interfaces as InterfacesMaterial,
 } from '../../../../../docs/ngx-dynamic-json-form-material/documentation.json';
 import {
-  interfaces as InterfacesCore,
   classes as ClassesCore,
+  interfaces as InterfacesCore,
 } from '../../../../../docs/ngx-dynamic-json-form/documentation.json';
+
+import type {
+  BasicCallbacks,
+  ButtonVariant,
+  FormFieldBasics,
+  GroupOption,
+  MatButton,
+} from '@ngx-dynamic-json-form/material';
+import type { ThemePalette } from '@angular/material/core';
 
 const allInterfaces: any[] = [...InterfacesCore, ...InterfacesMaterial];
 const allClasses: any[] = [...ClassesCore, ...ClassesMaterial];
@@ -281,7 +281,7 @@ export class Utils {
       (ConfigDefaults.MATERIAL_OPTIONS as any).default?.[key];
 
     if (key === 'type') {
-      let { property, foundInterface } = Utils.getPropertyOf('BaseField', key);
+      const { property, foundInterface } = Utils.getPropertyOf('BaseField', key);
       defaultValue = componentName;
 
       return !!foundInterface && !!property
@@ -300,7 +300,7 @@ export class Utils {
     } else if (key === 'tabIndex') {
       defaultValue = 0;
     } else if (key === 'messages') {
-      let { property, foundInterface } = Utils.getPropertyOf('BaseField', key);
+      const { property, foundInterface } = Utils.getPropertyOf('BaseField', key);
       defaultValue = JSON.stringify(ConfigDefaults.MESSAGES);
 
       const type = 'object';
@@ -332,7 +332,7 @@ export class Utils {
       key,
     ].forEach((interfaceName) => {
       if (!property) {
-        let propertyOf = Utils.getPropertyOf(interfaceName || '', key);
+        const propertyOf = Utils.getPropertyOf(interfaceName || '', key);
         foundInterface = propertyOf.foundInterface;
         property = propertyOf.property;
       }

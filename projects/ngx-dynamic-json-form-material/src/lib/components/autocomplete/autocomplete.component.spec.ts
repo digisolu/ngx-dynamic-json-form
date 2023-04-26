@@ -130,7 +130,7 @@ describe('AutocompleteComponent', () => {
         ],
       };
 
-      component['onFilter$']('5').subscribe((values) => {
+      component['onFilter$']('5').subscribe(() => {
         expect(MatUtils.filterEntries$).toHaveBeenCalledWith('anyLabel5', [
           {
             label: 'anyLabel4',
@@ -159,7 +159,7 @@ describe('AutocompleteComponent', () => {
             value: '5',
           },
         ],
-        onFilter$(value: string) {
+        onFilter$() {
           return of([
             {
               label: 'anyLabel4',

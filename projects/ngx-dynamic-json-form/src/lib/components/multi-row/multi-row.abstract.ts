@@ -17,7 +17,7 @@ import { AbstractFormFieldComponent } from '../base/base.abstract';
  * @template T
  */
 @Component({
-  selector: 'ndf-multi-row-core',
+  selector: 'ndf-mat-multi-row-core',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

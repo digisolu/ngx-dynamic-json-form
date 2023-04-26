@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AbstractFormFieldComponent, GroupOption, Utils } from '@ngx-dynamic-json-form/core';
 import {
   debounceTime,
@@ -27,9 +27,10 @@ import { MatUtils } from '../../utils';
   templateUrl: './autocomplete.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AutocompleteComponent<
-  T extends MatAutocomplete
-> extends AbstractFormFieldComponent<T> {
+export class AutocompleteComponent<T extends MatAutocomplete>
+  extends AbstractFormFieldComponent<T>
+  implements OnInit
+{
   /**
    * The form field type to identify the element.
    *

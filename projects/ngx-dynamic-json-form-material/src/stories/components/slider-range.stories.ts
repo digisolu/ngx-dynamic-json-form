@@ -1,14 +1,7 @@
 import { importProvidersFrom } from '@angular/core';
-import { AsyncValidatorFn, ValidatorFn } from '@angular/forms';
-import { MatNativeDateModule, ThemePalette } from '@angular/material/core';
-import {
-  FloatLabelType,
-  MatFormFieldAppearance,
-  SubscriptSizing,
-} from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
 import { NgxDynamicJsonFormModule } from '@ngx-dynamic-json-form/core';
 import {
-  MatSlider,
   NgxDynamicJsonFormMaterialComponent,
   NgxDynamicJsonFormMaterialModule,
 } from '@ngx-dynamic-json-form/material';
@@ -16,8 +9,16 @@ import { applicationConfig, moduleMetadata } from '@storybook/angular';
 
 import { Utils } from '../helpers/utils';
 
-// also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
+import type { AsyncValidatorFn, ValidatorFn } from '@angular/forms';
+import type {
+  FloatLabelType,
+  MatFormFieldAppearance,
+  SubscriptSizing,
+} from '@angular/material/form-field';
+import type { MatSlider } from '@ngx-dynamic-json-form/material';
+import type { ThemePalette } from '@angular/material/core';
 import type { Meta, StoryObj } from '@storybook/angular';
+
 type Story = StoryObj<NgxDynamicJsonFormMaterialComponent>;
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -36,15 +37,15 @@ let code: any = `{
 class Model implements MatSlider {
   color?: ThemePalette = 'primary';
   discrete?: boolean | undefined = true;
-  displayWith?(value: number): string {
+  displayWith?(): string {
     throw new Error('Method not implemented.');
   }
   showTickMarks?: boolean | undefined = true;
-  type: 'slider' = 'slider';
+  type = 'slider' as const;
   max?: number | undefined = 0;
   min?: number | undefined = 0;
   step?: number | undefined = 0;
-  onChange?(value: any): void {
+  onChange?(): void {
     throw new Error('Method not implemented.');
   }
 
@@ -81,10 +82,10 @@ class Model implements MatSlider {
   suffixClassName?: string | undefined = '';
   suffixIcon?: string | undefined = '';
   suffixText?: string | undefined = '';
-  onPrefixClick?($event: PointerEvent | MouseEvent): void {
+  onPrefixClick?(): void {
     throw new Error('Method not implemented.');
   }
-  onSuffixClick?($event: PointerEvent | MouseEvent): void {
+  onSuffixClick?(): void {
     throw new Error('Method not implemented.');
   }
 }

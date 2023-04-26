@@ -1,7 +1,8 @@
-import { ThemePalette } from '@angular/material/core';
 import { DynamicFormFieldButton } from '@ngx-dynamic-json-form/core';
 
 import { ButtonVariant } from '../types';
+
+import type { ThemePalette } from '@angular/material/core';
 
 /**
  * The MatButton Interface to extend the Default Interface with Material Design specific properties.

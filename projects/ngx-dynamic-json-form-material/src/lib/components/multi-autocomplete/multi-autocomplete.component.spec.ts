@@ -1,11 +1,10 @@
 import { ENTER } from '@angular/cdk/keycodes';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { fakeAsync, tick } from '@angular/core/testing';
+import { FormControl, FormGroup } from '@angular/forms';
 
+import { Stub } from '../../utils';
 import { AutocompleteComponent } from '../autocomplete/autocomplete.component';
 import { MultiAutocompleteComponent } from './multi-autocomplete.component';
-import { Stub } from '../../utils';
-import { FormControl, FormGroup } from '@angular/forms';
 
 describe('MultiAutocompleteComponent', () => {
   let component: MultiAutocompleteComponent;
@@ -138,6 +137,8 @@ describe('MultiAutocompleteComponent', () => {
       component.remove('1');
 
       expect(component['_updatePanelPosition']).toHaveBeenCalled();
+
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       expect(component.getFormControl()!.value).toEqual(['2']);
     });
   });
@@ -150,7 +151,9 @@ describe('MultiAutocompleteComponent', () => {
       component['_input'] = {
         nativeElement: {
           value: '',
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           blur() {},
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           focus() {},
         },
       } as any;
@@ -192,7 +195,9 @@ describe('MultiAutocompleteComponent', () => {
       component['_input'] = {
         nativeElement: {
           value: '',
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           blur() {},
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           focus() {},
         },
       } as any;
@@ -258,6 +263,7 @@ describe('MultiAutocompleteComponent', () => {
 
   describe('_updatePanelPosition', () => {
     it('makes expected calls', fakeAsync(() => {
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       component['_matTrigger'] = { updatePosition() {} } as any;
 
       const spy1 = spyOn(component['_matTrigger'], 'updatePosition');

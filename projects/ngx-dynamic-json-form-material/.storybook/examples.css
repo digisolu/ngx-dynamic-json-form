@@ -136,14 +136,14 @@ input.amount-field::-webkit-inner-spin-button {
 .registration-form .ndf-multi-form-row-button-container {
   text-align: right;
 }
-.registration-form .ndf-multi-row,
+.registration-form .ndf-mat-multi-row,
 .registration-form .ndf-container,
 .registration-form .ndf-form {
   margin-left: auto;
   margin-right: auto;
 }
 @media only screen and (min-width: 1200px) {
-  .registration-form .ndf-multi-row,
+  .registration-form .ndf-mat-multi-row,
   .registration-form .ndf-container,
   .registration-form .ndf-form {
     max-width: 1200px;

@@ -1,9 +1,7 @@
 import { importProvidersFrom } from '@angular/core';
-import { MatNativeDateModule, ThemePalette } from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
 import { NgxDynamicJsonFormModule } from '@ngx-dynamic-json-form/core';
 import {
-  ButtonVariant,
-  MatButton,
   NgxDynamicJsonFormMaterialComponent,
   NgxDynamicJsonFormMaterialModule,
 } from '@ngx-dynamic-json-form/material';
@@ -11,7 +9,9 @@ import { applicationConfig, moduleMetadata } from '@storybook/angular';
 
 import { Utils } from '../helpers/utils';
 
+import type { ButtonVariant, MatButton } from '@ngx-dynamic-json-form/material';
 import type { Meta, StoryObj } from '@storybook/angular';
+import type { ThemePalette } from '@angular/material/core';
 
 type Story = StoryObj<NgxDynamicJsonFormMaterialComponent>;
 
@@ -33,12 +33,12 @@ class Model implements MatButton {
   buttonColor?: ThemePalette = 'primary';
   buttonIcon?: string | undefined = '';
   buttonTooltip?: string | undefined = '';
-  type: 'button' = 'button';
+  type = 'button' as const;
   buttonType?: 'button' | 'submit' | 'menu' | 'reset' | undefined = 'button';
   disabled?: boolean | undefined = false;
   tabIndex?: number | undefined = 0;
   buttonText?: string | undefined = 'test';
-  onClick?($event: PointerEvent | MouseEvent): void {
+  onClick?(): void {
     throw new Error('Method not implemented.');
   }
   key?: string | undefined = undefined;

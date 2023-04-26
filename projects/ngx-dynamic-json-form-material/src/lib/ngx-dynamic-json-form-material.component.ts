@@ -9,6 +9,7 @@ import { NgxDynamicJsonFormComponent } from '@ngx-dynamic-json-form/core';
  * @extends {NgxDynamicJsonFormComponent}
  */
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'ngx-dynamic-json-form',
   styleUrls: ['./ngx-dynamic-json-form-material.component.scss'],
   template: `

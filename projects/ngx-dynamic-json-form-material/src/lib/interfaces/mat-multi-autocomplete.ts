@@ -1,7 +1,8 @@
-import { ThemePalette } from '@angular/material/core';
 import { DynamicFormFieldMultiAutocomplete } from '@ngx-dynamic-json-form/core';
 
 import { MatFormField } from './mat-form-field';
+
+import type { ThemePalette } from '@angular/material/core';
 
 /**
  * The MatMultiAutocomplete Interface to extend the Default Interface with Material Design specific properties.

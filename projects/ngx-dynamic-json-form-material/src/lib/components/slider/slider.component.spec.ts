@@ -28,7 +28,8 @@ describe('SliderComponent', () => {
       component.field = {
         type: 'slider',
         key: 'anyKey',
-        displayWith(value: any) {},
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        displayWith() {},
       } as any;
 
       spyOn(component.field as any, 'displayWith');

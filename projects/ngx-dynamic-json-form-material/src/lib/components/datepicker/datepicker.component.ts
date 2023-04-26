@@ -13,7 +13,7 @@ import { FormFieldType } from '../../types';
  * @extends {AbstractFormFieldComponent<MatDatepicker>}
  */
 @Component({
-  selector: 'ndf-datepicker',
+  selector: 'ndf-mat-datepicker',
   templateUrl: './datepicker.component.html',
   styleUrls: ['./datepicker.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

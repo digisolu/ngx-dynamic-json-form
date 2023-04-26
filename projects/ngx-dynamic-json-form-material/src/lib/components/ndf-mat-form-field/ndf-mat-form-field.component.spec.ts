@@ -139,7 +139,8 @@ describe('NdfMatFormFieldComponent', () => {
       component.field = {
         type: 'input',
         key: 'anyKey',
-        onPrefixClick(event: any) {},
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        onPrefixClick() {},
       };
 
       spyOn(component.field as any, 'onPrefixClick');
@@ -155,7 +156,8 @@ describe('NdfMatFormFieldComponent', () => {
       component.field = {
         type: 'input',
         key: 'anyKey',
-        onSuffixClick(event: any) {},
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        onSuffixClick() {},
       };
 
       spyOn(component.field as any, 'onSuffixClick');
@@ -213,6 +215,7 @@ describe('NdfMatFormFieldComponent', () => {
 
       component.clearInput();
 
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       expect(component.getFormControl()!.value).toEqual('');
     });
 
@@ -225,6 +228,7 @@ describe('NdfMatFormFieldComponent', () => {
 
       component.clearInput();
 
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       expect(component.getFormControl()!.value).toEqual([]);
     });
   });
@@ -233,8 +237,11 @@ describe('NdfMatFormFieldComponent', () => {
     it(`makes expected calls and not replaces the input fake field`, fakeAsync(() => {
       component['_matFormField'] = {
         _control: {},
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
         ngAfterContentInit() {},
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
         ngAfterContentChecked() {},
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
         ngAfterViewInit() {},
       } as any;
 
@@ -258,8 +265,11 @@ describe('NdfMatFormFieldComponent', () => {
     it(`makes expected calls and replaces the input fake field`, fakeAsync(() => {
       component['_matFormField'] = {
         _control: {},
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
         ngAfterContentInit() {},
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
         ngAfterContentChecked() {},
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
         ngAfterViewInit() {},
       } as any;
 

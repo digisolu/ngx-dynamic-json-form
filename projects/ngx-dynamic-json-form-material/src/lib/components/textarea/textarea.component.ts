@@ -14,7 +14,7 @@ import { FormFieldType } from '../../types';
  * @implements {AfterViewInit}
  */
 @Component({
-  selector: 'ndf-textarea',
+  selector: 'ndf-mat-textarea',
   templateUrl: './textarea.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -13,7 +13,7 @@ import { FormFieldType } from '../../types';
  * @extends {AbstractFormFieldComponent<MatSlideToggle>}
  */
 @Component({
-  selector: 'ndf-slide-toggle',
+  selector: 'ndf-mat-slide-toggle',
   templateUrl: './slide-toggle.component.html',
   styleUrls: ['./slide-toggle.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -13,7 +13,7 @@ import { SliderComponent } from '../slider/slider.component';
  * @implements {OnInit}
  */
 @Component({
-  selector: 'ndf-slider-range',
+  selector: 'ndf-mat-slider-range',
   templateUrl: './slider-range.component.html',
   styleUrls: ['./../slider/slider.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -32,7 +32,7 @@ export class SliderRangeComponent extends SliderComponent implements OnInit {
    * @override
    * @inheritdoc
    */
-  public override onChange(_: any): void {
+  public override onChange(): void {
     const value: any = {};
     this.dynamicJsonFormService.rangeEndings.forEach((ending: string) => {
       const key: string = Utils.addEnding(this.field?.key, ending);

@@ -1,11 +1,10 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { DatepickerRangeComponent } from './datepicker-range.component';
-import { DatepickerComponent } from '../datepicker/datepicker.component';
-import { AbstractFormFieldComponent } from '@ngx-dynamic-json-form/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractFormFieldComponent } from '@ngx-dynamic-json-form/core';
+
 import { Stub } from '../../utils';
+import { DatepickerRangeComponent } from './datepicker-range.component';
 
 describe('DatepickerRangeComponent', () => {
   let component: DatepickerRangeComponent;
@@ -46,7 +45,7 @@ describe('DatepickerRangeComponent', () => {
 
       spyOn(AbstractFormFieldComponent.prototype, 'onChange');
 
-      component.onChange({} as any);
+      component.onChange();
 
       expect(AbstractFormFieldComponent.prototype.onChange).toHaveBeenCalledWith({
         target: {

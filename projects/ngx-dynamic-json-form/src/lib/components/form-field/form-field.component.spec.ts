@@ -23,13 +23,13 @@ describe('FormFieldComponent', () => {
         form: new FormGroup({}),
         field: {} as any,
         className: '',
-        ngOnInit: () => {},
+        ngOnInit: () => ({}),
       } as any,
-      destroy: () => {},
+      destroy: () => ({}),
     } as any;
     component['_customComponent'] = {
       viewContainerRef: {
-        clear: () => {},
+        clear: () => ({}),
         createComponent: () => {
           return component['_componentRef'];
         },
@@ -70,9 +70,9 @@ describe('FormFieldComponent', () => {
           form: new FormGroup({}),
           field: {} as any,
           className: 'ndf-html',
-          ngOnInit: () => {},
+          ngOnInit: () => ({}),
         } as any,
-        destroy: () => {},
+        destroy: () => ({}),
       } as any);
 
       component['_load']();

@@ -3,8 +3,10 @@ import {
   MatFormFieldAppearance,
   SubscriptSizing,
 } from '@angular/material/form-field';
+
 import { ButtonType, ButtonVariant } from '../types';
-import { ThemePalette } from '@angular/material/core';
+
+import type { ThemePalette } from '@angular/material/core';
 
 /**
  * The MaterialOptions Interface.

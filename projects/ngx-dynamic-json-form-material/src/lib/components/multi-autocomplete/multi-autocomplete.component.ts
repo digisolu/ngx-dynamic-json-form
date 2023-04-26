@@ -1,5 +1,5 @@
 import { ENTER } from '@angular/cdk/keycodes';
-import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {
   MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
@@ -36,7 +36,10 @@ import { AutocompleteComponent } from '../autocomplete/autocomplete.component';
     },
   ],
 })
-export class MultiAutocompleteComponent extends AutocompleteComponent<MatMultiAutocomplete> {
+export class MultiAutocompleteComponent
+  extends AutocompleteComponent<MatMultiAutocomplete>
+  implements OnInit
+{
   /**
    * @override
    * @inheritdoc

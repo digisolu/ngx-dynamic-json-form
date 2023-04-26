@@ -72,7 +72,7 @@
             *ngFor="let item of option.group"
             [disabled]="item?.disabled || false"
             [value]="item?.value"
-            [class.ndf-multi-option]="true"
+            [class.ndf-mat-multi-option]="true"
           >
             <mat-checkbox
               [color]="getDefaultValue('color')"
@@ -81,7 +81,7 @@
               (change)="selected(item.value)"
               (click)="$event.stopPropagation()"
               [disabled]="item?.disabled || false"
-              [class.ndf-multi-option-checkbox]="true"
+              [class.ndf-mat-multi-option-checkbox]="true"
               >{{ item?.label || item.value || null }}</mat-checkbox
             >
           </mat-option>
@@ -92,7 +92,7 @@
           *ngIf="!option?.group"
           [value]="option?.value"
           [disabled]="option?.disabled || false"
-          [class.ndf-multi-option]="true"
+          [class.ndf-mat-multi-option]="true"
         >
           <mat-checkbox
             [color]="getDefaultValue('color')"
@@ -101,7 +101,7 @@
             (change)="selected(option.value)"
             (click)="$event.stopPropagation()"
             [disabled]="option?.disabled || false"
-            [class.ndf-multi-option-checkbox]="true"
+            [class.ndf-mat-multi-option-checkbox]="true"
             >{{ option?.label || option.value || null }}</mat-checkbox
           >
         </mat-option>

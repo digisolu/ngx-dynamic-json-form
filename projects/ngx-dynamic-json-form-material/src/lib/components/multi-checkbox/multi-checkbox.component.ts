@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { AbstractFormFieldComponent, BasicOption } from '@ngx-dynamic-json-form/core';
 
-import { MatMultiCheckbox, MaterialOptions } from '../../interfaces';
+import { MatMultiCheckbox } from '../../interfaces';
 import { FormFieldType } from '../../types';
 
 /**

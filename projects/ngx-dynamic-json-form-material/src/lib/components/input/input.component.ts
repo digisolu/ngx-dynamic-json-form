@@ -12,7 +12,7 @@ import { FormFieldType } from '../../types';
  * @extends {AbstractFormFieldComponent<MatInput>}
  */
 @Component({
-  selector: 'ndf-input',
+  selector: 'ndf-mat-input',
   templateUrl: './input.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
