@@ -30,8 +30,10 @@
   },
   "homepage": "https://github.com/digisolu/ngx-dynamic-json-form",
   "scripts": {
-    "build": "npm run format && npm run lint && npm run test:build && npm run lib:core:build && npm run lib:material:build && npm run lib:material:docs:build",
+    "build": "npm run format && npm run lint:lib && npm run lint:scss && npm run test:build && npm run lib:core:build && npm run lib:material:build && npm run lib:material:docs:build",
     "format": "prettier --write projects --cache",
+    "hook:storybook:build": "node projects/ngx-dynamic-json-form-material/.storybook/build.hook.js production",
+    "hook:storybook:dev": "node projects/ngx-dynamic-json-form-material/.storybook/build.hook.js development",
     "lib:core:build": "ng build ngx-dynamic-json-form",
     "lib:core:dev": "ng build ngx-dynamic-json-form --watch --configuration development",
     "lib:core:docs:json": "compodoc -p projects/ngx-dynamic-json-form/tsconfig.lib.json -d docs/ngx-dynamic-json-form -e json",
@@ -42,16 +44,17 @@
     "lib:material:docs:build": "npm run lib:core:docs:json && npm run lib:material:docs:json && npm run lib:material:storybook:build",
     "lib:material:docs:dev": "npm run lib:core:docs:json && npm run lib:material:docs:json && npm run lib:material:storybook",
     "lib:material:docs:json": "compodoc -p projects/ngx-dynamic-json-form-material/tsconfig.lib.json -d docs/ngx-dynamic-json-form-material -e json",
-    "lib:material:storybook:build": "ng run ngx-dynamic-json-form-material:build-storybook",
-    "lib:material:storybook:dev": "ng run ngx-dynamic-json-form-material:storybook",
+    "lib:material:storybook:build": "npm run hook:storybook:build && ng run ngx-dynamic-json-form-material:build-storybook",
+    "lib:material:storybook:dev": "npm run hook:storybook:dev && ng run ngx-dynamic-json-form-material:storybook",
     "lib:material:storybook:server": "http-server dist/storybook/ngx-dynamic-json-form-material -g -o -b",
     "lib:material:test:build": "ng test --project ngx-dynamic-json-form-material --no-watch --no-progress",
     "lib:material:test:dev": "ng test --project ngx-dynamic-json-form-material",
+    "lint:lib": "ng lint",
+    "lint:scss": "npx stylelint \"**/*.scss\"",
     "ng": "ng",
     "start": "ng serve",
     "test:build": "concurrently \"npm:lib:core:test:build\" \"npm:lib:material:test:build\"",
-    "test": "concurrently \"npm:lib:core:test:dev\" \"npm:lib:material:test:dev\"",
-    "lint": "ng lint"
+    "test": "concurrently \"npm:lib:core:test:dev\" \"npm:lib:material:test:dev\""
   },
   "private": true,
   "dependencies": {

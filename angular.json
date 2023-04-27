@@ -28,15 +28,10 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "projects/ngx-dynamic-json-form/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "codeCoverage": true,
             "karmaConfig": "projects/ngx-dynamic-json-form/karma.conf.js",
-            "codeCoverageExclude": [
-              "**/stub.class.ts"
-            ],
+            "codeCoverageExclude": ["**/stub.class.ts"],
             "progress": true
           }
         },
@@ -81,15 +76,10 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "projects/ngx-dynamic-json-form-material/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "codeCoverage": true,
             "karmaConfig": "projects/ngx-dynamic-json-form-material/karma.conf.js",
-            "codeCoverageExclude": [
-              "**/stub.class.ts"
-            ],
+            "codeCoverageExclude": ["**/stub.class.ts"],
             "progress": true
           }
         },

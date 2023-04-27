@@ -13,6 +13,7 @@ ndf-mat-radio-button {
 
   .compact {
     .mat-mdc-text-field-wrapper {
+      /* stylelint-disable-next-line selector-class-pattern */
       &.mdc-text-field--outlined {
         .mat-mdc-form-field-infix {
           padding-top: 0;
@@ -22,6 +23,7 @@ ndf-mat-radio-button {
       }
     }
 
+    /* stylelint-disable-next-line selector-class-pattern */
     .mdc-text-field--outlined {
       padding-left: 0;
       padding-right: 0;
@@ -29,6 +31,7 @@ ndf-mat-radio-button {
   }
 
   .compact-with-label {
+    /* stylelint-disable-next-line selector-class-pattern */
     .mdc-text-field--outlined {
       padding-left: 6px;
       padding-right: 6px;

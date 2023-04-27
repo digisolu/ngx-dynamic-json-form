@@ -1,6 +1,7 @@
 ndf-mat-multi-checkbox {
   .compact {
     .mat-mdc-text-field-wrapper {
+      /* stylelint-disable-next-line selector-class-pattern */
       &.mdc-text-field--outlined {
         .mat-mdc-form-field-infix {
           padding-top: 0;
@@ -10,26 +11,31 @@ ndf-mat-multi-checkbox {
       }
     }
 
+    /* stylelint-disable-next-line selector-class-pattern */
     .mdc-text-field--outlined {
       padding-left: 0;
       padding-right: 0;
     }
   }
 
+  /* stylelint-disable-next-line selector-class-pattern */
   .mdc-list-item--with-leading-checkbox {
+    /* stylelint-disable-next-line selector-class-pattern */
     .mdc-list-item__start {
       margin-left: 8px;
       margin-right: 8px;
     }
   }
 
+  /* stylelint-disable-next-line selector-class-pattern */
   .mdc-list-item--with-trailing-checkbox {
     &.mdc-list-item {
-      padding-left: 0px;
+      padding-left: 0;
     }
   }
 
   .mdc-list-item {
+    /* stylelint-disable-next-line selector-class-pattern */
     &.mdc-list-item--with-one-line {
       height: auto;
     }
@@ -44,7 +50,7 @@ ndf-mat-multi-checkbox {
 
       > label {
         font: 400 16px / 24px Roboto, sans-serif;
-        letter-spacing: 0.03125em;
+        letter-spacing: 0.0313em;
         width: 100%;
       }
     }

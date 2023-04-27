@@ -1,5 +1,6 @@
 [ndf-mat-form-field] {
   .ndf-hide-border {
+    /* stylelint-disable-next-line selector-class-pattern */
     .mdc-text-field--outlined {
       padding: 0 6px;
       margin: 0 -6px;

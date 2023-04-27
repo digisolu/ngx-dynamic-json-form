@@ -1,25 +1,113 @@
-# NgxDynamicJsonFormMaterial
+# Developer Guide
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
+This is a short introduction for developers.
 
-## Code scaffolding
+## Development
 
-Run `ng generate component component-name --project ngx-dynamic-json-form-material` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-dynamic-json-form-material`.
+## Start the development build
 
-> Note: Don't forget to add `--project ngx-dynamic-json-form-material` or else it will be added to the default project in your `angular.json` file.
+Run the libraries you need
+
+```bash
+# Dev-Build Core
+npm run lib:core:dev
+```
+
+```bash
+# Dev-Build for Material Design
+npm run lib:material:dev
+```
+
+## Start Storybook as Example Project and to read the Docs
+
+```bash
+# Dev-Build Storybook and Docs
+npm run lib:material:storybook:dev
+```
 
 ## Build
 
-Run `ng build ngx-dynamic-json-form-material` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+# Dev-Build Storybook and Docs
+npm run build
+```
 
-## Publishing
+Several tasks will be executed:
 
-After building your library with `ng build ngx-dynamic-json-form-material`, go to the dist folder `cd dist/ngx-dynamic-json-form-material` and run `npm publish`.
+<table width="100%">
+  <thead>
+    <tr>
+      <th align="left">Task</th>
+      <th align="left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td>format</td>
+        <td>Code Format: using Prettier</td>
+      </tr>
+      <tr>
+        <td>lint:lib</td>
+        <td>Code linting: using EsLint</td>
+      </tr>
+      <tr>
+        <td>lint:scss</td>
+        <td>SCSS Format: using StyleLint</td>
+      </tr>
+      <tr>
+        <td>test:build</td>
+        <td>Running Unit Tests: using Karma / Jasmine</td>
+      </tr>
+      <tr>
+        <td>lib:core:build</td>
+        <td>Building the Core Lib</td>
+      </tr>
+      <tr>
+        <td>lib:material:build</td>
+        <td>Building the Material Design Lib</td>
+      </tr>
+      <tr>
+        <td>lib:material:docs:build</td>
+        <td>Building Storybook</td>
+      </tr>
+  </tbody>
+</table>
 
 ## Running unit tests
 
-Run `ng test ngx-dynamic-json-form-material` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Running all Tests:
 
-## Further help
+```bash
+# Running all tests
+npm run test
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Running only the Core-Tests:
+
+```bash
+# Running only the Core-Tests
+npm run npm:lib:core:test:dev
+```
+
+Running only Material-Tests:
+
+```bash
+# Running only Material-Tests
+npm run npm:lib:material:test:dev
+```
+
+## Linting
+
+Linting all libraries (TS / HTML):
+
+```bash
+# Lint all libs (TS / HTML)
+npm run lint:lib
+```
+
+Linting all libraries (SCSS):
+
+```bash
+# Lint all libs (SCSS)
+npm run lint:scss
+```

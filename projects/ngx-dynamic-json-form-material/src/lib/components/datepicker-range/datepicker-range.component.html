@@ -9,7 +9,7 @@
       <mat-date-range-input
         [rangePicker]="picker"
         (blur)="onBlur($event)"
-        (change)="onChange($event)"
+        (change)="onChange()"
         (focus)="onFocus($event, picker)"
         (click)="onClick($event, picker)"
         [class]="getDefaultValue('className')"
