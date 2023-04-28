@@ -9,6 +9,8 @@ import { DynamicFormFieldAutocomplete } from './autocomplete';
  */
 export interface DynamicFormFieldMultiAutocomplete extends DynamicFormFieldAutocomplete {
   /**
+   * The parent interface DynamicFormFieldAutocomplete allows to types, so we need to use the correct one here.
+   *
    * @override
    * @inheritdoc
    */

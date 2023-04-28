@@ -6,15 +6,17 @@
         "mdx"
     ],
     "cSpell.words": [
-        "autodocs",
-        "compodoc",
-        "devkit",
-        "Hanft",
-        "iconfont",
-        "lnkd",
-        "packagr",
-        "sbdocs",
-        "theming"
+      "autodocs",
+      "compodoc",
+      "devkit",
+      "Hanft",
+      "iconfont",
+      "lcov",
+      "lnkd",
+      "packagr",
+      "sbdocs",
+      "stylelint",
+      "theming"
     ],
     "eslint.options": {
       "extensions": [".ts", ".html"]

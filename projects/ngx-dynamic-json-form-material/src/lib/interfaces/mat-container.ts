@@ -11,6 +11,8 @@ import { FormField } from '../types';
  */
 export interface MatContainer extends DynamicFormFieldContainer {
   /**
+   * This property is overridden, to map to the FormField of Material instead of Core.
+   *
    * @override
    * @inheritdoc
    */

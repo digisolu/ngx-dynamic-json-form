@@ -8,5 +8,5 @@ require("fs").copyFile(source, destination, function (error) {
     throw error;
   }
 
-  console.log("info => env file was generated");
+  console.log("\x1b[32m%s\x1b[0m", "info", "=> env file was generated");
 });

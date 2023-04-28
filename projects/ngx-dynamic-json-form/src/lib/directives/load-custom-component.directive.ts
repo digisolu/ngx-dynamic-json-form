@@ -11,8 +11,8 @@ export class LoadCustomComponentDirective {
   /**
    * Creates an instance of LoadCustomComponentDirective.
    *
-   * @param {ViewContainerRef} viewContainerRef
-   * @param {TemplateRef<any>} templateRef
+   * @param {ViewContainerRef} viewContainerRef The instance of the ViewContainer.
+   * @param {TemplateRef<any>} templateRef The instance of the Template.
    * @memberof LoadCustomComponentDirective
    */
   public constructor(

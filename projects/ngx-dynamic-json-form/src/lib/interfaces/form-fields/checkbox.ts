@@ -10,6 +10,8 @@ import { BasicCallbacks, FormFieldBasics } from './base';
  */
 export interface DynamicFormFieldCheckbox extends FormFieldBasics, BasicCallbacks {
   /**
+   * The FormFieldType for Checkboxes.
+   *
    * @override
    * @inheritdoc
    */

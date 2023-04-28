@@ -4,7 +4,11 @@ import { Components, DynamicFormConfig } from '../interfaces';
 import { FormField, FormFieldType } from '../types';
 import { Utils } from '../utils';
 
-/** @type {InjectionToken<DynamicFormConfig>} */
+/**
+ * The InjectionToken to inject, register and override the DefaultConfig.
+ *
+ * @type {InjectionToken<DynamicFormConfig>}
+ */
 export const NDF_CONFIG: InjectionToken<DynamicFormConfig> = new InjectionToken<DynamicFormConfig>(
   'NDF_CONFIG'
 );

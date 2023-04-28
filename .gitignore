@@ -6,6 +6,9 @@
 /tmp
 /out-tsc
 /bazel-out
+.env
+COVERAGE-DOCS.md
+COVERAGE-CODE.md
 
 # Node
 /node_modules
@@ -37,7 +40,6 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
-.env
 
 # System files
 .DS_Store
