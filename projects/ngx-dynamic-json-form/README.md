@@ -29,4 +29,4 @@ At the moment available UI-Pages are:
   </tbody>
 </table>
 
-For further information visit e.g. `ngx-dynamic-json-form/material`.
+For further information visit e.g. [ngx-dynamic-json-form/material](https://digisolu.github.io/ngx-dynamic-json-form/).

@@ -68,7 +68,7 @@ The `forRoot()` method call is required on root level.
 
 This method is used to override default configurations and is needed to register custom components.
 
-More information can be found in the global configuration section in the docs.
+More information can be found in the [global configuration section](https://digisolu.github.io/ngx-dynamic-json-form/?path=/docs/guides-global-configurations--documentation) in the docs.
 
 ### 3. Configure the form in the component TS
 
