@@ -2,6 +2,8 @@
 
 This is the core package for `ngx-dynamic-json-form`.
 
+Demo: [here](https://digisolu.github.io/ngx-dynamic-json-form/?path=/docs/examples-and-guides-registration-form--documentation)
+
 This package is not running as standalone library and needs one of the available UI-Packages too.
 
 At the moment available UI-Pages are:
