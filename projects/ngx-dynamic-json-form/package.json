@@ -33,7 +33,7 @@
   "bugs": {
     "url": "https://github.com/digisolu/ngx-dynamic-json-form/issues"
   },
-  "homepage": "https://github.com/digisolu/ngx-dynamic-json-form",
+  "homepage": "https://digisolu.github.io/ngx-dynamic-json-form",
   "peerDependencies": {
     "@angular/common": ">=15.0.0",
     "@angular/core": ">=15.0.0",

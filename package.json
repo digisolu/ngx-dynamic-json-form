@@ -31,6 +31,7 @@
   "homepage": "https://github.com/digisolu/ngx-dynamic-json-form",
   "scripts": {
     "build": "npm run format && npm run lint:lib && npm run lint:scss && npm run test:build && npm run lib:core:build && npm run lib:material:build && npm run lib:material:docs:build",
+    "deploy-docs": "gh-pages -d dist/storybook/ngx-dynamic-json-form-material",
     "format": "prettier --write projects --cache",
     "hook:docs:core": "node hooks/docs.hook.js core",
     "hook:docs:material": "node hooks/docs.hook.js material",
@@ -103,6 +104,7 @@
     "@typescript-eslint/parser": "5.48.2",
     "concurrently": "^8.0.1",
     "eslint": "^8.33.0",
+    "gh-pages": "^5.0.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.1",
     "karma-chrome-launcher": "~3.1.1",
