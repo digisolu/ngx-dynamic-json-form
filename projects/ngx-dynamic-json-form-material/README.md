@@ -1,113 +1,139 @@
-# Developer Guide
+# `ngx-dynamic-json-form/material`
 
-This is a short introduction for developers.
+The easy way to generate JSON based forms with angular.
 
-## Development
+## Quick Start
 
-## Start the development build
+This is the UI material package for `ngx-dynamic-json-form`.
 
-Run the libraries you need
+Without `ngx-dynamic-json-form/core` this library is not usable. So please take care to install it too.
 
-```bash
-# Dev-Build Core
-npm run lib:core:dev
-```
-
-```bash
-# Dev-Build for Material Design
-npm run lib:material:dev
-```
-
-## Start Storybook as Example Project and to read the Docs
-
-```bash
-# Dev-Build Storybook and Docs
-npm run lib:material:storybook:dev
-```
-
-## Build
-
-```bash
-# Dev-Build Storybook and Docs
-npm run build
-```
-
-Several tasks will be executed:
+## Versions
 
 <table width="100%">
   <thead>
     <tr>
-      <th align="left">Task</th>
-      <th align="left">Description</th>
+      <th align="left">Angular</th>
+      <th align="left">Angular Material</th>
+      <th align="left">ngx-dynamic-json-form/core</th>
+      <th align="left">ngx-dynamic-json-form/material</th>
     </tr>
   </thead>
   <tbody>
-      <tr>
-        <td>format</td>
-        <td>Code Format: using Prettier</td>
-      </tr>
-      <tr>
-        <td>lint:lib</td>
-        <td>Code linting: using EsLint</td>
-      </tr>
-      <tr>
-        <td>lint:scss</td>
-        <td>SCSS Format: using StyleLint</td>
-      </tr>
-      <tr>
-        <td>test:build</td>
-        <td>Running Unit Tests: using Karma / Jasmine</td>
-      </tr>
-      <tr>
-        <td>lib:core:build</td>
-        <td>Building the Core Lib</td>
-      </tr>
-      <tr>
-        <td>lib:material:build</td>
-        <td>Building the Material Design Lib</td>
-      </tr>
-      <tr>
-        <td>lib:material:docs:build</td>
-        <td>Building Storybook</td>
-      </tr>
+    <tr>
+      <td>15.x.x</td>
+      <td>15.x.x</td>
+      <td>1.x.x</td>
+      <td>1.x.x</td>
+    </tr>
+    <tr>
+      <td>16.x.x</td>
+      <td>16.x.x</td>
+      <td>not tested yet</td>
+      <td>not tested yet</td>
+    </tr>
   </tbody>
 </table>
 
-## Running unit tests
+## Install and Usage
 
-Running all Tests:
+This is a step by step instruction to install and use `ngx-dynamic-json-form/material`.
 
-```bash
-# Running all tests
-npm run test
+### 1. Install all packages:
+
+```sh
+npm i @ngx-dynamic-json-form/core @ngx-dynamic-json-form/material @ngx-mat-select-search --save
 ```
 
-Running only the Core-Tests:
+Please make sure, that `@angular/forms` and `"@angular/material` are already installed.
 
-```bash
-# Running only the Core-Tests
-npm run npm:lib:core:test:dev
+### 2. Add `ngx-dynamic-json-form/material` to your `AppModule`
+
+```typescript
+
+import { AppComponent } from './app.component';
+import { NgxDynamicJsonFormMaterialModule } from '@ngx-dynamic-json-form/material';
+
+@NgModule({
+  imports: [
+    BrowserModule
+    NgxDynamicJsonFormMaterialModule.forRoot()
+  ],
+  ...
+})
+export class AppModule {}
 ```
 
-Running only Material-Tests:
+The `forRoot()` method call is required on root level.
 
-```bash
-# Running only Material-Tests
-npm run npm:lib:material:test:dev
+This method is used to override default configurations and is needed to register custom components.
+
+More information can be found in the global configuration section in the docs.
+
+### 3. Configure the form in the component TS
+
+```typescript
+@Component({
+  // ...
+  changeDetection: ChangeDetectionStrategy.OnPush, // <- Recommended
+})
+export class MyComponent implements OnInit {
+  public form: FormGroup = new FormGroup({}); // <- The form instance
+
+  // The form fields
+  public fields: FormField[] = [
+    {
+      type: "select",
+      key: "language",
+      label: "Language",
+      options: [
+        { label: "Language 1", value: "1" },
+        // ...
+      ],
+    },
+  ];
+
+  // The callback method to get the instance of the form
+  public setForm(form: FormGroup): void {
+    this.form = form;
+  }
+}
 ```
 
-## Linting
+### 4. Use `ngx-dynamic-json-form` in the component HTML
 
-Linting all libraries (TS / HTML):
-
-```bash
-# Lint all libs (TS / HTML)
-npm run lint:lib
+```html
+<ngx-dynamic-json-form [fields]="fields" (getForm)="setForm($event)" [initial]="initialValues" formClassName="my-form-class"></ngx-dynamic-json-form>
 ```
 
-Linting all libraries (SCSS):
-
-```bash
-# Lint all libs (SCSS)
-npm run lint:scss
-```
+<table width="100%">
+  <thead>
+    <tr>
+      <th align="left">Input</th>
+      <th align="left">Description</th>
+      <th align="left">Required</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`fields`</td>
+      <td>This is the configuration of all form fields.</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>`getForm`</td>
+      <td>A callback to get the instance of the `FormGroup`.</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>`initial`</td>
+      <td>An object with the initial values of the form.</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>`formClassName`</td>
+      <td>Add a class name to the form.</td>
+      <td>No</td>
+    </tr>
+  </tbody>
+</table>
