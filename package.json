@@ -28,7 +28,7 @@
   "bugs": {
     "url": "https://github.com/digisolu/ngx-dynamic-json-form/issues"
   },
-  "homepage": "https://github.com/digisolu/ngx-dynamic-json-form",
+  "homepage": "https://digisolu.github.io/ngx-dynamic-json-form",
   "scripts": {
     "build": "npm run format && npm run lint:lib && npm run lint:scss && npm run test:build && npm run lib:core:build && npm run lib:material:build && npm run lib:material:docs:build",
     "deploy-docs": "gh-pages -d dist/storybook/ngx-dynamic-json-form-material",
