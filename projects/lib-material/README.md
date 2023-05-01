@@ -45,7 +45,7 @@ This is a step by step instruction to install and use `ngx-dynamic-json-form-mat
 ### 1. Install all packages:
 
 ```sh
-npm i ngx-dynamic-json-form-core ngx-dynamic-json-form-material @ngx-mat-select-search --save
+npm i ngx-dynamic-json-form-core ngx-dynamic-json-form-material ngx-mat-select-search --save
 ```
 
 Please make sure, that `@angular/forms` and `"@angular/material` are already installed.
