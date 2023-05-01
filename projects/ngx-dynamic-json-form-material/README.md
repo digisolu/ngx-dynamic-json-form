@@ -2,7 +2,8 @@
 
 The easy way to generate JSON based forms with angular.
 
-Demo: [here](https://digisolu.github.io/ngx-dynamic-json-form/?path=/docs/examples-and-guides-registration-form--documentation)
+- Demo: [here](https://digisolu.github.io/ngx-dynamic-json-form/?path=/docs/examples-and-guides-registration-form--documentation)
+- Docs: [here](https://digisolu.github.io/ngx-dynamic-json-form/)
 
 ## Quick Start
 
@@ -105,7 +106,12 @@ export class MyComponent implements OnInit {
 ### 4. Use `ngx-dynamic-json-form` in the component HTML
 
 ```html
-<ngx-dynamic-json-form [fields]="fields" (getForm)="setForm($event)" [initial]="initialValues" formClassName="my-form-class"></ngx-dynamic-json-form>
+<ngx-dynamic-json-form
+  [fields]="fields"
+  (getForm)="setForm($event)"
+  [initial]="initialValues"
+  formClassName="my-form-class"
+></ngx-dynamic-json-form>
 ```
 
 <table width="100%">

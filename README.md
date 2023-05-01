@@ -1,6 +1,7 @@
 # Quick Start
 
-Demo: [here](https://digisolu.github.io/ngx-dynamic-json-form/?path=/docs/examples-and-guides-registration-form--documentation)
+- Demo: [here](https://digisolu.github.io/ngx-dynamic-json-form/?path=/docs/examples-and-guides-registration-form--documentation)
+- Docs: [here](https://digisolu.github.io/ngx-dynamic-json-form/)
 
 ## Versions
 

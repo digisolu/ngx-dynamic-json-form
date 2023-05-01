@@ -251,3 +251,6 @@ input.amount-field::-webkit-inner-spin-button {
   font-size: var(--mdc-typography-button-font-size, 14px);
   font-family: Roboto, sans-serif;
 }
+#storybook-docs .sbdocs-content {
+  max-width: none;
+}
