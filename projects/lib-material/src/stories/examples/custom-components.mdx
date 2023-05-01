@@ -1,0 +1,223 @@
+import { Canvas, Meta } from "@storybook/blocks";
+import * as Stories from "./callback.stories";
+
+<Meta title="Examples and Guides/Custom Components" />
+
+# Callback: onChange-Example: Reload Data
+
+Adding custom components are very easy.
+
+## Create, Register and Use a custom component
+
+This is the fast and not full typed version. If you want a full typed version scroll down to `Create, Register and Use a custom component (full typed)`.
+
+### 1. Create custom component
+
+Extend the custom component with `extends AbstractFormFieldComponent<DynamicFormFieldInput>`.
+
+`DynamicFormFieldInput` can be replaced with a all Interfaces extending `BaseField`.
+
+`my-custom-form-field.component.ts`:
+
+```typescript
+import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { AbstractFormFieldComponent, DynamicFormFieldInput } from "ngx-dynamic-json-form-core";
+
+@Component({
+  selector: "app-my-custom-form-field",
+  templateUrl: "./my-custom-form-field.component.html",
+  styleUrls: ["./my-custom-form-field.component.css"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class MyCustomFormFieldComponent extends AbstractFormFieldComponent<DynamicFormFieldInput> {}
+```
+
+`my-custom-form-field.component.html`:
+
+```html
+<label *ngIf="form" [formGroup]="form">
+  My Custom Form Field:
+  <input
+    [className]="field?.className || ''"
+    [type]="field?.inputType || 'text'"
+    [readonly]="field?.readonly || false"
+    [required]="field?.required || false"
+    [formControlName]="field?.key || ''"
+    [tabIndex]="field?.tabIndex || 0"
+    [placeholder]="field?.placeholder || ''"
+    (blur)="onBlur($event)"
+    (focus)="onFocus($event)"
+    (change)="onChange($event)"
+  />
+</label>
+```
+
+### 2. Register custom component in the AppModule
+
+`app.module.ts`:
+
+```typescript
+import { MyCustomFormFieldComponent } from "./my-custom-form-field/my-custom-form-field.component";
+
+@NgModule({
+  declarations: [
+    /** other declarations */
+    MyCustomFormFieldComponent,
+    /** other declarations */
+  ],
+  imports: [
+    /** other imports */
+    NgxDynamicJsonFormMaterialModule.forRoot({
+      components: {
+        "my-custom-form-field": MyCustomFormFieldComponent,
+      },
+    }),
+
+    /** other imports */
+  ],
+  providers: [
+    /** other providers */
+  ],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
+### 3. Use new component in your JSON
+
+```json
+{
+  "key": "anyKey",
+  "type": "my-custom-form-field"
+}
+```
+
+That's it :)
+
+## Create, Register and Use a custom component (full typed)
+
+This is the full typed and recommended version of creating a custom component.
+
+### 1. Create an interface for your component
+
+`my-custom-form-field.interface.ts`:
+
+```typescript
+export interface MyCustomFormField extends FormFieldBasics, BasicCallbacks {
+  /** your fields */
+}
+```
+
+The extended interfaces could be different. It depends an your needs.
+
+### 2. Extend the types
+
+`my-app.types.ts`:
+
+```typescript
+import {
+  FormField as FormFieldOriginal,
+  FormFieldType as FormFieldTypeOriginal,
+} from "ngx-dynamic-json-form-material";
+
+export type FormFieldType =
+  | FormFieldTypeOriginal
+  // Add the custom form field interface
+  | "my-custom-form-field";
+
+export type FormField =
+  | FormFieldOriginal
+  // Add the custom form field interface
+  | MyCustomFormField;
+```
+
+### 3. Create custom component
+
+Extend the custom component with `extends AbstractFormFieldComponent<DynamicFormFieldInput>`.
+
+`DynamicFormFieldInput` can be replaced with a all Interfaces extending `BaseField`.
+
+`my-custom-form-field.component.ts`:
+
+```typescript
+import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { AbstractFormFieldComponent } from "ngx-dynamic-json-form-core";
+
+import { MyCustomFormField } from "./my-custom-form-field.interface.ts"; // Use the new created type
+
+@Component({
+  selector: "app-my-custom-form-field",
+  templateUrl: "./my-custom-form-field.component.html",
+  styleUrls: ["./my-custom-form-field.component.css"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class MyCustomFormFieldComponent extends AbstractFormFieldComponent<MyCustomFormField> {
+  public static key: FormFieldType = "my-custom-form-field"; // Add a key with the new created type
+}
+```
+
+`my-custom-form-field.component.html`:
+
+```html
+<label *ngIf="form" [formGroup]="form">
+  My Custom Form Field:
+  <input
+    [className]="field?.className || ''"
+    [type]="field?.inputType || 'text'"
+    [readonly]="field?.readonly || false"
+    [required]="field?.required || false"
+    [formControlName]="field?.key || ''"
+    [tabIndex]="field?.tabIndex || 0"
+    [placeholder]="field?.placeholder || ''"
+    (blur)="onBlur($event)"
+    (focus)="onFocus($event)"
+    (change)="onChange($event)"
+  />
+</label>
+```
+
+### 4. Register custom component in the AppModule
+
+`app.module.ts`:
+
+```typescript
+import { MyCustomFormFieldComponent } from "./my-custom-form-field/my-custom-form-field.component";
+
+@NgModule({
+  declarations: [
+    /** other declarations */
+    MyCustomFormFieldComponent,
+    /** other declarations */
+  ],
+  imports: [
+    /** other imports */
+    NgxDynamicJsonFormMaterialModule.forRoot({
+      components: {
+        [MyCustomFormFieldComponent.key]: MyCustomFormFieldComponent, // Use the key
+      },
+    }),
+
+    /** other imports */
+  ],
+  providers: [
+    /** other providers */
+  ],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
+### 5. Use new component in your JSON
+
+```json
+{
+  "key": "anyKey",
+  "type": "my-custom-form-field"
+}
+```
+
+### Hint
+
+Everywhere in your application where you want to use `FormFieldType` and `FormField` take care of using **your generated version**.
+
+That's it :)

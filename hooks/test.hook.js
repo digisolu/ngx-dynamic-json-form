@@ -1,19 +1,13 @@
 var parse = require("lcov-parse");
 var fs = require("fs");
 
-var mode = process.argv.slice(2)[0] === "core" ? "" : process.argv.slice(2)[0];
+var mode = process.argv.slice(2)[0];
 
-var content = fs.readFileSync(
-  "./coverage/ngx-dynamic-json-form" + (!!mode ? "-" + mode : "") + "/lcov.info",
-  "utf8"
-);
+var content = fs.readFileSync("./coverage/lib-" + mode + "/lcov.info", "utf8");
 
 parse(content, function (error, data) {
   if (error) {
-    console.error(
-      "./coverage/ngx-dynamic-json-form" + (!!mode ? "-" + mode : "") + "/lcov.info",
-      error
-    );
+    console.error("./coverage/lib-" + mode + "/lcov.info", error);
     throw error;
   }
   var output = generateOutput(data);
@@ -33,9 +27,7 @@ function generateOutput(dataArray) {
     tableRows +=
       "<tr>" +
       "<td>" +
-      data.file
-        .replaceAll("\\", "/")
-        .replace("projects/ngx-dynamic-json-form" + (!!mode ? "-" + mode : "") + "/src/lib/", "") +
+      data.file.replaceAll("\\", "/").replace("projects/lib" + mode + "/src/lib/", "") +
       "</td>" +
       "<td>" +
       toPercent(data.lines.found, data.lines.hit) +
@@ -53,8 +45,8 @@ function generateOutput(dataArray) {
   });
 
   var output =
-    "## Documentation Coverage for: @ngx-dynamic-json-form/" +
-    (!!mode ? mode : "core") +
+    "## Documentation Coverage for: ngx-dynamic-json-form-" +
+    mode +
     ": " +
     toPercent(totalFound, totalHits) +
     "\n\n";
@@ -76,16 +68,12 @@ function toPercent(found, hit) {
 function writeFile(output) {
   try {
     require("fs").writeFileSync(
-      "./projects/ngx-dynamic-json-form" + (!!mode ? "-" + mode : "") + "/COVERAGE-CODE.md",
+      "./projects/lib-" + mode + "/COVERAGE-CODE.md",
       output,
       "utf-8",
       "w+"
     );
-    console.log(
-      "\x1b[32m%s\x1b[0m",
-      "info",
-      "=> coverage file for " + (!!mode ? mode : "core") + " was generated"
-    );
+    console.log("\x1b[32m%s\x1b[0m", "info", "=> coverage file for " + mode + " was generated");
   } catch (error) {
     console.log("Error: Cannot write file");
     throw error;

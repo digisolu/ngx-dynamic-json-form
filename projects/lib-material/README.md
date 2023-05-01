@@ -1,7 +1,15 @@
-# Quick Start
+# `ngx-dynamic-json-form-material`
+
+The easy way to generate JSON based forms with angular.
 
 - Demo: [here](https://digisolu.github.io/ngx-dynamic-json-form/?path=/docs/examples-and-guides-registration-form--documentation)
 - Docs: [here](https://digisolu.github.io/ngx-dynamic-json-form/)
+
+## Quick Start
+
+This is the UI material package for `ngx-dynamic-json-form`.
+
+Without `ngx-dynamic-json-form-core` this library is not usable. So please take care to install it too.
 
 ## Versions
 
@@ -32,7 +40,7 @@
 
 ## Install and Usage
 
-This is a step by step instruction to install and use `ngx-dynamic-json-form`.
+This is a step by step instruction to install and use `ngx-dynamic-json-form-material`.
 
 ### 1. Install all packages:
 
@@ -40,9 +48,9 @@ This is a step by step instruction to install and use `ngx-dynamic-json-form`.
 npm i ngx-dynamic-json-form-core ngx-dynamic-json-form-material @ngx-mat-select-search --save
 ```
 
-Please make sure, that `@angular/forms` and `"@angular/material` are installed too.
+Please make sure, that `@angular/forms` and `"@angular/material` are already installed.
 
-### 2. Add `ngx-dynamic-json-form` to your `AppModule`
+### 2. Add `ngx-dynamic-json-form-material` to your `AppModule`
 
 ```typescript
 
@@ -63,7 +71,7 @@ The `forRoot()` method call is required on root level.
 
 This method is used to override default configurations and is needed to register custom components.
 
-More information can be found in the [global configuration section](https://digisolu.github.io/ngx-dynamic-json-form/?path=/docs/examples-and-guides-global-configurations--documentation).
+More information can be found in the [global configuration section](https://digisolu.github.io/ngx-dynamic-json-form/?path=/docs/examples-and-guides-global-configurations--documentation) in the docs.
 
 ### 3. Configure the form in the component TS
 
@@ -98,12 +106,7 @@ export class MyComponent implements OnInit {
 ### 4. Use `ngx-dynamic-json-form` in the component HTML
 
 ```html
-<ngx-dynamic-json-form
-  [fields]="fields"
-  (getForm)="setForm($event)"
-  [initial]="initialValues"
-  formClassName="my-form-class"
-></ngx-dynamic-json-form>
+<ngx-dynamic-json-form [fields]="fields" (getForm)="setForm($event)" [initial]="initialValues" formClassName="my-form-class"></ngx-dynamic-json-form>
 ```
 
 <table width="100%">

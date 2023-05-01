@@ -3,23 +3,23 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-dynamic-json-form": {
+    "lib-core": {
       "projectType": "library",
-      "root": "projects/ngx-dynamic-json-form",
-      "sourceRoot": "projects/ngx-dynamic-json-form/src",
+      "root": "projects/lib-core",
+      "sourceRoot": "projects/lib-core/src",
       "prefix": "ndf",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/ngx-dynamic-json-form/ng-package.json"
+            "project": "projects/lib-core/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ngx-dynamic-json-form/tsconfig.lib.prod.json"
+              "tsConfig": "projects/lib-core/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/ngx-dynamic-json-form/tsconfig.lib.json"
+              "tsConfig": "projects/lib-core/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -27,10 +27,10 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "projects/ngx-dynamic-json-form/tsconfig.spec.json",
+            "tsConfig": "projects/lib-core/tsconfig.spec.json",
             "polyfills": ["zone.js", "zone.js/testing"],
             "codeCoverage": true,
-            "karmaConfig": "projects/ngx-dynamic-json-form/karma.conf.js",
+            "karmaConfig": "projects/lib-core/karma.conf.js",
             "codeCoverageExclude": ["**/stub.class.ts"],
             "progress": true
           }
@@ -39,17 +39,17 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "projects/ngx-dynamic-json-form/**/*.ts",
-              "projects/ngx-dynamic-json-form/**/*.html"
+              "projects/lib-core/**/*.ts",
+              "projects/lib-core/**/*.html"
             ]
           }
         }
       }
     },
-    "ngx-dynamic-json-form-material": {
+    "lib-material": {
       "projectType": "library",
-      "root": "projects/ngx-dynamic-json-form-material",
-      "sourceRoot": "projects/ngx-dynamic-json-form-material/src",
+      "root": "projects/lib-material",
+      "sourceRoot": "projects/lib-material/src",
       "prefix": "ndf-mat",
       "schematics": {
         "@schematics/angular:component": {
@@ -60,14 +60,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/ngx-dynamic-json-form-material/ng-package.json"
+            "project": "projects/lib-material/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ngx-dynamic-json-form-material/tsconfig.lib.prod.json"
+              "tsConfig": "projects/lib-material/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/ngx-dynamic-json-form-material/tsconfig.lib.json"
+              "tsConfig": "projects/lib-material/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -75,10 +75,10 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "projects/ngx-dynamic-json-form-material/tsconfig.spec.json",
+            "tsConfig": "projects/lib-material/tsconfig.spec.json",
             "polyfills": ["zone.js", "zone.js/testing"],
             "codeCoverage": true,
-            "karmaConfig": "projects/ngx-dynamic-json-form-material/karma.conf.js",
+            "karmaConfig": "projects/lib-material/karma.conf.js",
             "codeCoverageExclude": ["**/stub.class.ts"],
             "progress": true
           }
@@ -86,8 +86,8 @@
         "storybook": {
           "builder": "@storybook/angular:start-storybook",
           "options": {
-            "configDir": "projects/ngx-dynamic-json-form-material/.storybook",
-            "browserTarget": "ngx-dynamic-json-form-material:build",
+            "configDir": "projects/lib-material/.storybook",
+            "browserTarget": "lib-material:build",
             "compodoc": false,
             "port": 6006,
             "styles": [
@@ -98,7 +98,7 @@
                 "input": "./node_modules/material-design-icons/iconfont/material-icons.css"
               },
               {
-                "input": "./projects/ngx-dynamic-json-form-material/.storybook/examples.css"
+                "input": "./projects/lib-material/.storybook/examples.css"
               }
             ]
           }
@@ -106,10 +106,10 @@
         "build-storybook": {
           "builder": "@storybook/angular:build-storybook",
           "options": {
-            "configDir": "projects/ngx-dynamic-json-form-material/.storybook",
-            "browserTarget": "ngx-dynamic-json-form-material:build",
+            "configDir": "projects/lib-material/.storybook",
+            "browserTarget": "lib-material:build",
             "compodoc": false,
-            "outputDir": "dist/storybook/ngx-dynamic-json-form-material",
+            "outputDir": "dist/storybook/lib-material",
             "styles": [
               {
                 "input": "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
@@ -118,7 +118,7 @@
                 "input": "./node_modules/material-design-icons/iconfont/material-icons.css"
               },
               {
-                "input": "./projects/ngx-dynamic-json-form-material/.storybook/examples.css"
+                "input": "./projects/lib-material/.storybook/examples.css"
               }
             ]
           }
@@ -127,8 +127,8 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "projects/ngx-dynamic-json-form-material/**/*.ts",
-              "projects/ngx-dynamic-json-form-material/**/*.html"
+              "projects/lib-material/**/*.ts",
+              "projects/lib-material/**/*.html"
             ]
           }
         }

@@ -11,8 +11,8 @@
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "paths": {
-      "@ngx-dynamic-json-form/core": ["dist/ngx-dynamic-json-form"],
-      "@ngx-dynamic-json-form/material": ["dist/ngx-dynamic-json-form-material"]
+      "ngx-dynamic-json-form-core": ["dist/lib-core"],
+      "ngx-dynamic-json-form-material": ["dist/lib-material"]
     },
     "declaration": false,
     "downlevelIteration": true,

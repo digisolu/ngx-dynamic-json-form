@@ -1,11 +1,9 @@
-var mode = process.argv.slice(2)[0] === "core" ? "" : process.argv.slice(2)[0];
-var jsonFile = require("../docs/ngx-dynamic-json-form" +
-  (!!mode ? "-" + mode : "") +
-  "/documentation.json");
+var mode = process.argv.slice(2)[0];
+var jsonFile = require("../docs/lib-" + mode + "/documentation.json");
 
 var output =
-  "## Documentation Coverage for: @ngx-dynamic-json-form/" +
-  (!!mode ? mode : "core") +
+  "## Documentation Coverage for: ngx-dynamic-json-form-" +
+  mode +
   ": " +
   jsonFile.coverage.count +
   "%\n\n";
@@ -18,9 +16,7 @@ output +=
 jsonFile.coverage.files.forEach(function (data) {
   output +=
     "<tr><td>" +
-    data.filePath
-      .replaceAll("\\", "/")
-      .replace("projects/ngx-dynamic-json-form" + (!!mode ? "-" + mode : "") + "/src/lib/", "") +
+    data.filePath.replaceAll("\\", "/").replace("projects/lib-" + mode + "/src/lib/", "") +
     "</td><td>" +
     data.coveragePercent +
     "%</td></tr>\n";
@@ -30,17 +26,13 @@ output += "</tbody></table></div>";
 
 try {
   require("fs").writeFileSync(
-    "./projects/ngx-dynamic-json-form" + (!!mode ? "-" + mode : "") + "/COVERAGE-DOCS.md",
+    "./projects/lib-" + mode + "/COVERAGE-DOCS.md",
     output,
     "utf-8",
     "w+"
   );
 
-  console.log(
-    "\x1b[32m%s\x1b[0m",
-    "info",
-    "=> coverage file for " + (!!mode ? mode : "core") + " was generated"
-  );
+  console.log("\x1b[32m%s\x1b[0m", "info", "=> coverage file for " + mode + " was generated");
 } catch (error) {
   console.log("Error: Cannot write file");
   throw error;
