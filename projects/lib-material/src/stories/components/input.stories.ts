@@ -1,11 +1,11 @@
 import { importProvidersFrom } from '@angular/core';
 import { MatNativeDateModule } from '@angular/material/core';
+import { applicationConfig, moduleMetadata } from '@storybook/angular';
 import { NgxDynamicJsonFormModule } from 'ngx-dynamic-json-form-core';
 import {
   NgxDynamicJsonFormMaterialComponent,
   NgxDynamicJsonFormMaterialModule,
 } from 'ngx-dynamic-json-form-material';
-import { applicationConfig, moduleMetadata } from '@storybook/angular';
 
 import { Utils } from '../helpers/utils';
 
@@ -34,6 +34,7 @@ let code: any = `{
 }`;
 
 class Model implements MatInput {
+  id?: string | undefined = '';
   type = 'input' as const;
   inputType?:
     | 'number'

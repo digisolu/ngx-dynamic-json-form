@@ -3,11 +3,13 @@ import * as Stories from "./callback.stories";
 
 <Meta title="Examples and Guides/Load Data from Server" />
 
-# Callback: onChange-Example: Reload Data
+# Loading Data from the Server
 
-The library allows you to use several callback functions to handle most of your needs. A list of all callbacks of a component can be found in the docs of every component.
+It's important, that you call `<ngx-dynamic-json-form></ngx-dynamic-json-form>` the fist time, after you had all fields loaded.
 
-The change callback can be used for example to reload data from the server.
+## Example
+
+<Canvas of={Stories.LoadDataBefore} />
 
 `my.component.ts`:
 
@@ -45,10 +47,6 @@ export class MyComponent implements OnInit {
 </ng-container>
 
 <ng-template #loading>
-  <!-- your loading spinner -->
+  <!-- your loading spinner / or skeleton loader -->
 </ng-template>
 ```
-
-## Example
-
-<Canvas of={Stories.LoadDataBefore} />

@@ -37,6 +37,7 @@ class Model implements MatTextarea {
   autosizeMaxRows: number = 0;
   autosizeMinRows: number = 0;
   autosize: boolean = true;
+  id?: string | undefined = '';
   type = 'textarea' as const;
   cols?: number | undefined = 0;
   rows?: number | undefined = 0;

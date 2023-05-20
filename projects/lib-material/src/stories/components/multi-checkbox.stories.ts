@@ -41,6 +41,7 @@ class Model implements MatMultiCheckbox {
   showSelectAllText?: string = '';
   color?: ThemePalette = 'primary';
   togglePosition?: 'after' | 'before' | undefined = 'before';
+  id?: string | undefined = '';
   type = 'multi-checkbox' as const;
   options: BasicOption[] = [];
 

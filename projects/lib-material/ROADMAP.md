@@ -39,19 +39,25 @@ Here you can find the next plans for the library.
     <tr>
       <td className="bold">Support for Zurb Foundation</td>
       <td>Add a version for Zurb Foundation</td>
-      <td>not yet</td>
+      <td>tbd</td>
       <td>-</td>
     </tr>
     <tr>
       <td className="bold">Support for TailwindCSS</td>
       <td>Add a version for TailwindCSS</td>
-      <td>not yet</td>
+      <td>tbd</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td className="bold">Support for Angular Material Legacy</td>
+      <td>Add a version for IBM Carbon Design Components</td>
+      <td>tbd</td>
       <td>-</td>
     </tr>
     <tr>
       <td className="bold">Support for Angular < 15</td>
       <td>ngx-dynamic form for Angluar < v15</td>
-      <td>not yet</td>
+      <td>tbd</td>
       <td>-</td>
     </tr>
   </tbody>

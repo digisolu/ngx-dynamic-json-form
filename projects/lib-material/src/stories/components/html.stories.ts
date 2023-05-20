@@ -27,6 +27,7 @@ let code: any = `{
 }`;
 
 class Model implements DynamicFormFieldHTML {
+  id?: string | undefined = '';
   type = 'html' as const;
   content: string = '';
   key?: string | undefined = '';

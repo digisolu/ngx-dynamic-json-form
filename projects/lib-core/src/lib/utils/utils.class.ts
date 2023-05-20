@@ -20,6 +20,15 @@ import { FormField, FormFieldType } from '../types';
  */
 export class Utils {
   /**
+   * The internal counter for the unique id.
+   *
+   * @static
+   * @type {number}
+   * @memberof Utils
+   */
+  public static idCounters: { [key: string]: number } = {};
+
+  /**
    * These form field types are multi selections.
    *
    * //TODO: Move to config and service
@@ -29,6 +38,21 @@ export class Utils {
    * @memberof Utils
    */
   public static multiSelections: FormFieldType[] = ['multi-autocomplete', 'multi-checkbox'];
+
+  /**
+   * A method to generate a unique id.
+   *
+   * @static
+   * @param {(FormField | undefined)} field
+   * @return
+   * @memberof Utils
+   */
+  public static getUniqueId(field: FormField | undefined) {
+    const type: string = !!field ? field.type : 'unknown';
+    Utils.idCounters[type] === undefined && (Utils.idCounters[type] = 1);
+
+    return `ndf-${type}-${Utils.idCounters[type]++}`;
+  }
 
   /**
    * This method generates a MultiRow FormGroup.

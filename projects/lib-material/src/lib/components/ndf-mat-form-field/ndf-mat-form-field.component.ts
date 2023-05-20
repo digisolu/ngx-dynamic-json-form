@@ -261,6 +261,8 @@ export class NdfMatFormFieldComponent implements OnDestroy, AfterViewInit {
       this._matFormField.ngAfterContentInit();
       this._matFormField.ngAfterContentChecked();
       this._matFormField.ngAfterViewInit();
+
+      this._cd.detectChanges();
     });
   }
 

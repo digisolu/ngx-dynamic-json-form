@@ -41,6 +41,7 @@ class Model implements MatSlider {
     throw new Error('Method not implemented.');
   }
   showTickMarks?: boolean | undefined = true;
+  id?: string | undefined = '';
   type = 'slider' as const;
   max?: number | undefined = 0;
   min?: number | undefined = 0;

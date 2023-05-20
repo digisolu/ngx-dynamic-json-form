@@ -1,30 +1,36 @@
 import { importProvidersFrom } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
+import { applicationConfig, moduleMetadata } from '@storybook/angular';
 import { NgxDynamicJsonFormModule } from 'ngx-dynamic-json-form-core';
 import {
   NgxDynamicJsonFormMaterialComponent,
   NgxDynamicJsonFormMaterialModule,
 } from 'ngx-dynamic-json-form-material';
-import { applicationConfig, moduleMetadata } from '@storybook/angular';
+import { delay, of as ObservableOf } from 'rxjs';
 
 import { Utils } from '../helpers/utils';
 
-// also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
+import type { MatInput } from 'ngx-dynamic-json-form-material';
 import type { Meta } from '@storybook/angular';
-import { delay, of as ObservableOf } from 'rxjs';
 
 /////////////////////////////////////////////////////////////////////////////////////////
 // Config Meta and Auto Args - Start
 /////////////////////////////////////////////////
 
 const title: string = 'Examples and Guides/Change';
-const form: { change: FormGroup<any>; click: FormGroup<any>; loadData: FormGroup<any> } = {
+const form: {
+  change: FormGroup<any>;
+  click: FormGroup<any>;
+  loadData: FormGroup<any>;
+  loadData2: FormGroup<any>;
+} = {
   change: new FormGroup({}),
   click: new FormGroup({}),
   loadData: new FormGroup({}),
+  loadData2: new FormGroup({}),
 };
-function setForm(instance: any, type: 'change' | 'click'): void {
+function setForm(instance: any, type: 'change' | 'click' | 'loadData' | 'loadData2'): void {
   form[type] = instance;
 }
 
@@ -220,7 +226,6 @@ export const LoadData: any = (args: any) => {
 
 // Story 4
 export const LoadDataBefore: any = (args: any) => {
-  args.setForm = setForm;
   args.fields = ObservableOf([
     {
       type: 'select',
@@ -238,9 +243,42 @@ export const LoadDataBefore: any = (args: any) => {
   return {
     props: args,
     template: `<ng-container *ngIf="fields | async as data; else loading">
-  <ngx-dynamic-json-form [fields]="data" [formClassName]="formClassName" (getForm)="setForm($event, 'click')"></ngx-dynamic-json-form>
+  <ngx-dynamic-json-form [fields]="data" [formClassName]="formClassName"></ngx-dynamic-json-form>
 </ng-container>
 <ng-template #loading>loading data...</ng-template>`,
+  };
+};
+
+// Story 5
+export const PasswordToggle: any = (args: any) => {
+  let hidePasswordDefault = true;
+  args.fields = [
+    {
+      type: 'input',
+      key: 'passwordNew',
+      inputType: 'password',
+      label: 'New Password',
+      required: true,
+      containerClassName: 'col-4',
+      placeholder: '**********',
+      suffixIcon: 'visibility_off',
+      onSuffixClick: () => {
+        hidePasswordDefault = !hidePasswordDefault;
+
+        const field: MatInput = args.fields[0] as MatInput;
+
+        if (!!field) {
+          field.suffixIcon = `visibility${hidePasswordDefault ? '_off' : ''}`;
+          field.inputType = `${hidePasswordDefault ? 'password' : 'text'}`;
+        }
+      },
+      clearButton: false,
+    },
+  ];
+
+  return {
+    props: args,
+    template: `<ngx-dynamic-json-form [fields]="fields"></ngx-dynamic-json-form>`,
   };
 };
 /////////////////////////////////////////////////

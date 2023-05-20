@@ -1,5 +1,5 @@
 <div [class.ndf-container-row]="true" [class]="getDefaultValue('rowWrapperClassName')">
-  <ng-container *ngFor="let innerField of field?.fields">
+  <ng-container *ngFor="let innerField of field?.fields; trackBy: trackById">
     <div
       [class.ndf-form-field]="true"
       [class]="innerField?.containerClassName"

@@ -11,6 +11,14 @@ import { AsyncValidatorFn } from '@angular/forms';
  */
 export interface BaseField {
   /**
+   * An id to identify the field. If this id isn't passed, it will be generated automatically.
+   *
+   * @type {string}
+   * @memberof BaseField
+   */
+  id?: string;
+
+  /**
    * The form field type to identify the form field.
    *
    * @type {FormFieldType}

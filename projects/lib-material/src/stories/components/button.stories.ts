@@ -33,6 +33,7 @@ class Model implements MatButton {
   buttonColor?: ThemePalette = 'primary';
   buttonIcon?: string | undefined = '';
   buttonTooltip?: string | undefined = '';
+  id?: string | undefined = '';
   type = 'button' as const;
   buttonType?: 'button' | 'submit' | 'menu' | 'reset' | undefined = 'button';
   disabled?: boolean | undefined = false;
