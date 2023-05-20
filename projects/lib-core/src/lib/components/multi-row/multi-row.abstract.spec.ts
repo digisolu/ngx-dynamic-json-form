@@ -113,4 +113,37 @@ describe('AbstractMultiRowComponent', () => {
       expect(component['getFormArray']() instanceof FormArray).toBeTrue();
     });
   });
+
+  describe('trackById', () => {
+    [
+      {
+        id: '123',
+        type: 'multi-row',
+        key: 'foo',
+      },
+    ].forEach((test) => {
+      it(`returns correct value (positive Tests)`, () => {
+        // call
+        component.trackById('', test as any);
+
+        // test
+        expect(component.trackById('', test as any)).toBe('123');
+      });
+    });
+
+    [
+      {
+        type: 'multi-row',
+        key: 'foo',
+      },
+    ].forEach((test) => {
+      it(`returns correct value (negative Tests)`, () => {
+        // call
+        component.trackById('', test as any);
+
+        // test
+        expect(component.trackById('', test as any)).toBe('');
+      });
+    });
+  });
 });

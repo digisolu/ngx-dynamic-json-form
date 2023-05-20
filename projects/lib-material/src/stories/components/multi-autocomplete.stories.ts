@@ -39,6 +39,7 @@ let code: any = `{
 }`;
 
 class Model implements MatMultiAutocomplete {
+  id?: string | undefined = '';
   type = 'multi-autocomplete' as const;
   color?: ThemePalette = 'primary';
   removable?: boolean = true;

@@ -16,6 +16,12 @@
   </thead>
   <tbody>
     <tr>
+      <td>< 15</td>
+      <td>< 15</td>
+      <td>not tested, if it is working, please report it via GitHub.</td>
+      <td>not tested, if it is working, please report it via GitHub.</td>
+    </tr>
+    <tr>
       <td>15.x.x</td>
       <td>15.x.x</td>
       <td>1.x.x</td>
@@ -24,6 +30,12 @@
     <tr>
       <td>16.x.x</td>
       <td>16.x.x</td>
+      <td>1.x.x</td>
+      <td>1.x.x</td>
+    </tr>
+    <tr>
+      <td>17.x.x</td>
+      <td>17.x.x</td>
       <td>not tested yet</td>
       <td>not tested yet</td>
     </tr>

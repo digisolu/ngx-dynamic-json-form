@@ -38,6 +38,7 @@ let code: any = `{
 class Model implements MatSlideToggle {
   color?: ThemePalette = 'primary';
 
+  id?: string | undefined = '';
   type = 'slide-toggle' as const;
   onChange?(): void {
     throw new Error('Method not implemented.');

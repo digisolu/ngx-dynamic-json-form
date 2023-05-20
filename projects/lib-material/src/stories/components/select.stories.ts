@@ -52,6 +52,7 @@ class Model implements MatSelect {
     throw new Error('Method not implemented.');
   }
 
+  id?: string | undefined = '';
   type = 'select' as const;
   options: GroupOption[] = [];
   showEmptyOption?: boolean | undefined = true;

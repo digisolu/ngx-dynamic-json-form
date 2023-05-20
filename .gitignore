@@ -5,6 +5,7 @@
 /docs
 /tmp
 /out-tsc
+/out
 /bazel-out
 .env
 COVERAGE-DOCS.md

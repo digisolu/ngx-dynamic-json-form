@@ -36,6 +36,7 @@ let code: any = `{
 }`;
 
 class Model implements MatDatepicker {
+  id?: string | undefined = '';
   type = 'datepicker-range' as const;
   openWhenActive?: boolean = true;
   readonly?: boolean = true;

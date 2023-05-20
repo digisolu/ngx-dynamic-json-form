@@ -354,4 +354,15 @@ describe('Utils', () => {
       expect(Utils.sortObject(['a', 'c', 'b'])).toEqual({});
     });
   });
+
+  describe('getUniqueId', () => {
+    it(`returns correct value.`, () => {
+      Utils.idCounters = {};
+      expect(Utils.getUniqueId({ key: 'anyKey', type: 'input' })).toEqual('ndf-input-1');
+      expect(Utils.getUniqueId({ key: 'anyKey', type: 'input' })).toEqual('ndf-input-2');
+      expect(Utils.getUniqueId({ key: 'anyKey', type: 'multi-row' })).toEqual('ndf-multi-row-1');
+      expect(Utils.getUniqueId(undefined)).toEqual('ndf-unknown-1');
+      Utils.idCounters = {};
+    });
+  });
 });

@@ -7,7 +7,7 @@
         [formGroup]="dynamicForm"
         *ngFor="let dynamicForm of getFormArrayControls(); index as i"
       >
-        <ng-container *ngFor="let innerField of field?.fields">
+        <ng-container *ngFor="let innerField of field?.fields; trackBy: trackById">
           <div
             [class.ndf-form-field]="true"
             [class]="innerField?.containerClassName"

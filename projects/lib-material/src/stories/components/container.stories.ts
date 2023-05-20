@@ -28,6 +28,7 @@ let code: any = `{
 }`;
 
 class Model implements MatContainer {
+  id?: string | undefined = '';
   type = 'container' as const;
   fields: FormField[] = [];
   rowWrapperClassName?: string | undefined = '';

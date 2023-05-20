@@ -56,6 +56,7 @@ class Model implements MatMultiRow {
   deleteButtonText?: string = '';
   deleteButtonTooltip?: string = '';
 
+  id?: string | undefined = '';
   type = 'multi-row' as const;
   key: string = '';
   rowWrapperClassName?: string = '';

@@ -19,7 +19,7 @@ import { NgxDynamicJsonFormComponent } from 'ngx-dynamic-json-form-core';
       [class.ndf-form]="true"
       [class]="formClassName || getDefaultValue('formClassName')"
     >
-      <ng-container *ngFor="let field of fields">
+      <ng-container *ngFor="let field of fields; trackBy: trackById">
         <div
           [class.ndf-form-field]="true"
           [class]="field?.containerClassName"

@@ -1,11 +1,12 @@
 import { Markdown, Meta } from "@storybook/blocks";
 
-import ChangelogCore from "./../../../../lib-core/CHANGELOG.md?raw";
-import ChangelogMaterial from "./../../../CHANGELOG.md?raw";
-
 <style>{`
 .bold {
   font-weight: bold;
+}
+.bullets {
+  list-style: square;
+  padding-left: 20px;
 }
 `}</style>
 
@@ -16,18 +17,58 @@ import ChangelogMaterial from "./../../../CHANGELOG.md?raw";
 <table width="100%">
   <thead>
     <tr>
+      <th align="left">Version</th>
       <th align="left">Core</th>
       <th align="left">Material</th>
     </tr>
   </thead>
   <tbody>
+    {/* v1.0.0 */}
     <tr>
-      <td>
-        <Markdown>{ChangelogCore}</Markdown>
+      <td valign="top" class="bold">1.0.0</td>
+      <td valign="top">
+        <ul class="bullets">
+          <li>GoLive</li>
+        </ul>
       </td>
-      <td>
-        <Markdown>{ChangelogMaterial}</Markdown>
+      <td valign="top">
+        <ul class="bullets">
+          <li>GoLive</li>
+        </ul>
       </td>
     </tr>
+
+    {/* v1.0.1 */}
+    <tr>
+      <td valign="top" class="bold">1.0.1</td>
+      <td valign="top">
+        <ul class="bullets">
+          <li>Testing Angular 16: No Changes needed</li>
+          <li>Added optional id to all fields for ngForTrackBy</li>
+        </ul>
+      </td>
+      <td valign="top">
+        <ul class="bullets">
+          <li>Testing Angular 16: No Changes needed</li>
+          <li>Added example in the docs for: Toggle Password Visibility</li>
+          <li>Added optional id to all fields for ngForTrackBy</li>
+          <li>Adjusted Docs for: Examples and Guides/Load Data from Server</li>
+        </ul>
+      </td>
+    </tr>
+
+    {/* Next */}
+    <tr>
+      <td valign="top" class="bold"></td>
+      <td valign="top">
+        <ul class="bullets">
+        </ul>
+      </td>
+      <td valign="top">
+        <ul class="bullets">
+        </ul>
+      </td>
+    </tr>
+
   </tbody>
 </table>

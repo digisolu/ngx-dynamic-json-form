@@ -39,6 +39,7 @@ let code: any = `{
 }`;
 
 class Model implements MatRadioButton {
+  id?: string | undefined = '';
   type = 'radio-button' as const;
   options: Array<
     BasicOption & {

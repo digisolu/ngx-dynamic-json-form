@@ -12,7 +12,7 @@ import { ReplaySubject } from 'rxjs';
 
 import { BaseField, BasicCallbacks } from '../../interfaces/form-fields';
 import { NgxDynamicJsonFormService } from '../../services';
-import { FormFieldType, HTMLElementEvent } from '../../types';
+import { FormField, FormFieldType, HTMLElementEvent } from '../../types';
 import { Utils } from '../../utils';
 
 /**
@@ -245,5 +245,17 @@ export abstract class AbstractFormFieldComponent<T extends BaseField> implements
     };
 
     return !!this.field && key in this.field ? (this.field as any)[key] : options[key] || null;
+  }
+
+  /**
+   * This method is used for ngForTrackBy.
+   *
+   * @param {*} _
+   * @param {FormField} field
+   * @return {string}
+   * @memberof AbstractFormFieldComponent
+   */
+  public trackById(_: any, field: FormField): string {
+    return field?.id || '';
   }
 }

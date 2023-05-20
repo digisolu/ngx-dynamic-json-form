@@ -38,7 +38,7 @@ export abstract class AbstractMultiRowComponent<
    * @memberof AbstractMultiRowComponent
    */
   public getFormGroup(): FormGroup<any> {
-    return this.form as FormGroup<any>;
+    return this.form;
   }
 
   /**
@@ -105,5 +105,13 @@ export abstract class AbstractMultiRowComponent<
    */
   protected getFormArray(): FormArray {
     return this.form.controls[this.getFieldKey()] as FormArray;
+  }
+
+  /**
+   * @override
+   * @inheritdoc
+   */
+  public override trackById(_: any, field: FormField): string {
+    return field?.id || '';
   }
 }

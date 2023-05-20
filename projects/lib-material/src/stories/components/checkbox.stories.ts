@@ -39,6 +39,7 @@ class Model implements MatCheckbox {
   vertical?: boolean | undefined = true;
   color?: ThemePalette = 'primary';
   labelPosition?: 'before' | 'after' | undefined = 'after';
+  id?: string | undefined = '';
   type = 'checkbox' as const;
   required?: boolean | undefined = false;
   validators?: ValidatorFn[] | undefined = [];

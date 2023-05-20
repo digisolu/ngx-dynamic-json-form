@@ -157,6 +157,18 @@ export abstract class NgxDynamicJsonFormComponent implements OnInit, OnDestroy, 
   }
 
   /**
+   * This method is used for ngForTrackBy.
+   *
+   * @param {*} _
+   * @param {FormField} item
+   * @return
+   * @memberof NgxDynamicJsonFormComponent
+   */
+  public trackById(_: any, item: FormField): string {
+    return item?.id || '';
+  }
+
+  /**
    * This method generates a new FormGroup instance of the given FormField configuration.
    *
    * @private
@@ -165,6 +177,8 @@ export abstract class NgxDynamicJsonFormComponent implements OnInit, OnDestroy, 
    */
   private _generateForm(fields: FormField[]): void {
     fields.forEach((field: FormField) => {
+      field['id'] = !!field['id'] ? field['id'] : Utils.getUniqueId(field);
+
       switch (field.type) {
         case 'html':
         case 'button':

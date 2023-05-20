@@ -37,6 +37,7 @@ let code: any = `{
 }`;
 
 class Model implements MatAutocomplete {
+  id?: string | undefined = '';
   type = 'autocomplete' as const;
   showEmptyOption?: boolean = true;
   showEmptyOptionText?: string = '';

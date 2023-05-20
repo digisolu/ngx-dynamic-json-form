@@ -151,26 +151,40 @@ describe('NgxDynamicJsonFormComponent', () => {
       { field: { type: 'button' }, result: 'nothing' },
       { field: { type: 'container', fields: [] }, result: 'nothing' },
       {
-        field: { type: 'multi-row' },
-        result: () => expect(component['_addMultiRow']).toHaveBeenCalledWith({ type: 'multi-row' }),
+        field: { type: 'multi-row', id: 'id-test' },
+        result: () =>
+          expect(component['_addMultiRow']).toHaveBeenCalledWith({
+            type: 'multi-row',
+            id: 'id-test',
+          }),
       },
       {
         field: { type: 'datepicker-range' },
         result: () =>
-          expect(component['_addRangeControls']).toHaveBeenCalledWith({ type: 'datepicker-range' }),
+          expect(component['_addRangeControls']).toHaveBeenCalledWith({
+            type: 'datepicker-range',
+            id: 'ndf-datepicker-range-1',
+          }),
       },
       {
         field: { type: 'slider-range' },
         result: () =>
-          expect(component['_addRangeControls']).toHaveBeenCalledWith({ type: 'slider-range' }),
+          expect(component['_addRangeControls']).toHaveBeenCalledWith({
+            type: 'slider-range',
+            id: 'ndf-slider-range-1',
+          }),
       },
       {
         field: { type: 'input' },
         result: () =>
-          expect(Utils.addControl).toHaveBeenCalledWith({ type: 'input' }, component.form),
+          expect(Utils.addControl).toHaveBeenCalledWith(
+            { type: 'input', id: 'ndf-input-1' },
+            component.form
+          ),
       },
     ].forEach((testCase: { field: any; result: any }) => {
       it(`makes expected calls (positive Tests)`, () => {
+        Utils.idCounters = {};
         // preparation
         spyOn(component as any, '_addMultiRow');
         spyOn(component as any, '_addRangeControls');
@@ -185,6 +199,7 @@ describe('NgxDynamicJsonFormComponent', () => {
         } else {
           testCase.result();
         }
+        Utils.idCounters = {};
       });
     });
   });
@@ -247,6 +262,39 @@ describe('NgxDynamicJsonFormComponent', () => {
         // test
         expect(spy1).toHaveBeenCalledWith(test.field as any, test.initial?.foo || []);
         expect(spy2).toHaveBeenCalled();
+      });
+    });
+  });
+
+  describe('trackById', () => {
+    [
+      {
+        id: '123',
+        type: 'multi-row',
+        key: 'foo',
+      },
+    ].forEach((test) => {
+      it(`returns correct value (positive Tests)`, () => {
+        // call
+        component.trackById('', test as any);
+
+        // test
+        expect(component.trackById('', test as any)).toBe('123');
+      });
+    });
+
+    [
+      {
+        type: 'multi-row',
+        key: 'foo',
+      },
+    ].forEach((test) => {
+      it(`returns correct value (negative Tests)`, () => {
+        // call
+        component.trackById('', test as any);
+
+        // test
+        expect(component.trackById('', test as any)).toBe('');
       });
     });
   });
