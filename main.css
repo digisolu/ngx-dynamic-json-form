@@ -27,10 +27,6 @@
   padding: 28px 24px;
 }
 
-* {
-  font-family: Roboto, sans-serif;
-}
-
 .amount-label {
   width: 200px;
   margin-right: 16px;
