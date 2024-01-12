@@ -1,6 +1,6 @@
 {
   "name": "ngx-dynamic-json-form-material",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "MIT",
   "author": "Michael Hanft <21217443+digisolu@users.noreply.github.com>",
   "contributors": [
@@ -12,7 +12,6 @@
     "angular",
     "backend driven forms",
     "backend forms",
-    "dynamic forms",
     "dynamic forms",
     "form library",
     "forms",
@@ -34,7 +33,7 @@
     "@angular/common": ">=15.0.0",
     "@angular/core": ">=15.0.0",
     "@angular/material": ">=15.0.0",
-    "ngx-dynamic-json-form-core": "^1.0.3",
+    "ngx-dynamic-json-form-core": "^1.0.4",
     "ngx-mat-select-search": ">=7.0.0"
   },
   "dependencies": {

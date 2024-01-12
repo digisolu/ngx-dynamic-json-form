@@ -22,22 +22,10 @@
       <td>not tested, if it is working, please report it via GitHub.</td>
     </tr>
     <tr>
-      <td>15.x.x</td>
-      <td>15.x.x</td>
+      <td>> 15.x.x</td>
+      <td>> 15.x.x</td>
       <td>1.x.x</td>
       <td>1.x.x</td>
-    </tr>
-    <tr>
-      <td>16.x.x</td>
-      <td>16.x.x</td>
-      <td>1.x.x</td>
-      <td>1.x.x</td>
-    </tr>
-    <tr>
-      <td>17.x.x</td>
-      <td>17.x.x</td>
-      <td>not tested yet</td>
-      <td>not tested yet</td>
     </tr>
   </tbody>
 </table>
@@ -54,28 +42,57 @@ npm i ngx-dynamic-json-form-core ngx-dynamic-json-form-material ngx-mat-select-s
 
 Please make sure, that `@angular/forms` and `"@angular/material` are installed too.
 
-### 2. Add `ngx-dynamic-json-form` to your `AppModule`
-
-```typescript
-
-import { AppComponent } from './app.component';
-import { NgxDynamicJsonFormMaterialModule } from 'ngx-dynamic-json-form-material';
-
-@NgModule({
-  imports: [
-    BrowserModule
-    NgxDynamicJsonFormMaterialModule.forRoot()
-  ],
-  ...
-})
-export class AppModule {}
-```
+### 2. Add `ngx-dynamic-json-form-material`
 
 The `forRoot()` method call is required on root level.
 
 This method is used to override default configurations and is needed to register custom components.
 
-More information can be found in the [global configuration section](https://digisolu.github.io/ngx-dynamic-json-form/?path=/docs/examples-and-guides-global-configurations--documentation).
+More information can be found in the [global configuration section](https://digisolu.github.io/ngx-dynamic-json-form/?path=/docs/examples-and-guides-global-configurations--documentation) in the docs.
+
+#### 2.1. to your `AppModule` (Module based)
+
+```typescript
+import { NgxDynamicJsonFormMaterialModule } from "ngx-dynamic-json-form-material";
+
+@NgModule({
+  imports: [
+    // ...
+    NgxDynamicJsonFormMaterialModule.forRoot(),
+  ],
+  // ...
+})
+export class AppModule {}
+```
+
+#### 2.2. to your `appConfig.ts` (Standalone Version)
+
+```typescript
+import { NgxDynamicJsonFormMaterialModule } from "ngx-dynamic-json-form-material";
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    importProvidersFrom(NgxDynamicJsonFormMaterialModule.forRoot()),
+    // ...
+  ],
+};
+```
+
+Hint: Don't forget to add `NgxDynamicJsonFormMaterialModule` in your standalone component as well.
+
+```typescript
+import { NgxDynamicJsonFormMaterialModule } from "ngx-dynamic-json-form-material";
+
+@Component({
+  // ...
+  standalone: true,
+  imports: [CommonModule, NgxDynamicJsonFormMaterialModule], // <- Must Have
+  changeDetection: ChangeDetectionStrategy.OnPush, // <- Recommended
+})
+export class MyStandaloneComponent {
+  // ...
+}
+```
 
 ### 3. Configure the form in the component TS
 

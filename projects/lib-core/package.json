@@ -1,6 +1,6 @@
 {
   "name": "ngx-dynamic-json-form-core",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Michael Hanft <21217443+digisolu@users.noreply.github.com>",
   "contributors": [
     "Michael Hanft <21217443+digisolu@users.noreply.github.com>"
@@ -12,7 +12,6 @@
     "angular",
     "backend driven forms",
     "backend forms",
-    "dynamic forms",
     "dynamic forms",
     "form library",
     "forms",

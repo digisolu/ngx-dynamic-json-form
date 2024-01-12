@@ -119,7 +119,11 @@
     overflow: hidden;
   }
 
-  @media only screen and (max-width: 440px) {
+  @media only screen and (max-width: 720px) {
+    .sidebar-container .sidebar-header {
+      margin: -20px -20px 0 !important;
+    }
+
     .sidebar-container .sidebar-header div a {
       font-size: 14px;
     }
@@ -128,13 +132,18 @@
   @media only screen and (min-width: 720px) {
     .sidebar-container .sidebar-header div a {
       visibility: hidden;
-      height: 56px;
-      max-height: 56px;
+      height: 36px;
+      max-height: 36px;
     }
   }
 
   .sidebar-container .sidebar-header {
     background: #3f51b5;
+  }
+
+  .sidebar-container .search-field {
+    margin-left: -20px;
+    margin-right: 12px;
   }
 
   .sidebar-container .search-field svg {
@@ -172,6 +181,9 @@
     overflow-y: scroll;
     overflow-x: hidden;
     height: calc(100vh - 120px);
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-bottom: -20px;
   }
 
   @media only screen and (max-width: 600px) {
@@ -234,6 +246,25 @@
     margin-top: -3px;
   }
 
+  span.version {
+    position: absolute;
+    right: 0;
+    background: #eee;
+    top: 56px;
+    height: auto;
+    display: block;
+    padding: 8px 10px;
+    line-height: 1;
+    color: #000;
+    font-size: 11px;
+  }
+
+  @media only screen and (max-width: 750px) {
+    .pseudo-header a.header-link {
+      font-size: 14px !important;
+    }
+  }
+
   #storybook-preview-wrapper {
     padding-top: 56px;
     height: calc(100% - 56px);
@@ -262,4 +293,5 @@
       alt="View on GitHub"
     />
   </a>
+  <span class="version">Version: 1.0.4</span>
 </div>

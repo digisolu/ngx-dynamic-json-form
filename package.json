@@ -1,6 +1,6 @@
 {
   "name": "ngx-dynamic-json-form-common",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Michael Hanft <21217443+digisolu@users.noreply.github.com>",
   "contributors": [
     "Michael Hanft <21217443+digisolu@users.noreply.github.com>"
@@ -14,7 +14,6 @@
     "ngx-dynamic-json-form",
     "angular forms",
     "json forms",
-    "dynamic forms",
     "backend driven forms",
     "backend forms",
     "form library"
@@ -47,7 +46,7 @@
     "lib:material:build": "ng build lib-material",
     "lib:material:dev": "ng build lib-material --watch --configuration development",
     "lib:material:docs:build": "npm run lib:core:docs:json && npm run lib:material:docs:json && npm run lib:material:storybook:build",
-    "lib:material:docs:dev": "npm run lib:core:docs:json && npm run lib:material:docs:json && npm run lib:material:storybook",
+    "lib:material:docs:dev": "npm run lib:core:docs:json && npm run lib:material:docs:json && npm run lib:material:storybook:dev",
     "lib:material:docs:json": "compodoc -p projects/lib-material/tsconfig.docs.json -d docs/lib-material -e json && npm run hook:docs:material",
     "lib:material:storybook:build": "npm run hook:storybook:build && ng run lib-material:build-storybook",
     "lib:material:storybook:dev": "npm run hook:storybook:dev && ng run lib-material:storybook",
@@ -122,5 +121,11 @@
     "stylelint": "^15.6.0",
     "stylelint-config-standard-scss": "^9.0.0",
     "typescript": "~4.8.2"
+  },
+  "overrides": {
+    "@angular-devkit/build-angular": {
+      "postcss": "~8.4.33",
+      "semver": "~7.5.4"
+    }
   }
 }

@@ -17,12 +17,6 @@ describe('NgxDynamicJsonFormMaterialModule', () => {
   });
 
   describe('constructor', () => {
-    it('throws error, if same module', () => {
-      expect(
-        () => new NgxDynamicJsonFormMaterialModule(new NgxDynamicJsonFormMaterialModule())
-      ).toThrowError();
-    });
-
     it('throws no error, if not same module', () => {
       expect(() => new NgxDynamicJsonFormMaterialModule()).not.toThrowError();
     });

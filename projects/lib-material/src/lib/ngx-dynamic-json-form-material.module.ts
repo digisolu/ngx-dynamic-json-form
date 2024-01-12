@@ -1,5 +1,5 @@
-import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import {
   DynamicFormConfig,
   NDF_CONFIG,
@@ -57,29 +57,10 @@ import { NgxDynamicJsonFormMaterialComponent } from './ngx-dynamic-json-form-mat
     SlideToggleComponent,
     TextareaComponent,
   ],
-  imports: [
-    BrowserAnimationsModule,
-    NgxDynamicJsonFormModule,
-    MaterialModule,
-    NgxMatSelectSearchModule,
-  ],
+  imports: [CommonModule, NgxDynamicJsonFormModule, MaterialModule, NgxMatSelectSearchModule],
   exports: [NgxDynamicJsonFormMaterialComponent, MaterialModule],
 })
 export class NgxDynamicJsonFormMaterialModule {
-  /**
-   * Creates an instance of NgxDynamicJsonFormMaterialModule.
-   *
-   * @param {NgxDynamicJsonFormMaterialModule} [parentModule]
-   * @memberof NgxDynamicJsonFormMaterialModule
-   */
-  public constructor(@Optional() @SkipSelf() parentModule?: NgxDynamicJsonFormMaterialModule) {
-    if (parentModule) {
-      throw new Error(
-        '[ngx-dynamic-json-form] NgxDynamicJsonFormMaterialModule is already loaded. Import is only allowed in the AppModule.'
-      );
-    }
-  }
-
   /**
    * The forRoot method to register all default components and configs.
    *
