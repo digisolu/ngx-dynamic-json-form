@@ -38,8 +38,7 @@ span.amount-label {
 
 input.amount-field {
   text-align: right;
-  -webkit-appearance: textfield;
-          appearance: textfield;
+  appearance: textfield;
 }
 
 input.amount-field::-webkit-outer-spin-button,
@@ -53,8 +52,7 @@ input.amount-field::-webkit-inner-spin-button {
 
 .count-field {
   text-align: center;
-  -webkit-appearance: textfield;
-          appearance: textfield;
+  appearance: textfield;
 }
 
 .green {
