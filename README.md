@@ -58,6 +58,7 @@ import { NgxDynamicJsonFormMaterialModule } from "ngx-dynamic-json-form-material
 @NgModule({
   imports: [
     // ...
+    BrowserAnimationModule, // <- An instance of the BrowserAnimationModule or NoopAnimationsModule is required
     NgxDynamicJsonFormMaterialModule.forRoot(),
   ],
   // ...
@@ -72,6 +73,7 @@ import { NgxDynamicJsonFormMaterialModule } from "ngx-dynamic-json-form-material
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideAnimations(), // <- An instance of the BrowserAnimationModule or NoopAnimationsModule is required
     importProvidersFrom(NgxDynamicJsonFormMaterialModule.forRoot()),
     // ...
   ],
@@ -127,12 +129,7 @@ export class MyComponent implements OnInit {
 ### 4. Use `ngx-dynamic-json-form` in the component HTML
 
 ```html
-<ngx-dynamic-json-form
-  [fields]="fields"
-  (getForm)="setForm($event)"
-  [initial]="initialValues"
-  formClassName="my-form-class"
-></ngx-dynamic-json-form>
+<ngx-dynamic-json-form [fields]="fields" (getForm)="setForm($event)" [initial]="initialValues" formClassName="my-form-class"></ngx-dynamic-json-form>
 ```
 
 <table width="100%">

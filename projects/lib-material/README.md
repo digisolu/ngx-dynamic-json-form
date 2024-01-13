@@ -66,6 +66,7 @@ import { NgxDynamicJsonFormMaterialModule } from "ngx-dynamic-json-form-material
 @NgModule({
   imports: [
     // ...
+    BrowserAnimationModule, // <- An instance of the BrowserAnimationModule or NoopAnimationsModule is required
     NgxDynamicJsonFormMaterialModule.forRoot(),
   ],
   // ...
@@ -80,6 +81,7 @@ import { NgxDynamicJsonFormMaterialModule } from "ngx-dynamic-json-form-material
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideAnimations(), // <- An instance of the BrowserAnimationModule or NoopAnimationsModule is required
     importProvidersFrom(NgxDynamicJsonFormMaterialModule.forRoot()),
     // ...
   ],

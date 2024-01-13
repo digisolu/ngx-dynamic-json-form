@@ -27,14 +27,14 @@ Here you can find the next plans for the library.
     <tr>
       <td className="bold">Support for Angular Material Legacy</td>
       <td>Add a version for Angular Material Legacy Components</td>
-      <td>Yes</td>
-      <td>1.1.0 or 2.0.0</td>
+      <td>tbd</td>
+      <td>-</td>
     </tr>
     <tr>
       <td className="bold">Support for Bootstrap</td>
       <td>Add a version for Bootstrap</td>
-      <td>Yes</td>
-      <td>1.1.0 or 2.0.0</td>
+      <td>tbd</td>
+      <td>-</td>
     </tr>
     <tr>
       <td className="bold">Support for Zurb Foundation</td>
@@ -49,7 +49,7 @@ Here you can find the next plans for the library.
       <td>-</td>
     </tr>
     <tr>
-      <td className="bold">Support for Angular Material Legacy</td>
+      <td className="bold">Support for IBM Carbon Design </td>
       <td>Add a version for IBM Carbon Design Components</td>
       <td>tbd</td>
       <td>-</td>

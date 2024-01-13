@@ -120,9 +120,11 @@
   }
 
   @media only screen and (max-width: 720px) {
+    /* needed for higher versions of Storybook
+
     .sidebar-container .sidebar-header {
       margin: -20px -20px 0 !important;
-    }
+    } */
 
     .sidebar-container .sidebar-header div a {
       font-size: 14px;
@@ -132,8 +134,12 @@
   @media only screen and (min-width: 720px) {
     .sidebar-container .sidebar-header div a {
       visibility: hidden;
+      height: 56px;
+      max-height: 56px;
+
+    /* needed for higher versions of Storybook
       height: 36px;
-      max-height: 36px;
+      max-height: 36px; */
     }
   }
 
@@ -141,10 +147,11 @@
     background: #3f51b5;
   }
 
-  .sidebar-container .search-field {
-    margin-left: -20px;
-    margin-right: 12px;
-  }
+  /* needed for higher versions of Storybook
+    .sidebar-container .search-field {
+      margin-left: -20px;
+      margin-right: 12px;
+  } */
 
   .sidebar-container .search-field svg {
     margin: 0 0 0 16px;
@@ -181,9 +188,11 @@
     overflow-y: scroll;
     overflow-x: hidden;
     height: calc(100vh - 120px);
-    margin-left: -20px;
-    margin-right: -20px;
-    margin-bottom: -20px;
+
+    /* needed for higher versions of Storybook
+      margin-left: -20px;
+      margin-right: -20px;
+      margin-bottom: -20px; */
   }
 
   @media only screen and (max-width: 600px) {

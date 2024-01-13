@@ -1,11 +1,12 @@
 import { importProvidersFrom } from '@angular/core';
 import { MatNativeDateModule } from '@angular/material/core';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { applicationConfig, moduleMetadata } from '@storybook/angular';
 import { NgxDynamicJsonFormModule } from 'ngx-dynamic-json-form-core';
 import {
   NgxDynamicJsonFormMaterialComponent,
   NgxDynamicJsonFormMaterialModule,
 } from 'ngx-dynamic-json-form-material';
-import { applicationConfig, moduleMetadata } from '@storybook/angular';
 
 import { Utils } from '../helpers/utils';
 
@@ -17,7 +18,6 @@ import type {
 } from 'ngx-dynamic-json-form-material';
 import type { Meta, StoryObj } from '@storybook/angular';
 import type { ThemePalette } from '@angular/material/core';
-
 type Story = StoryObj<NgxDynamicJsonFormMaterialComponent>;
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -85,7 +85,10 @@ const meta: Meta<NgxDynamicJsonFormMaterialComponent> = {
   component: NgxDynamicJsonFormMaterialComponent,
   decorators: [
     applicationConfig({
-      providers: [importProvidersFrom(NgxDynamicJsonFormMaterialModule.forRoot())],
+      providers: [
+        provideAnimations(),
+        importProvidersFrom(NgxDynamicJsonFormMaterialModule.forRoot()),
+      ],
     }),
     moduleMetadata({ imports: [NgxDynamicJsonFormModule, MatNativeDateModule] }),
   ],
